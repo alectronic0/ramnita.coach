@@ -1,0 +1,38 @@
+{
+  "id": "alec",
+  "name": "Alec",
+  "unit": "kg",
+  "goalWeight": 78.0,
+  "programme": "Online Coaching — beta test",
+  "source": "local",
+  "weighIns": [
+    { "date": "2026-04-06", "weight": 88.4 },
+    { "date": "2026-04-13", "weight": 87.9 },
+    { "date": "2026-04-20", "weight": 87.1 },
+    { "date": "2026-04-27", "weight": 86.8 },
+    { "date": "2026-05-04", "weight": 86.9 },
+    { "date": "2026-05-11", "weight": 86.2 },
+    { "date": "2026-05-18", "weight": 85.4 },
+    { "date": "2026-05-25", "weight": 84.8 },
+    { "date": "2026-06-01", "weight": 85.0 },
+    { "date": "2026-06-08", "weight": 84.1 },
+    { "date": "2026-06-15", "weight": 83.5 },
+    { "date": "2026-06-22", "weight": 82.8 },
+    { "date": "2026-06-29", "weight": 82.1 }
+  ],
+  "workouts": [
+    { "weekStart": "2026-04-06", "sessions": 2 },
+    { "weekStart": "2026-04-13", "sessions": 3 },
+    { "weekStart": "2026-04-20", "sessions": 3 },
+    { "weekStart": "2026-04-27", "sessions": 4 },
+    { "weekStart": "2026-05-04", "sessions": 2 },
+    { "weekStart": "2026-05-11", "sessions": 3 },
+    { "weekStart": "2026-05-18", "sessions": 4 },
+    { "weekStart": "2026-05-25", "sessions": 3 },
+    { "weekStart": "2026-06-01", "sessions": 3 },
+    { "weekStart": "2026-06-08", "sessions": 4 },
+    { "weekStart": "2026-06-15", "sessions": 3 },
+    { "weekStart": "2026-06-22", "sessions": 4 },
+    { "weekStart": "2026-06-29", "sessions": 3 }
+  ]
+}

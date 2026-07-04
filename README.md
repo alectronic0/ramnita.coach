@@ -13,15 +13,22 @@ Hertfordshire.
 ## Structure
 
 ```
-index.html        Landing page (hero, about, journey, services, PT, FAQ, contact)
+index.html        Landing page (hero, about, journey, services, PT + map, FAQ, contact form)
+store.html        Shop — affiliate picks (Amazon tag minty03-21) + Linktree
+client.html       Client progress dashboard (beta, noindex)
+thanks.html       Contact-form success page
 404.html          Not-found page
 css/style.css     Design system & layout
+css/dashboard.css Client dashboard styles
 js/main.js        Mobile nav, scroll-reveal, footer year
-assets/           Favicon and images
+js/map.js         Leaflet training-locations map (coords config at top)
+js/dashboard.js   Progress charts (weight line, workouts bars, stat tiles)
+data/clients/     Per-client JSON data for the dashboard
+assets/           Favicon, gym logos, vendored Leaflet
 CNAME             Custom domain for GitHub Pages (raminta.coach)
 robots.txt        Crawler rules + sitemap pointer
 sitemap.xml       Sitemap for search engines
-SETUP.md          DNS, GitHub Pages & email-forwarding setup guide
+SETUP.md          DNS, GitHub Pages, email-forwarding & form-activation guide
 ```
 
 ## Local preview
