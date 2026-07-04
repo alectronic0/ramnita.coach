@@ -1,130 +1,118 @@
-# raminta.coach — Domain, GitHub Pages & Email Setup Guide
+# raminta.coach — Cloudflare, GitHub Pages & Email Setup Guide
 
-This guide covers the three one-time setup jobs:
+DNS, edge and email for `raminta.coach` run on **Cloudflare (free plan)**; the
+site itself is hosted on **GitHub Pages**. This guide covers the four one-time
+jobs, in the order that avoids the GitHub Pages certificate deadlock:
 
 1. Publishing this site on GitHub Pages
-2. Pointing the `raminta.coach` domain at GitHub Pages
-3. Forwarding email from `@raminta.coach` to `ptwithminty@gmail.com`
+2. Pointing `raminta.coach` at GitHub Pages via Cloudflare DNS
+3. Forwarding `@raminta.coach` email to `ptwithminty@gmail.com` (free)
+4. Turning on the worthwhile free-tier Cloudflare settings
+
+> There is a companion cross-domain runbook (this zone plus `alectronic.co`)
+> with copy-paste record tables — ask if you need the link again.
 
 ---
 
 ## 1. Enable GitHub Pages
 
-1. Go to the repository on GitHub → **Settings** → **Pages**.
-2. Under **Build and deployment**, set:
-   - **Source:** Deploy from a branch
-   - **Branch:** `main` (folder: `/ (root)`)
-3. Click **Save**. Within a minute or two the site will be live at
-   `https://<your-username>.github.io/<repo-name>/`.
+1. Repo → **Settings** → **Pages**.
+2. **Build and deployment** → **Source:** Deploy from a branch,
+   **Branch:** `main` (folder: `/ (root)`), **Save**.
+3. The `CNAME` file in this repo already contains `raminta.coach`, so GitHub
+   picks up the custom domain automatically once DNS resolves.
 
-> The `CNAME` file in this repo already contains `raminta.coach`, so GitHub
-> will automatically pick up the custom domain once DNS is configured below.
+## 2. DNS on Cloudflare → GitHub Pages
 
-## 2. Point raminta.coach at GitHub Pages (DNS)
+Add `raminta.coach` as a zone in Cloudflare and switch the nameservers at your
+registrar to the two Cloudflare provides. Then add these records.
 
-Log in to the registrar where you bought `raminta.coach` and open its
-**DNS management / DNS records** page. Add these records:
+### Apex (`raminta.coach`) — four A records, host `@`
 
-### Apex domain (raminta.coach)
-
-Create **four A records**, all with host/name `@`:
-
-| Type | Host | Value           |
+| Type | Name | Value           |
 |------|------|-----------------|
 | A    | @    | 185.199.108.153 |
 | A    | @    | 185.199.109.153 |
 | A    | @    | 185.199.110.153 |
 | A    | @    | 185.199.111.153 |
 
-Optionally also add AAAA records (IPv6): `2606:50c0:8000::153`,
-`2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`.
+Optional IPv6 (AAAA, host `@`): `2606:50c0:8000::153`, `2606:50c0:8001::153`,
+`2606:50c0:8002::153`, `2606:50c0:8003::153`.
 
-### www subdomain
+### www
 
-| Type  | Host | Value                        |
-|-------|------|------------------------------|
-| CNAME | www  | `<your-username>.github.io.` |
+| Type  | Name | Value                    |
+|-------|------|--------------------------|
+| CNAME | www  | `alectronic0.github.io`  |
 
-(Replace `<your-username>` with the GitHub account/org that owns this repo.)
+### Proxy staging — the important bit
 
-### Finish in GitHub
+Keep every record above **DNS-only (grey cloud)** at first. GitHub Pages must
+reach the domain unproxied to issue its TLS certificate:
 
-1. Back in **Settings → Pages**, enter `raminta.coach` in the
-   **Custom domain** field and click **Save**.
-2. Wait for the DNS check to pass (can take from a few minutes up to
-   24–48 hours, usually well under an hour).
-3. Tick **Enforce HTTPS** once it becomes available — GitHub provisions a
-   free TLS certificate automatically.
+1. In **Settings → Pages**, set the custom domain to `raminta.coach` and wait
+   for the DNS check to pass.
+2. Tick **Enforce HTTPS** once it becomes available.
+3. *Only then* switch the records to **proxied (orange cloud)** and set
+   Cloudflare **SSL/TLS → Full (strict)** (see §4).
 
-## 3. Forward @raminta.coach email to ptwithminty@gmail.com
+> ⚠️ Proxying before the certificate exists, or using SSL/TLS mode
+> **Flexible**, causes cert errors or an infinite redirect loop. Use
+> **Full (strict)** — GitHub already presents a valid certificate.
 
-Email forwarding is configured at your **domain provider**, not GitHub.
-The site's links use `mailto:info@raminta.coach`, so at minimum forward
-`info@raminta.coach`. Find the setup for your provider below.
+## 3. Forward @raminta.coach email — Cloudflare Email Routing (free)
 
-> ⚠️ Whichever provider you use: forwarding needs **MX records** on the
-> domain. These live alongside the A/CNAME records above and do not
-> interfere with the website.
+Email forwarding is free and separate from the website records.
 
-### Option A — Cloudflare (free, recommended)
-
-If your DNS is on (or moved to) Cloudflare:
-
-1. In the Cloudflare dashboard, select the `raminta.coach` zone.
-2. Go to **Email** → **Email Routing** and click **Get started**.
-3. Cloudflare adds the required MX and TXT (SPF) records for you — accept them.
-4. Under **Destination addresses**, add `ptwithminty@gmail.com` and click the
+1. Cloudflare → select the `raminta.coach` zone → **Email** → **Email Routing**
+   → **Get started**. Accept the MX + SPF (TXT) records it adds for you.
+2. Under **Destination addresses**, add `ptwithminty@gmail.com` and click the
    verification link Cloudflare emails to that inbox.
-5. Under **Routing rules**, either:
-   - add a custom address `info@raminta.coach` → forward to
-     `ptwithminty@gmail.com`, or
-   - enable **Catch-all** to forward *everything* `@raminta.coach`.
+3. Under **Routing rules**:
+   - add `info@raminta.coach` → forward to `ptwithminty@gmail.com`, and
+   - enable **Catch-all** so nothing sent to the domain is lost.
 
-### Option B — Namecheap
-
-1. **Domain List** → **Manage** next to `raminta.coach`.
-2. On the **Domain** tab, find **Redirect Email** and click **Add Forwarder**
-   (or set a **Catch-all**).
-3. Alias: `info` → Forward to: `ptwithminty@gmail.com`. Save.
-4. Namecheap requires its own **Email Forwarding MX** preset: on the
-   **Advanced DNS** tab, under **Mail Settings**, choose **Email Forwarding**
-   (this sets the MX records automatically). Changes take up to an hour.
-
-### Option C — GoDaddy
-
-GoDaddy no longer includes free forwarding on new domains — it may offer a
-paid forwarding/Microsoft 365 add-on. If you have the forwarding feature:
-
-1. **My Products** → **Domains** → select `raminta.coach`.
-2. Open **Email Forwarding** → **Create forward**.
-3. Forward `info@raminta.coach` → `ptwithminty@gmail.com`. Save (GoDaddy sets
-   the MX records automatically).
-
-If GoDaddy asks you to pay for forwarding, the free route is to move just the
-DNS to Cloudflare (keep the domain registered at GoDaddy) and use Option A.
+> Cloudflare Email Routing and a full mailbox provider (e.g. Google Workspace)
+> can't share MX records on the same domain. Forwarding is receive-only.
 
 ### Replying *as* info@raminta.coach from Gmail (optional)
 
-Forwarding is receive-only. To also send from the branded address:
-
-1. Gmail (ptwithminty@gmail.com) → ⚙️ **Settings** → **Accounts and Import**.
-2. **Send mail as** → **Add another email address**.
-3. Enter `info@raminta.coach`, untick "Treat as an alias" if unsure, and follow
-   the SMTP steps for your provider (Cloudflare users typically pair this with
-   a free SMTP relay or use Gmail's confirmation-code flow where offered).
-4. Add an SPF TXT record at your DNS so replies don't land in spam, e.g. for
-   Cloudflare Email Routing: `v=spf1 include:_spf.mx.cloudflare.net ~all`.
+1. Gmail (`ptwithminty@gmail.com`) → ⚙️ **Settings** → **Accounts and Import**
+   → **Send mail as** → **Add another email address**.
+2. Enter `info@raminta.coach` and follow the SMTP/confirmation steps.
+3. Keep the SPF TXT record Cloudflare added
+   (`v=spf1 include:_spf.mx.cloudflare.net ~all`) so replies avoid spam. A
+   `_dmarc` TXT of `v=DMARC1; p=none;` is a good monitoring default.
 
 ### Activate the contact form (one-time)
 
-The website's contact form posts to [FormSubmit](https://formsubmit.co/), a free
-service that emails submissions to `info@raminta.coach` — no backend needed.
-One-time activation: after email forwarding works, submit the form once
-yourself; FormSubmit sends a confirmation email to `info@raminta.coach`
-(forwarded to `ptwithminty@gmail.com`) — click **Activate** in it. Submissions
-flow normally from then on.
+The form posts to [FormSubmit](https://formsubmit.co/), which emails
+submissions to `info@raminta.coach` — no backend needed. After forwarding
+works, submit the form once yourself and click **Activate** in the confirmation
+email (forwarded to `ptwithminty@gmail.com`). Submissions flow normally after.
+
+## 4. Free-tier Cloudflare settings worth enabling
+
+Apply per zone once the records are proxied (§2 step 3). All are $0:
+
+| Setting | Value | Why |
+|---------|-------|-----|
+| SSL/TLS mode | **Full (strict)** | End-to-end TLS to GitHub's cert. Most important toggle. |
+| Always Use HTTPS | On | Edge-redirects `http://` → `https://`. |
+| Automatic HTTPS Rewrites | On | Upgrades mixed-content links. |
+| Brotli | On | Free compression. |
+| Cache Rule | Long edge TTL | The site is fully static — cache hard for a real speed win. |
+| DNSSEC | Enable | Add the DS record at your registrar; stops DNS spoofing. |
+| Bot Fight Mode | On | Baseline bot protection. |
+| HSTS | On *after* HTTPS is proven | Sticky and hard to undo — enable only when confident. |
+| Web Analytics | On | Privacy-first, cookieless stats. |
+
+Optional: transfer the domain to **Cloudflare Registrar** later for at-cost
+pricing and free WHOIS privacy (confirm `.coach` is supported first).
 
 ### Test it
 
 Send a test email to `info@raminta.coach` from another account and confirm it
-arrives at `ptwithminty@gmail.com`. Check spam the first time.
+reaches `ptwithminty@gmail.com` (check spam the first time). Load
+`https://raminta.coach` and `https://www.raminta.coach` and confirm both serve
+the site over HTTPS with no certificate warning.
