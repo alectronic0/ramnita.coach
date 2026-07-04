@@ -35,6 +35,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
 
   <!-- Structured data: local business + coach -->
   <script type="application/ld+json">
@@ -64,6 +65,7 @@
     "sameAs": [
       "https://www.instagram.com/ramintacoaching/",
       "https://www.tiktok.com/@ramintacoaching",
+      "https://www.youtube.com/@ramintacoaching",
       "https://linktr.ee/ramintacoaching"
     ],
     "makesOffer": [
@@ -106,6 +108,7 @@
         <li><a href="#journey">How It Works</a></li>
         <li><a href="#online-coaching">Online Coaching</a></li>
         <li><a href="#personal-training">Personal Training</a></li>
+        <li><a href="store.html">Shop</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a class="btn btn-primary btn-nav" href="https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" target="_blank" rel="noopener">Start Today</a></li>
       </ul>
@@ -284,16 +287,76 @@
           <h3>Where we train</h3>
           <ul class="location-list">
             <li>
-              <strong>Norton, Welwyn Garden City</strong>
-              <span>One-to-one sessions in a friendly, supportive setting.</span>
+              <img class="gym-logo" src="assets/norton-gym.png" alt="Norton Gym logo" width="28" height="28">
+              <div>
+                <strong>Norton Gym</strong>
+                <span>26–28 Hyde Way, Welwyn Garden City AL7 3UQ — one-to-one sessions in a friendly, supportive setting.</span>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=Norton+Gym+26-28+Hyde+Way+Welwyn+Garden+City+AL7+3UQ" target="_blank" rel="noopener">Open in Google Maps</a>
+              </div>
             </li>
             <li>
-              <strong>Anytime Fitness</strong>
-              <span>Fully equipped gym sessions for strength and conditioning.</span>
+              <img class="gym-logo" src="assets/anytime-fitness.png" alt="Anytime Fitness logo" width="28" height="28">
+              <div>
+                <strong>Anytime Fitness</strong>
+                <span>Welwyn Garden City — fully equipped gym sessions for strength and conditioning.</span>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=Anytime+Fitness+Welwyn+Garden+City" target="_blank" rel="noopener">Open in Google Maps</a>
+              </div>
             </li>
           </ul>
           <p class="panel-note">Serving Welwyn Garden City, Hatfield, St Albans and the wider Hertfordshire area.</p>
         </div>
+      </div>
+      <div class="container map-block reveal">
+        <div id="gym-map" class="gym-map" aria-label="Map of training locations in Welwyn Garden City"></div>
+        <noscript>
+          <p>Enable JavaScript to see the map, or open the locations directly:
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Norton+Gym+26-28+Hyde+Way+Welwyn+Garden+City+AL7+3UQ">Norton Gym</a> ·
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Anytime+Fitness+Welwyn+Garden+City">Anytime Fitness Welwyn Garden City</a>
+          </p>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- ===== Contact form ===== -->
+    <section class="section" id="contact">
+      <div class="container container-narrow">
+        <div class="section-head reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Send Raminta a message</h2>
+          <p class="section-sub">Ask about online coaching, personal training in Welwyn Garden City, or anything else — no pressure, no obligation.</p>
+        </div>
+        <form class="contact-form reveal" action="https://formsubmit.co/info@raminta.coach" method="POST">
+          <input type="hidden" name="_subject" value="New enquiry from raminta.coach">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://raminta.coach/thanks.html">
+          <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="form-row">
+            <label>
+              Your name
+              <input type="text" name="name" required autocomplete="name" placeholder="Jane Smith">
+            </label>
+            <label>
+              Your email
+              <input type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+            </label>
+          </div>
+          <label>
+            I&rsquo;m interested in
+            <select name="interest">
+              <option>Online Coaching</option>
+              <option>Personal Training (Welwyn Garden City)</option>
+              <option>Online Coaching + Personal Training</option>
+              <option>Something else</option>
+            </select>
+          </label>
+          <label>
+            Your message
+            <textarea name="message" rows="5" required placeholder="Tell me a little about your goals and where you're starting from…"></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+          <p class="cta-note">Prefer email? Write to <a href="mailto:info@raminta.coach">info@raminta.coach</a> directly.</p>
+        </form>
       </div>
     </section>
 
@@ -339,7 +402,7 @@
   </main>
 
   <!-- ===== Footer ===== -->
-  <footer class="site-footer" id="contact">
+  <footer class="site-footer">
     <div class="container footer-grid">
       <div>
         <a href="#top" class="brand footer-brand">
@@ -357,10 +420,31 @@
       </div>
       <div>
         <h3>Follow</h3>
-        <ul class="footer-links">
-          <li><a href="https://www.instagram.com/ramintacoaching/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.tiktok.com/@ramintacoaching" target="_blank" rel="noopener">TikTok</a></li>
-          <li><a href="https://linktr.ee/ramintacoaching" target="_blank" rel="noopener">Linktree</a></li>
+        <ul class="footer-links social-links">
+          <li>
+            <a href="https://www.instagram.com/ramintacoaching/" target="_blank" rel="noopener">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+              Instagram
+            </a>
+          </li>
+          <li>
+            <a href="https://www.tiktok.com/@ramintacoaching" target="_blank" rel="noopener">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.4 2 1.7 3.4 3.9 3.6v3c-1.5 0-2.8-.4-3.9-1.2v5.9c0 3.7-2.5 6.1-5.8 6.1-3 0-5.3-2.2-5.3-5.1 0-2.9 2.2-5 5.3-5 .3 0 .7 0 1 .1v3.1a2.6 2.6 0 0 0-1-.2c-1.4 0-2.4.9-2.4 2.1 0 1.3 1 2.1 2.3 2.1 1.6 0 2.7-1.1 2.7-3.2V3h3.2z"/></svg>
+              TikTok
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/@ramintacoaching" target="_blank" rel="noopener">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12c0 1.6.1 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.3-1.6.4-3.2.4-4.8s-.1-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg>
+              YouTube
+            </a>
+          </li>
+          <li>
+            <a href="https://linktr.ee/ramintacoaching" target="_blank" rel="noopener">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M12 8l-5-4M12 8l5-4M12 14l-5-4M12 14l5-4"/></svg>
+              Linktree
+            </a>
+          </li>
         </ul>
       </div>
       <div>
@@ -369,6 +453,8 @@
           <li><a href="https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" target="_blank" rel="noopener">Coaching Plans (Hubfit)</a></li>
           <li><a href="#online-coaching">Online Coaching</a></li>
           <li><a href="#personal-training">Personal Training WGC</a></li>
+          <li><a href="store.html">Shop — Raminta&rsquo;s Picks</a></li>
+          <li><a href="client.html">Client Portal (beta)</a></li>
         </ul>
       </div>
     </div>
@@ -378,5 +464,7 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="assets/vendor/leaflet/leaflet.js"></script>
+  <script src="js/map.js"></script>
 </body>
 </html>

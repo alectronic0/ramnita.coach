@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Progress (Beta) | Raminta Coaching</title>
+  <meta name="description" content="Private client progress dashboard for Raminta Coaching — beta.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body data-client="alec">
+
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">R</span>
+        <span class="brand-name">Raminta <em>Coaching</em></span>
+      </a>
+      <span class="beta-badge">Client portal · beta</span>
+    </nav>
+  </header>
+
+  <main class="container dashboard">
+    <div class="dash-head">
+      <div>
+        <p class="eyebrow">Progress dashboard</p>
+        <h1 id="client-name">Loading&hellip;</h1>
+        <p class="dash-sub" id="client-programme"></p>
+      </div>
+      <div class="range-row" role="group" aria-label="Date range">
+        <button class="range-btn" data-range="30">Last 30 days</button>
+        <button class="range-btn" data-range="90">Last 90 days</button>
+        <button class="range-btn active" data-range="all">All time</button>
+      </div>
+    </div>
+
+    <div id="dash-error" class="dash-error" hidden>
+      Couldn&rsquo;t load client data. If you opened this file directly, run it from a
+      web server (data is fetched from <code>data/clients/</code>).
+    </div>
+
+    <!-- Stat tiles -->
+    <section class="tiles" aria-label="Key stats">
+      <div class="tile">
+        <span class="tile-label">Current weight</span>
+        <span class="tile-value" id="stat-current">–</span>
+        <span class="tile-delta" id="stat-current-delta"></span>
+      </div>
+      <div class="tile">
+        <span class="tile-label">Change in range</span>
+        <span class="tile-value" id="stat-change">–</span>
+        <span class="tile-delta" id="stat-change-note"></span>
+      </div>
+      <div class="tile">
+        <span class="tile-label">Goal weight</span>
+        <span class="tile-value" id="stat-goal">–</span>
+        <span class="tile-delta" id="stat-goal-note"></span>
+      </div>
+      <div class="tile">
+        <span class="tile-label">Avg sessions / week</span>
+        <span class="tile-value" id="stat-sessions">–</span>
+        <span class="tile-delta" id="stat-sessions-note"></span>
+      </div>
+    </section>
+
+    <!-- Weight chart -->
+    <section class="chart-card">
+      <h2>Weight progression</h2>
+      <p class="chart-sub">Weekly weigh-ins<span id="weight-unit-label"></span></p>
+      <div class="chart-holder" id="weight-chart"></div>
+      <details class="table-view">
+        <summary>View weigh-ins as a table</summary>
+        <table id="weight-table">
+          <thead><tr><th scope="col">Date</th><th scope="col">Weight</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </details>
+    </section>
+
+    <!-- Workouts chart -->
+    <section class="chart-card">
+      <h2>Workouts per week</h2>
+      <p class="chart-sub">Completed sessions</p>
+      <div class="chart-holder" id="workout-chart"></div>
+      <details class="table-view">
+        <summary>View sessions as a table</summary>
+        <table id="workout-table">
+          <thead><tr><th scope="col">Week starting</th><th scope="col">Sessions</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </details>
+    </section>
+
+    <!-- Add local weigh-in -->
+    <section class="chart-card">
+      <h2>Log a weigh-in</h2>
+      <p class="chart-sub">Beta: entries are stored in this browser only (localStorage) and merged with your coach&rsquo;s data.</p>
+      <form id="weighin-form" class="weighin-form">
+        <label>Date <input type="date" name="date" required></label>
+        <label>Weight <input type="number" name="weight" step="0.1" min="30" max="250" required placeholder="82.0"></label>
+        <button type="submit" class="btn btn-primary">Add entry</button>
+        <button type="button" class="btn btn-ghost" id="clear-local">Clear my local entries</button>
+      </form>
+    </section>
+
+    <p class="dash-note">
+      Data source: local for now. Automatic sync (e.g. Google Fit / Health Connect)
+      needs a backend and is on the roadmap — the dashboard reads from a pluggable
+      JSON source so it can be swapped in later.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>&copy; <span id="year"></span> Raminta Coaching &middot; <a href="index.html">raminta.coach</a></p>
+    </div>
+  </footer>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

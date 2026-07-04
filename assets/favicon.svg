@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <circle cx="32" cy="32" r="32" fill="#dde8da"/>
-  <text x="32" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="36" font-weight="600" fill="#3c503c">R</text>
+  <!-- Coaching by Rami.nta brand mark: black serif monogram on cream -->
+  <rect width="64" height="64" rx="14" fill="#faf7f2"/>
+  <text x="32" y="46" text-anchor="middle" font-family="Didot, 'Bodoni MT', 'Playfair Display', Georgia, serif" font-size="42" font-weight="500" fill="#262220">R</text>
 </svg>

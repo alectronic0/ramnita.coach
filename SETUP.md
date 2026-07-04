@@ -115,6 +115,15 @@ Forwarding is receive-only. To also send from the branded address:
 4. Add an SPF TXT record at your DNS so replies don't land in spam, e.g. for
    Cloudflare Email Routing: `v=spf1 include:_spf.mx.cloudflare.net ~all`.
 
+### Activate the contact form (one-time)
+
+The website's contact form posts to [FormSubmit](https://formsubmit.co/), a free
+service that emails submissions to `info@raminta.coach` — no backend needed.
+One-time activation: after email forwarding works, submit the form once
+yourself; FormSubmit sends a confirmation email to `info@raminta.coach`
+(forwarded to `ptwithminty@gmail.com`) — click **Activate** in it. Submissions
+flow normally from then on.
+
 ### Test it
 
 Send a test email to `info@raminta.coach` from another account and confirm it
