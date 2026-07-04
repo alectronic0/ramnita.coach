@@ -1,7 +1,7 @@
 # raminta.coach
 
 Static website for **Raminta Coaching** — online fitness & nutrition coaching
-for busy women, with in-person personal training in Welwyn Garden City,
+for busy men and women, with in-person personal training in Welwyn Garden City,
 Hertfordshire.
 
 ## Stack

@@ -520,6 +520,130 @@ section p + p {
   font-size: 0.93rem;
 }
 
+/* ===== About photo ===== */
+.about-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.photo-frame {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--beige-deep);
+  background: var(--beige);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== Testimonials ===== */
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.testimonial {
+  background: var(--white);
+  border: 1px solid var(--beige-deep);
+  border-radius: var(--radius);
+  padding: 1.9rem 2rem;
+  margin: 0;
+  position: relative;
+}
+
+.testimonial::before {
+  content: "\201C";
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--sage);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.testimonial p {
+  font-size: 0.96rem;
+  color: var(--ink-soft);
+}
+
+.testimonial footer {
+  margin-top: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--green-deep);
+}
+
+@media (max-width: 760px) {
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Newsletter ===== */
+.newsletter-cards {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.newsletter-cards .card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.newsletter-form input[type="email"] {
+  font: inherit;
+  padding: 0.75rem 1.1rem;
+  border: 1px solid var(--beige-deep);
+  border-radius: 999px;
+  background: var(--white);
+  min-width: 260px;
+}
+
+.newsletter-form input[type="email"]:focus {
+  outline: 2px solid var(--sage);
+  outline-offset: 1px;
+}
+
+.newsletter-form button {
+  cursor: pointer;
+  border: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .newsletter-cards {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+}
+
 /* ===== Locations map ===== */
 .map-block {
   margin-top: 2.5rem;
