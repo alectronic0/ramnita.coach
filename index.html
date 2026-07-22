@@ -445,6 +445,289 @@
       </div>
     </section>
 
+    <!-- ===== Calorie Calculator ===== -->
+    <section class="section" id="calorie-calculator">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Nutrition Tool</p>
+          <h2 class="section-title-with-share">
+            Free Weight Loss Calorie Calculator
+            <button type="button" class="copy-anchor-btn" data-anchor="calorie-calculator" title="Copy link to this section" aria-label="Copy link to this section">
+              <svg class="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+              <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </button>
+          </h2>
+          <p class="section-sub">Find your personalised daily calorie target and macro breakdown to lose fat, retain lean muscle, and stay consistent.</p>
+        </div>
+        
+        <!-- Wrapped in a single card container -->
+        <div class="calc-card calculator-container reveal">
+          <div class="calculator-layout height-mode-cm weight-mode-kg">
+            <!-- Inputs Column -->
+             <div class="calc-column calc-inputs">
+              <form id="calorie-form" novalidate>
+                <!-- Sex and Age Row -->
+                <div class="calc-row-sex-age">
+                  <label for="calc-age">
+                    Age
+                    <input type="number" id="calc-age" min="15" max="100" placeholder="years" required>
+                  </label>
+                  
+                  <div class="sex-toggle-container">
+                    <span class="input-group-label">Biological Sex</span>
+                    <div class="toggle-group button-toggle" id="gender-toggle">
+                      <input type="radio" id="gender-female" name="gender" value="female" checked>
+                      <label for="gender-female" class="toggle-btn">Female</label>
+                      
+                      <input type="radio" id="gender-male" name="gender" value="male">
+                      <label for="gender-male" class="toggle-btn">Male</label>
+
+                      <input type="radio" id="gender-other" name="gender" value="other">
+                      <label for="gender-other" class="toggle-btn">Other</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Height Input with Toggle side-by-side -->
+                <div class="input-with-toggle-row">
+                  <div class="input-area">
+                    <!-- Metric Height -->
+                    <label for="calc-height" class="height-only-cm">
+                      Height
+                      <input type="number" id="calc-height" min="100" max="250" placeholder="cm" required>
+                    </label>
+                    <!-- Imperial Height -->
+                    <div class="height-only-ft">
+                      <span class="input-group-label">Height</span>
+                      <div class="height-ft-in-inputs">
+                        <input type="number" id="calc-height-ft" min="3" max="8" placeholder="ft">
+                        <input type="number" id="calc-height-in" min="0" max="11" placeholder="in">
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="toggle-area">
+                    <div class="toggle-group button-toggle" id="height-unit-toggle">
+                      <input type="radio" id="height-unit-cm" name="heightUnits" value="cm" checked>
+                      <label for="height-unit-cm" class="toggle-btn">cm</label>
+                      
+                      <input type="radio" id="height-unit-ft" name="heightUnits" value="ft">
+                      <label for="height-unit-ft" class="toggle-btn">ft/in</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Weight Input Section -->
+                <div class="weight-section-container">
+                  <div class="weight-header-row">
+                    <span class="input-group-label">Weight</span>
+                    <div class="toggle-group button-toggle" id="weight-unit-toggle">
+                      <input type="radio" id="weight-unit-kg" name="weightUnits" value="kg" checked>
+                      <label for="weight-unit-kg" class="toggle-btn">kg</label>
+                      
+                      <input type="radio" id="weight-unit-st" name="weightUnits" value="st">
+                      <label for="weight-unit-st" class="toggle-btn">st/lb</label>
+
+                      <input type="radio" id="weight-unit-lbs" name="weightUnits" value="lbs">
+                      <label for="weight-unit-lbs" class="toggle-btn">lbs</label>
+                    </div>
+                  </div>
+
+                  <div class="weight-inputs-grid">
+                    <!-- Current Weight Input Area -->
+                    <div class="weight-input-box">
+                      <!-- KG Mode -->
+                      <label for="calc-weight" class="weight-only-kg">
+                        Current
+                        <input type="number" id="calc-weight" min="30" max="300" placeholder="kg" required>
+                      </label>
+                      <!-- Stone + Lbs Mode -->
+                      <div class="weight-only-st">
+                        <span class="weight-sublabel">Current</span>
+                        <div class="height-ft-in-inputs">
+                          <input type="number" id="calc-weight-st" min="4" max="50" placeholder="st">
+                          <input type="number" id="calc-weight-st-lbs" min="0" max="13" placeholder="lbs">
+                        </div>
+                      </div>
+                      <!-- Lbs Mode -->
+                      <label for="calc-weight-lbs" class="weight-only-lbs">
+                        Current
+                        <input type="number" id="calc-weight-lbs" min="60" max="600" placeholder="lbs">
+                      </label>
+                    </div>
+
+                    <!-- Target Weight Input Area -->
+                    <div class="weight-input-box">
+                      <!-- KG Mode -->
+                      <label for="calc-target-weight" class="weight-only-kg">
+                        Target
+                        <input type="number" id="calc-target-weight" min="30" max="300" placeholder="kg">
+                      </label>
+                      <!-- Stone + Lbs Mode -->
+                      <div class="weight-only-st">
+                        <span class="weight-sublabel">Target</span>
+                        <div class="height-ft-in-inputs">
+                          <input type="number" id="calc-target-weight-st" min="4" max="50" placeholder="st">
+                          <input type="number" id="calc-target-weight-st-lbs" min="0" max="13" placeholder="lbs">
+                        </div>
+                      </div>
+                      <!-- Lbs Mode -->
+                      <label for="calc-target-weight-lbs" class="weight-only-lbs">
+                        Target
+                        <input type="number" id="calc-target-weight-lbs" min="60" max="600" placeholder="lbs">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Activity Level (Takes full width) -->
+                <div>
+                  <label for="calc-activity">
+                    Activity Level
+                    <select id="calc-activity" required>
+                      <option value="1.2">Sedentary (Little/no exercise)</option>
+                      <option value="1.375">Lightly Active (1-3 days/week)</option>
+                      <option value="1.55" selected>Moderately Active (3-5 days/week)</option>
+                      <option value="1.725">Very Active (6-7 days/week)</option>
+                      <option value="1.9">Extremely Active (Daily hard training/job)</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div class="calc-actions-row">
+                  <button type="submit" class="btn btn-primary btn-lg btn-calc-submit">Calculate My Targets</button>
+                  <button type="button" id="calc-clear-btn" class="btn btn-ghost btn-lg btn-calc-clear">Clear</button>
+                </div>
+                
+                <p class="form-note">
+                  Calculations are based on the Mifflin-St Jeor equation, the most accurate standard for BMR estimation.
+                </p>
+              </form>
+            </div>
+
+            <!-- Results Column -->
+            <div class="calc-column calc-results" id="calculator-results">
+              <div class="results-prompt">
+                <div class="prompt-icon" aria-hidden="true">
+                  <svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <rect x="12" y="8" width="40" height="48" rx="4"/>
+                    <line x1="20" y1="20" x2="44" y2="20"/>
+                    <line x1="20" y1="28" x2="44" y2="28"/>
+                    <line x1="20" y1="36" x2="32" y2="36"/>
+                    <circle cx="40" cy="44" r="4" stroke-width="2.5"/>
+                    <line x1="43" y1="47" x2="48" y2="52" stroke-width="2.5"/>
+                  </svg>
+                </div>
+                <h3>Ready to Calculate</h3>
+                <p>Enter your details and click calculate to view your personalised daily calorie deficit target and macro split.</p>
+              </div>
+              
+              <div class="results-content" style="display: none;">
+                <div class="tdee-banner">
+                  <span>Daily Maintenance:</span>
+                  <strong id="results-tdee">2,350 kcal</strong>
+                </div>
+
+                <!-- Deficit Tabs -->
+                <h3 class="results-heading">Choose Your Weight Loss Goal:</h3>
+                <div class="deficit-tabs">
+                  <button type="button" class="deficit-tab active" data-deficit="500">
+                    <div class="deficit-info">
+                      <span class="tab-title">Standard Deficit</span>
+                      <span class="tab-rate">Lose ~0.5 kg (1 lb) / week</span>
+                    </div>
+                    <span class="tab-calories" id="calories-standard">1,850 kcal</span>
+                  </button>
+                  <button type="button" class="deficit-tab" data-deficit="250">
+                    <div class="deficit-info">
+                      <span class="tab-title">Mild Deficit</span>
+                      <span class="tab-rate">Lose ~0.25 kg (0.5 lb) / week</span>
+                    </div>
+                    <span class="tab-calories" id="calories-mild">2,100 kcal</span>
+                  </button>
+                  <button type="button" class="deficit-tab" data-deficit="1000">
+                    <div class="deficit-info">
+                      <span class="tab-title">Extreme Deficit</span>
+                      <span class="tab-rate">Lose ~1.0 kg (2 lbs) / week</span>
+                    </div>
+                    <span class="tab-calories" id="calories-extreme">1,350 kcal</span>
+                  </button>
+                </div>
+
+
+                <!-- Weight Progress Graph -->
+                <div class="weight-progress-card" id="weight-progress-section" style="display: none;">
+                  <div class="weight-progress-header">
+                    <span>Target Timeline:</span>
+                    <strong id="weight-loss-duration">20 weeks</strong>
+                  </div>
+                  <div class="weight-progress-bar-container">
+                    <div class="weight-progress-node start-node">
+                      <span class="node-label">Current</span>
+                      <strong class="node-val" id="weight-start-val">85 kg</strong>
+                    </div>
+                    <div class="weight-progress-line-wrapper">
+                      <div class="weight-progress-line">
+                        <div class="weight-progress-fill"></div>
+                        <div class="weight-progress-flag">
+                          <span id="weight-loss-total">-10 kg</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="weight-progress-node target-node">
+                      <span class="node-label">Target</span>
+                      <strong class="node-val" id="weight-target-val">75 kg</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Safe minimum warning -->
+                <div id="safety-warning" class="safety-warning" style="display: none;">
+                  <strong>⚠️ Note on Safety:</strong> We have adjusted this target to a healthy baseline floor (<span id="safety-limit">1,200</span> kcal). Going below this is not recommended.
+                </div>
+
+                <!-- Macros section -->
+                <div class="macros-breakdown">
+                  <h3 class="results-heading">Daily Macronutrient Targets (<span id="active-deficit-calories">1,850 kcal</span>):</h3>
+                  <div class="macro-bars">
+                    <div class="macro-bar-item">
+                      <div class="macro-info">
+                        <strong class="macro-name">Protein (30%)</strong>
+                        <span class="macro-val" id="macro-protein">139g</span>
+                      </div>
+                      <div class="progress-bg"><div class="progress-bar bar-protein"></div></div>
+                      <span class="macro-desc">Supports muscle retention &amp; satiety</span>
+                    </div>
+                    <div class="macro-bar-item">
+                      <div class="macro-info">
+                        <strong class="macro-name">Fats (30%)</strong>
+                        <span class="macro-val" id="macro-fat">62g</span>
+                      </div>
+                      <div class="progress-bg"><div class="progress-bar bar-fat"></div></div>
+                      <span class="macro-desc">Essential for hormone &amp; joint health</span>
+                    </div>
+                    <div class="macro-bar-item">
+                      <div class="macro-info">
+                        <strong class="macro-name">Carbohydrates (40%)</strong>
+                        <span class="macro-val" id="macro-carb">185g</span>
+                      </div>
+                      <div class="progress-bg"><div class="progress-bar bar-carb"></div></div>
+                      <span class="macro-desc">Fuel for energy &amp; workout performance</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== Newsletter ===== -->
     <section class="section section-tinted" id="newsletter">
       <div class="container">
@@ -558,6 +841,7 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/calculator.js"></script>
   <script src="assets/vendor/leaflet/leaflet.js"></script>
   <script src="js/map.js"></script>
 </body>

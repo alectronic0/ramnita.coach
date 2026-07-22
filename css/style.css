@@ -968,6 +968,604 @@ section p + p {
   .js .reveal { opacity: 1; transform: none; transition: none; }
 }
 
+/* ===== Calorie & Macro Calculator ===== */
+#calorie-calculator {
+  padding-top: 0;
+}
+
+.section-title-with-share {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.copy-anchor-btn {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--sage);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.copy-anchor-btn:hover {
+  color: var(--green);
+  background-color: var(--off-white);
+}
+
+.copy-anchor-btn svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.copy-anchor-btn .icon-check {
+  color: var(--green);
+}
+
+.calculator-container {
+  background: var(--white);
+  border: 1px solid var(--beige-deep);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 3rem;
+}
+
+.calculator-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: stretch;
+}
+
+.calc-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.calc-inputs {
+  gap: 1.5rem;
+}
+
+#calorie-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.toggle-group-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.toggle-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.button-toggle {
+  display: flex;
+  background: var(--off-white);
+  border: 1px solid var(--beige-deep);
+  border-radius: 999px;
+  padding: 0.25rem;
+  gap: 0.25rem;
+}
+
+.button-toggle input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.button-toggle label {
+  flex: 1;
+  text-align: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-toggle input[type="radio"]:checked + label {
+  background: var(--green);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(95, 122, 94, 0.2);
+}
+
+.calc-row-sex-age {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 1.5rem;
+  align-items: flex-end;
+}
+
+.input-with-toggle-row {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1.25rem;
+  align-items: flex-end;
+}
+
+@media (max-width: 480px) {
+  .calc-row-sex-age {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  .input-with-toggle-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    align-items: stretch;
+  }
+}
+
+.calc-inputs label,
+.height-input-wrapper label,
+.weight-input-wrapper label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.height-input-wrapper .height-label,
+.weight-only-st .height-label,
+.input-group-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 0.5rem;
+}
+
+.calc-inputs input,
+.calc-inputs select {
+  font: inherit;
+  color: var(--ink);
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--beige-deep);
+  border-radius: var(--radius-sm);
+  background: var(--off-white);
+  transition: border-color 0.2s, outline-color 0.2s;
+  width: 100%;
+}
+
+.calc-inputs input:focus,
+.calc-inputs select:focus {
+  outline: 2px solid var(--sage);
+  outline-offset: 1px;
+}
+
+.height-ft-in-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.calc-actions-row {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn-calc-submit,
+.btn-calc-clear {
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  font-family: inherit;
+}
+
+.weight-section-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.weight-header-row {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.weight-inputs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.weight-sublabel {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 0.5rem;
+}
+
+/* Target Weight Progress Graph Styles */
+.weight-progress-card {
+  background: var(--off-white);
+  border: 1px solid var(--beige-deep);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.weight-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.weight-progress-header span {
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+.weight-progress-header strong {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.weight-progress-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.weight-progress-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.weight-progress-node .node-label {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.weight-progress-node .node-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.weight-progress-line-wrapper {
+  flex: 1;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.weight-progress-line {
+  height: 6px;
+  background: var(--beige-deep);
+  border-radius: 999px;
+  position: relative;
+}
+
+.weight-progress-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 60%;
+  background: var(--sage);
+  border-radius: 999px;
+}
+
+.weight-progress-flag {
+  position: absolute;
+  left: 60%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--green);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 4px rgba(95, 122, 94, 0.2);
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .calc-actions-row {
+    grid-template-columns: 1fr;
+  }
+  .weight-header-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+.form-note {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin-top: 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--beige-deep);
+  padding-top: 1rem;
+}
+
+/* Results section styling */
+.calc-results {
+  border-left: 1px solid var(--beige-deep);
+  padding-left: 4rem;
+  justify-content: center;
+  min-height: 480px;
+}
+
+/* Metric / Imperial dynamic display helper */
+.calculator-layout.height-mode-cm .height-only-ft { display: none !important; }
+.calculator-layout.height-mode-ft .height-only-cm { display: none !important; }
+
+.calculator-layout.weight-mode-kg .weight-only-st,
+.calculator-layout.weight-mode-kg .weight-only-lbs { display: none !important; }
+
+.calculator-layout.weight-mode-st .weight-only-kg,
+.calculator-layout.weight-mode-st .weight-only-lbs { display: none !important; }
+
+.calculator-layout.weight-mode-lbs .weight-only-kg,
+.calculator-layout.weight-mode-lbs .weight-only-st { display: none !important; }
+
+@media (max-width: 900px) {
+  .calculator-container {
+    padding: 2rem;
+  }
+  .calculator-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .calc-results {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--beige-deep);
+    padding-top: 3rem;
+    min-height: auto;
+  }
+}
+
+.results-prompt {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--ink-soft);
+}
+
+.results-prompt .prompt-icon {
+  margin: 0 auto 1.5rem;
+  color: var(--sage);
+  background: var(--off-white);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--beige-deep);
+}
+
+.results-prompt h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--green-deep);
+  margin-bottom: 0.75rem;
+}
+
+.tdee-banner {
+  background: var(--sage-soft);
+  border: 1px solid var(--sage);
+  border-radius: var(--radius-sm);
+  padding: 1.1rem 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.05rem;
+  color: var(--green-deep);
+  margin-bottom: 1.5rem;
+}
+
+.tdee-banner span {
+  font-weight: 500;
+}
+
+.tdee-banner strong {
+  font-size: 1.35rem;
+  font-family: var(--font-display);
+  white-space: nowrap;
+}
+
+.results-heading {
+  font-size: 0.88rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--green);
+  margin: 1.5rem 0 0.8rem;
+}
+
+.deficit-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.deficit-tab {
+  background: var(--off-white);
+  border: 1px solid var(--beige-deep);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.25rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--ink);
+  width: 100%;
+}
+
+.deficit-tab:hover {
+  border-color: var(--sage);
+  background: var(--white);
+  transform: translateY(-2px);
+}
+
+.deficit-tab.active {
+  background: var(--green-deep);
+  border-color: var(--green-deep);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(60, 80, 60, 0.15);
+}
+
+.deficit-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.deficit-tab .tab-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.deficit-tab .tab-rate {
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+}
+
+.deficit-tab.active .tab-rate {
+  color: var(--sage-soft);
+}
+
+.deficit-tab .tab-calories {
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: var(--font-display);
+  color: var(--green-deep);
+  white-space: nowrap;
+}
+
+.deficit-tab.active .tab-calories {
+  color: var(--white);
+}
+
+.safety-warning {
+  background: #fbf0dc;
+  border: 1px solid #e6b06c;
+  color: #8c5d1e;
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.1rem;
+  font-size: 0.88rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.macros-breakdown {
+  border-top: 1px solid var(--beige-deep);
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.macro-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.macro-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.macro-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.macro-name {
+  font-size: 0.95rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.macro-val {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--green-deep);
+}
+
+.progress-bg {
+  background: var(--beige);
+  height: 8px;
+  border-radius: 99px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 99px;
+  width: 0;
+  transition: width 0.8s cubic-bezier(0.1, 0.8, 0.25, 1);
+}
+
+.bar-protein { background: var(--green); }
+.bar-fat { background: var(--sage); }
+.bar-carb { background: var(--beige-deep); }
+
+.macro-desc {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+/* Metric / Imperial dynamic display helper */
+.calculator-layout:not(.units-imperial) .imperial-only {
+  display: none !important;
+}
+
+.calculator-layout.units-imperial .metric-only {
+  display: none !important;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
   .grid-2,
