@@ -274,6 +274,142 @@ document.addEventListener('DOMContentLoaded', () => {
     saveStateToLocalStorage();
   });
 
+  // Reactive Live Update Helper
+  const triggerRecalculationIfActive = () => {
+    if (resultsContent.style.display === 'block') {
+      form.dispatchEvent(new Event('submit'));
+    }
+  };
+
+  // Height Blur Synchronisation
+  heightCmInput.addEventListener('blur', () => {
+    const cmVal = parseFloat(heightCmInput.value);
+    if (cmVal && !isNaN(cmVal)) {
+      const totalInches = cmVal / 2.54;
+      let ft = Math.floor(totalInches / 12);
+      let inches = Math.round(totalInches % 12);
+      if (inches === 12) {
+        ft += 1;
+        inches = 0;
+      }
+      heightFtInput.value = ft;
+      heightInInput.value = inches;
+      triggerRecalculationIfActive();
+    }
+  });
+
+  const syncHeightFromImperial = () => {
+    const ftVal = parseInt(heightFtInput.value, 10);
+    const inVal = parseInt(heightInInput.value, 10) || 0;
+    if (ftVal && !isNaN(ftVal)) {
+      const cmVal = Math.round((ftVal * 12 + inVal) * 2.54);
+      heightCmInput.value = cmVal;
+      triggerRecalculationIfActive();
+    }
+  };
+  heightFtInput.addEventListener('blur', syncHeightFromImperial);
+  heightInInput.addEventListener('blur', syncHeightFromImperial);
+
+  // Weight (Current) Blur Synchronisation
+  weightKgInput.addEventListener('blur', () => {
+    const kgVal = parseFloat(weightKgInput.value);
+    if (kgVal && !isNaN(kgVal)) {
+      const totalLbs = kgVal / 0.45359237;
+      weightLbsInput.value = Math.round(totalLbs);
+      
+      let st = Math.floor(totalLbs / 14);
+      let lbs = Math.round(totalLbs % 14);
+      if (lbs === 14) {
+        st += 1;
+        lbs = 0;
+      }
+      weightStInput.value = st;
+      weightStLbsInput.value = lbs;
+      triggerRecalculationIfActive();
+    }
+  });
+
+  weightLbsInput.addEventListener('blur', () => {
+    const lbsVal = parseFloat(weightLbsInput.value);
+    if (lbsVal && !isNaN(lbsVal)) {
+      const kgVal = lbsVal * 0.45359237;
+      weightKgInput.value = Math.round(kgVal);
+      
+      let st = Math.floor(lbsVal / 14);
+      let lbs = Math.round(lbsVal % 14);
+      weightStInput.value = st;
+      weightStLbsInput.value = lbs;
+      triggerRecalculationIfActive();
+    }
+  });
+
+  const syncWeightFromStCurrent = () => {
+    const stVal = parseFloat(weightStInput.value);
+    const lbsVal = parseFloat(weightStLbsInput.value) || 0;
+    if (stVal && !isNaN(stVal)) {
+      const totalLbs = stVal * 14 + lbsVal;
+      weightLbsInput.value = Math.round(totalLbs);
+      weightKgInput.value = Math.round(totalLbs * 0.45359237);
+      triggerRecalculationIfActive();
+    }
+  };
+  weightStInput.addEventListener('blur', syncWeightFromStCurrent);
+  weightStLbsInput.addEventListener('blur', syncWeightFromStCurrent);
+
+  // Weight (Target) Blur Synchronisation
+  targetWeightKgInput.addEventListener('blur', () => {
+    const kgVal = parseFloat(targetWeightKgInput.value);
+    if (kgVal && !isNaN(kgVal)) {
+      const totalLbs = kgVal / 0.45359237;
+      targetWeightLbsInput.value = Math.round(totalLbs);
+      
+      let st = Math.floor(totalLbs / 14);
+      let lbs = Math.round(totalLbs % 14);
+      if (lbs === 14) {
+        st += 1;
+        lbs = 0;
+      }
+      targetWeightStInput.value = st;
+      targetWeightStLbsInput.value = lbs;
+      triggerRecalculationIfActive();
+    }
+  });
+
+  targetWeightLbsInput.addEventListener('blur', () => {
+    const lbsVal = parseFloat(targetWeightLbsInput.value);
+    if (lbsVal && !isNaN(lbsVal)) {
+      const kgVal = lbsVal * 0.45359237;
+      targetWeightKgInput.value = Math.round(kgVal);
+      
+      let st = Math.floor(lbsVal / 14);
+      let lbs = Math.round(lbsVal % 14);
+      targetWeightStInput.value = st;
+      targetWeightStLbsInput.value = lbs;
+      triggerRecalculationIfActive();
+    }
+  });
+
+  const syncWeightFromStTarget = () => {
+    const stVal = parseFloat(targetWeightStInput.value);
+    const lbsVal = parseFloat(targetWeightStLbsInput.value) || 0;
+    if (stVal && !isNaN(stVal)) {
+      const totalLbs = stVal * 14 + lbsVal;
+      targetWeightLbsInput.value = Math.round(totalLbs);
+      targetWeightKgInput.value = Math.round(totalLbs * 0.45359237);
+      triggerRecalculationIfActive();
+    }
+  };
+  targetWeightStInput.addEventListener('blur', syncWeightFromStTarget);
+  targetWeightStLbsInput.addEventListener('blur', syncWeightFromStTarget);
+
+  // Age & Activity Change/Blur Live Updates
+  ageInput.addEventListener('blur', () => {
+    if (ageInput.value) triggerRecalculationIfActive();
+  });
+  activitySelect.addEventListener('change', () => {
+    triggerRecalculationIfActive();
+  });
+
   // Helper to get current and target weights in kg
   function getWeightsInKg() {
     const weightUnit = document.querySelector('input[name="weightUnits"]:checked').value;
