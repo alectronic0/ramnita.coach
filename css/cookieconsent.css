@@ -2,20 +2,21 @@
 /* Custom Accessibility Overrides & Position Sync */
 #cc-main .cm--box.cm--bottom.cm--left,
 #cc-main .cm-wrapper {
-  bottom: 85px !important;
-  left: 20px !important;
+  bottom: 75px !important;
+  left: 16px !important;
   right: auto !important;
-  max-width: 420px !important;
+  max-width: 340px !important;
   background-color: #161a1c !important;
   border: 2px solid rgba(255, 255, 255, 0.3) !important;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.85) !important;
+  padding: 1.1rem !important;
 }
 
 #cc-main .cm__title,
 #cc-main .pm__title,
 #cc-main .pm__section-title {
   color: #ffffff !important;
-  font-size: 1.25rem !important;
+  font-size: 1.15rem !important;
   font-weight: 800 !important;
 }
 
@@ -23,8 +24,8 @@
 #cc-main .pm__section-desc,
 #cc-main p {
   color: #ebf3f6 !important;
-  font-size: 0.95rem !important;
-  line-height: 1.6 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
 }
 
 /* Hide Save Settings button completely */
