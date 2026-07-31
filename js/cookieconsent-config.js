@@ -64,7 +64,7 @@ window.addEventListener('load', function() {
                         description: "We use cookies to enhance your browsing experience and analyze site traffic anonymously.",
                         acceptAllBtn: "Accept All",
                         acceptNecessaryBtn: "Reject Non-Essential",
-                        showPreferencesBtn: "Cookie Settings"
+                        showPreferencesBtn: "Manage Preferences"
                     },
                     preferencesModal: {
                         title: "Manage Cookie Preferences",
