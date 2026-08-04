@@ -52,16 +52,30 @@
   </style>
 </head>
 <body>
-  <main class="sent">
+<main class="sent">
     <div>
       <p class="eyebrow">Message sent</p>
       <h1>Thank you — I&rsquo;ll be in touch soon!</h1>
       <p>Your message is on its way to Raminta. In the meantime, feel free to browse the coaching plans or say hi on Instagram.</p>
       <div class="hero-actions center">
-        <a class="btn btn-primary" href="https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" target="_blank" rel="noopener">View Coaching Plans</a>
+        <a class="btn btn-primary" href="https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" target="_blank" rel="noopener"
+           data-track="coaching_plans_click" data-track-label="View Coaching Plans — thanks page">View Coaching Plans</a>
         <a class="btn btn-ghost" href="/">Back to the homepage</a>
       </div>
     </div>
   </main>
+
+  <!-- Conversion event: fires when user lands on the thank-you page -->
+  <script>
+    window.addEventListener('load', function () {
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          event_category: 'enquiry',
+          source_page: document.referrer || 'direct'
+        });
+      }
+    });
+  </script>
+  <script src="js/analytics.js?v=20260805"></script>
 </body>
 </html>

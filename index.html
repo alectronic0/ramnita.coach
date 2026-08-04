@@ -144,7 +144,7 @@
         <li><a href="#personal-training">Personal Training</a></li>
         <li><a href="store.html">Shop</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a class="btn btn-primary btn-nav" href="https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" target="_blank" rel="noopener">Start Today</a></li>
+        <li><a class="btn btn-primary btn-nav" href="https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" target="_blank" rel="noopener" data-track="nav_cta_click" data-track-label="Start Today — nav">Start Today</a></li>
       </ul>
     </nav>
   </header>
@@ -162,8 +162,8 @@
             personal training too.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" target="_blank" rel="noopener">View Coaching Plans</a>
-            <a class="btn btn-ghost" href="mailto:info@raminta.coach">Book a Free Consultation</a>
+            <a class="btn btn-primary" href="https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" target="_blank" rel="noopener" data-track="hero_cta_click" data-track-label="View Coaching Plans — hero">View Coaching Plans</a>
+            <a class="btn btn-ghost" href="mailto:info@raminta.coach" data-track="hero_cta_click" data-track-label="Book a Free Consultation — hero">Book a Free Consultation</a>
           </div>
           <ul class="hero-points">
             <li>No strict diets</li>
@@ -309,7 +309,7 @@
           </article>
         </div>
         <div class="section-cta reveal">
-          <a class="btn btn-primary btn-lg" href="https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" target="_blank" rel="noopener">View Plans &amp; Start Online Coaching</a>
+          <a class="btn btn-primary btn-lg" href="https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" target="_blank" rel="noopener" data-track="coaching_plans_click" data-track-label="View Plans — online coaching section">View Plans &amp; Start Online Coaching</a>
           <p class="cta-note">Not sure which plan fits? <a href="mailto:info@raminta.coach">Email me</a> and we&rsquo;ll figure it out together.</p>
         </div>
       </div>
@@ -331,7 +331,7 @@
             Sessions combine strength training tailored to your level with the same calm,
             no-pressure approach as my online coaching.
           </p>
-          <a class="btn btn-primary" href="mailto:info@raminta.coach?subject=Personal%20Training%20in%20Welwyn%20Garden%20City">Enquire About PT Sessions</a>
+          <a class="btn btn-primary" href="mailto:info@raminta.coach?subject=Personal%20Training%20in%20Welwyn%20Garden%20City" data-track="contact_click" data-track-label="Enquire About PT Sessions">Enquire About PT Sessions</a>
         </div>
         <div class="about-panel reveal">
           <h3>Where we train</h3>
@@ -432,7 +432,7 @@
             Your message
             <textarea name="message" rows="5" required placeholder="Tell me a little about your goals and where you're starting from…"></textarea>
           </label>
-          <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+          <button type="submit" class="btn btn-primary btn-lg" data-track="contact_form_submit" data-track-label="Send Message — contact form">Send Message</button>
           <p class="cta-note">Prefer email? Write to <a href="mailto:info@raminta.coach">info@raminta.coach</a> directly.</p>
         </form>
       </div>
@@ -898,7 +898,7 @@
         <h2>Ready to feel consistent again?</h2>
         <p>Start your coaching journey today — your plan, your pace, my support every step of the way.</p>
         <div class="hero-actions center">
-          <a class="btn btn-light btn-lg" href="https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" target="_blank" rel="noopener">Start Today</a>
+          <a class="btn btn-light btn-lg" href="https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" target="_blank" rel="noopener" data-track="coaching_plans_click" data-track-label="Start Today — final CTA">Start Today</a>
           <a class="btn btn-outline-light" href="mailto:info@raminta.coach">Email info@raminta.coach</a>
         </div>
       </div>
@@ -975,5 +975,6 @@
   <script src="js/map.js"></script>
   <!-- Floating Cookie Button -->
   <button type="button" class="cookie-floating-btn" data-cc="show-preferencesModal" aria-label="Cookie Settings" title="Cookie Settings">&#127850;</button>
+  <script src="js/analytics.js?v=20260805"></script>
 </body>
 </html>
