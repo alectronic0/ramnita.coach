@@ -68,6 +68,7 @@
   <script src="js/cookieconsent.umd.js" defer></script>
   <script src="js/cookieconsent-config.js" defer></script>
   <link rel="stylesheet" href="css/style.css?v=20260722">
+  <link rel="stylesheet" href="css/calculator.css?v=20260805">
   <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
 
   <!-- Structured data: local business + coach -->
@@ -505,63 +506,57 @@
               <form id="calorie-form" novalidate>
                 <!-- Sex and Age Row -->
                 <div class="calc-row-sex-age">
+                  <div class="sex-toggle-container">
+                    <span class="input-group-label">Biological Sex</span>
+                    <div class="toggle-group button-toggle" id="gender-toggle">
+                      <input type="radio" id="gender-male" name="gender" value="male">
+                      <label for="gender-male" class="toggle-btn">Male</label>
+
+                      <input type="radio" id="gender-female" name="gender" value="female" checked>
+                      <label for="gender-female" class="toggle-btn">Female</label>
+                    </div>
+                  </div>
+
                   <label for="calc-age">
                     Age
                     <input type="number" id="calc-age" min="15" max="100" placeholder="years" required>
                   </label>
-                  
-                  <div class="sex-toggle-container">
-                    <span class="input-group-label">Biological Sex</span>
-                    <div class="toggle-group button-toggle" id="gender-toggle">
-                      <input type="radio" id="gender-female" name="gender" value="female" checked>
-                      <label for="gender-female" class="toggle-btn">Female</label>
-                      
-                      <input type="radio" id="gender-male" name="gender" value="male">
-                      <label for="gender-male" class="toggle-btn">Male</label>
-
-
-
-                    </div>
-                  </div>
                 </div>
 
-                <!-- Height Input with Toggle side-by-side -->
-                <div class="input-with-toggle-row">
-                  <div class="input-area">
+                <!-- Height: label above, toggle + input below -->
+                <div class="field-group">
+                  <span class="input-group-label">Height</span>
+                  <div class="field-controls-row">
+                    <div class="toggle-group button-toggle" id="height-unit-toggle">
+                      <input type="radio" id="height-unit-cm" name="heightUnits" value="cm" checked>
+                      <label for="height-unit-cm" class="toggle-btn">cm</label>
+
+                      <input type="radio" id="height-unit-ft" name="heightUnits" value="ft">
+                      <label for="height-unit-ft" class="toggle-btn">ft/in</label>
+                    </div>
+
                     <!-- Metric Height -->
-                    <label for="calc-height" class="height-only-cm">
-                      Height
+                    <div class="height-only-cm field-input-wrap">
                       <input type="number" id="calc-height" min="100" max="250" placeholder="cm" required>
-                    </label>
+                    </div>
                     <!-- Imperial Height -->
-                    <div class="height-only-ft">
-                      <span class="input-group-label">Height</span>
+                    <div class="height-only-ft field-input-wrap">
                       <div class="height-ft-in-inputs">
                         <input type="number" id="calc-height-ft" min="3" max="8" placeholder="ft">
                         <input type="number" id="calc-height-in" min="0" max="11" placeholder="in">
                       </div>
                     </div>
                   </div>
-                  
-                  <div class="toggle-area">
-                    <div class="toggle-group button-toggle" id="height-unit-toggle">
-                      <input type="radio" id="height-unit-cm" name="heightUnits" value="cm" checked>
-                      <label for="height-unit-cm" class="toggle-btn">cm</label>
-                      
-                      <input type="radio" id="height-unit-ft" name="heightUnits" value="ft">
-                      <label for="height-unit-ft" class="toggle-btn">ft/in</label>
-                    </div>
-                  </div>
                 </div>
 
-                <!-- Weight Input Section -->
+                <!-- Weight: label above, toggle inline below -->
                 <div class="weight-section-container">
+                  <span class="input-group-label">Weight</span>
                   <div class="weight-header-row">
-                    <span class="input-group-label">Weight</span>
                     <div class="toggle-group button-toggle" id="weight-unit-toggle">
                       <input type="radio" id="weight-unit-kg" name="weightUnits" value="kg" checked>
                       <label for="weight-unit-kg" class="toggle-btn">kg</label>
-                      
+
                       <input type="radio" id="weight-unit-st" name="weightUnits" value="st">
                       <label for="weight-unit-st" class="toggle-btn">st/lb</label>
 
@@ -754,11 +749,111 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Post-results CTA band -->
+              <div class="calc-post-results-cta" id="post-results-cta">
+                <p class="cta-nudge">
+                  <strong>Want a personalised plan built around these numbers?</strong>
+                  Send your results to Raminta and she'll reach out with next steps &mdash; no obligation.
+                </p>
+                <button type="button" id="open-cta-btn" class="btn btn-primary btn-lg">
+                  Get My Personalised Plan &rarr;
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- CTA Drawer Overlay -->
+    <div class="cta-overlay" id="cta-overlay" aria-modal="true" role="dialog" aria-label="Get your personalised plan">
+      <div class="cta-backdrop" id="cta-backdrop"></div>
+      <div class="cta-drawer" id="cta-drawer">
+        <div class="cta-drawer-handle" aria-hidden="true"></div>
+        <button class="cta-drawer-close" id="cta-close-btn" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+
+        <div id="cta-form-state">
+          <h2>Get your personalised plan &#127807;</h2>
+          <p class="cta-sub">Your calorie targets are a great starting point. Share a few details and Raminta will reach out with a plan tailored specifically to you &mdash; no obligation, no pressure.</p>
+
+          <form class="cta-form" id="cta-enquiry-form"
+                action="https://formsubmit.co/info@raminta.coach"
+                method="POST">
+
+            <input type="hidden" name="_subject" value="Calculator Lead &mdash; Personalised Plan Request">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://raminta.coach/thanks.html">
+            <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none;">
+            <input type="hidden" name="Calorie Results" id="hidden-results">
+
+            <div class="form-row-2">
+              <label>
+                Your name
+                <input type="text" name="name" required autocomplete="name" placeholder="Jane Smith">
+              </label>
+              <label>
+                Your email
+                <input type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+              </label>
+            </div>
+
+            <label>
+              Your goal
+              <select name="goal">
+                <option value="">Select your main goal&hellip;</option>
+                <option>Lose weight / body fat</option>
+                <option>Build muscle &amp; tone up</option>
+                <option>Improve overall fitness</option>
+                <option>Improve nutrition habits</option>
+                <option>Something else</option>
+              </select>
+            </label>
+
+            <label>
+              I'm interested in
+              <select name="interest">
+                <option>Online Coaching</option>
+                <option>Personal Training (Welwyn Garden City)</option>
+                <option>Online Coaching + Personal Training</option>
+                <option>Just curious / not sure yet</option>
+              </select>
+            </label>
+
+            <label>
+              Anything else you'd like to share? <span style="font-weight:400; opacity:0.7;">(optional)</span>
+              <textarea name="message" rows="3" placeholder="e.g. current struggles, schedule, questions for Raminta&hellip;"></textarea>
+            </label>
+
+            <div class="cta-results-badge" id="cta-results-badge">
+              <span class="badge-label">&#128202; Your calculator results</span>
+              <div class="badge-lines" id="cta-results-summary"></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-cta-submit">
+              Send to Raminta &rarr;
+            </button>
+
+            <p class="privacy-note">
+              Your details are only used to respond to your enquiry. &nbsp;<a href="mailto:info@raminta.coach">info@raminta.coach</a>
+            </p>
+          </form>
+        </div>
+
+        <div class="cta-success" id="cta-success-state">
+          <div class="success-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>You're all set!</h3>
+          <p>Raminta will be in touch shortly.</p>
+        </div>
+      </div>
+    </div>
 
     <!-- ===== Newsletter ===== -->
     <section class="section section-tinted" id="newsletter">
@@ -875,9 +970,10 @@
 
   <script src="js/main.js?v=20260722"></script>
   <script src="js/calculator.js?v=20260722"></script>
+  <script src="js/calculator-cta.js?v=20260805"></script>
   <script src="assets/vendor/leaflet/leaflet.js"></script>
   <script src="js/map.js"></script>
   <!-- Floating Cookie Button -->
-  <button type="button" class="cookie-floating-btn" data-cc="show-preferencesModal" aria-label="Cookie Settings" title="Cookie Settings">🍪</button>
+  <button type="button" class="cookie-floating-btn" data-cc="show-preferencesModal" aria-label="Cookie Settings" title="Cookie Settings">&#127850;</button>
 </body>
 </html>
