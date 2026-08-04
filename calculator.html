@@ -1096,18 +1096,20 @@
       if (e.key === 'Escape') closeCta();
     });
 
-    // Show CTA band + scroll to results after calculator submit
-    const calcForm = document.getElementById('calorie-form');
-    calcForm?.addEventListener('submit', () => {
-      // Scroll to results once they've rendered
+    // Scroll to results only when the user explicitly clicks the submit button
+    const calcSubmitBtn = document.querySelector('.btn-calc-submit');
+    calcSubmitBtn?.addEventListener('click', () => {
       setTimeout(() => {
         const results = document.getElementById('calculator-results');
         if (results) {
           results.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }, 150);
+    });
 
-      // Show CTA band a beat later
+    // Show CTA band after any successful form submit (including auto-restore)
+    const calcForm = document.getElementById('calorie-form');
+    calcForm?.addEventListener('submit', () => {
       setTimeout(() => {
         if (postResultsCta) postResultsCta.classList.add('visible');
       }, 400);
