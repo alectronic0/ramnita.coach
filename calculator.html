@@ -206,6 +206,33 @@
       .macro-bars   { grid-template-columns: 1fr; }
     }
 
+    /* ── Row column-order overrides (toggles now left, inputs right) ── */
+    /* sex-toggle (wider) | age (narrower) */
+    .calc-row-sex-age {
+      grid-template-columns: 1.3fr 0.7fr;
+    }
+
+    /* height-toggle (narrower) | height-input (wider) */
+    .input-with-toggle-row {
+      grid-template-columns: 0.85fr 1.15fr;
+    }
+
+    /* weight-toggle | Weight label — toggle takes majority, label right-aligns */
+    .weight-header-row {
+      grid-template-columns: 1.15fr 0.85fr;
+    }
+
+    .weight-header-row .input-group-label {
+      text-align: right;
+    }
+
+    /* Align the unit toggle pill to the bottom of its cell so it sits
+       level with the text input below it */
+    .toggle-area {
+      display: flex;
+      align-items: flex-end;
+    }
+
     /* ── CTA overlay that slides in after results ─────────────────────── */
     .cta-overlay {
       position: fixed;
@@ -549,28 +576,38 @@
               <form id="calorie-form" novalidate>
                 <!-- Sex and Age Row -->
                 <div class="calc-row-sex-age">
-                  <label for="calc-age">
-                    Age
-                    <input type="number" id="calc-age" min="15" max="100" placeholder="years" required>
-                  </label>
-                  
                   <div class="sex-toggle-container">
                     <span class="input-group-label">Biological Sex</span>
                     <div class="toggle-group button-toggle" id="gender-toggle">
-                      <input type="radio" id="gender-female" name="gender" value="female" checked>
-                      <label for="gender-female" class="toggle-btn">Female</label>
-                      
                       <input type="radio" id="gender-male" name="gender" value="male">
                       <label for="gender-male" class="toggle-btn">Male</label>
+
+                      <input type="radio" id="gender-female" name="gender" value="female" checked>
+                      <label for="gender-female" class="toggle-btn">Female</label>
 
                       <input type="radio" id="gender-other" name="gender" value="other">
                       <label for="gender-other" class="toggle-btn">Other</label>
                     </div>
                   </div>
+
+                  <label for="calc-age">
+                    Age
+                    <input type="number" id="calc-age" min="15" max="100" placeholder="years" required>
+                  </label>
                 </div>
 
                 <!-- Height Input with Toggle side-by-side -->
                 <div class="input-with-toggle-row">
+                  <div class="toggle-area">
+                    <div class="toggle-group button-toggle" id="height-unit-toggle">
+                      <input type="radio" id="height-unit-cm" name="heightUnits" value="cm" checked>
+                      <label for="height-unit-cm" class="toggle-btn">cm</label>
+
+                      <input type="radio" id="height-unit-ft" name="heightUnits" value="ft">
+                      <label for="height-unit-ft" class="toggle-btn">ft/in</label>
+                    </div>
+                  </div>
+
                   <div class="input-area">
                     <!-- Metric Height -->
                     <label for="calc-height" class="height-only-cm">
@@ -586,32 +623,22 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <div class="toggle-area">
-                    <div class="toggle-group button-toggle" id="height-unit-toggle">
-                      <input type="radio" id="height-unit-cm" name="heightUnits" value="cm" checked>
-                      <label for="height-unit-cm" class="toggle-btn">cm</label>
-                      
-                      <input type="radio" id="height-unit-ft" name="heightUnits" value="ft">
-                      <label for="height-unit-ft" class="toggle-btn">ft/in</label>
-                    </div>
-                  </div>
                 </div>
 
                 <!-- Weight Input Section -->
                 <div class="weight-section-container">
                   <div class="weight-header-row">
-                    <span class="input-group-label">Weight</span>
                     <div class="toggle-group button-toggle" id="weight-unit-toggle">
                       <input type="radio" id="weight-unit-kg" name="weightUnits" value="kg" checked>
                       <label for="weight-unit-kg" class="toggle-btn">kg</label>
-                      
+
                       <input type="radio" id="weight-unit-st" name="weightUnits" value="st">
                       <label for="weight-unit-st" class="toggle-btn">st/lb</label>
 
                       <input type="radio" id="weight-unit-lbs" name="weightUnits" value="lbs">
                       <label for="weight-unit-lbs" class="toggle-btn">lbs</label>
                     </div>
+                    <span class="input-group-label">Weight</span>
                   </div>
 
                   <div class="weight-inputs-grid">
