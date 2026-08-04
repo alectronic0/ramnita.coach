@@ -998,10 +998,18 @@
       if (e.key === 'Escape') closeCta();
     });
 
-    // Show CTA band after calculator submit
+    // Show CTA band + scroll to results after calculator submit
     const calcForm = document.getElementById('calorie-form');
     calcForm?.addEventListener('submit', () => {
-      // Small delay so results animate in first
+      // Scroll to results once they've rendered
+      setTimeout(() => {
+        const results = document.getElementById('calculator-results');
+        if (results) {
+          results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150);
+
+      // Show CTA band a beat later
       setTimeout(() => {
         if (postResultsCta) postResultsCta.classList.add('visible');
       }, 400);
