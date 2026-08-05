@@ -74,14 +74,18 @@
   <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
 
   <!-- Structured data: local business + coach -->
+<!-- FAQPage structured data — makes FAQ answers eligible for rich results in Google Search -->
+<!-- Person structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "HealthAndBeautyBusiness",
     "name": "Raminta Coaching",
-    "description": "Online fitness and nutrition coaching for busy men and women, and in-person personal training in Welwyn Garden City, Hertfordshire.",
+    "description": "Personalised fitness, nutrition and accountability coaching to help busy individuals lose body fat and build muscle.",
     "url": "https://raminta.coach/",
     "email": "info@raminta.coach",
+    "priceRange": "££",
+    "publishingPrinciples": "https://drive.google.com/file/d/14wXkE6-aErZfZJzjIhBCZtYuyXozvJ46/view",
     "areaServed": [
       { "@type": "City", "name": "Welwyn Garden City" },
       { "@type": "AdministrativeArea", "name": "Hertfordshire" },
@@ -95,8 +99,7 @@
     },
     "founder": {
       "@type": "Person",
-      "name": "Raminta",
-      "jobTitle": "Fitness & Nutrition Coach"
+      "@id": "https://raminta.coach/#raminta"
     },
     "sameAs": [
       "https://www.instagram.com/ramintacoaching/",
@@ -107,21 +110,69 @@
     "makesOffer": [
       {
         "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Online Fitness & Nutrition Coaching",
-          "serviceType": "Online Coaching",
-          "areaServed": "Worldwide"
+        "name": "The Consistency Foundation",
+        "price": "99.00",
+        "priceCurrency": "GBP",
+        "description": "Monthly online fitness & nutrition subscription including bespoke training, basic nutrition guidance, weekly check-ins, and Mon-Fri messaging support.",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "99.00",
+          "priceCurrency": "GBP",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": "1",
+            "unitCode": "MON"
+          }
         }
       },
       {
         "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "In-Person Personal Training",
-          "serviceType": "Personal Training",
-          "areaServed": "Welwyn Garden City, Hertfordshire"
+        "name": "The Complete Foundation",
+        "price": "199.00",
+        "priceCurrency": "GBP",
+        "description": "Premium online coaching with daily check-ins, monthly progress reviews, mindset coaching, and full one-on-one accountability support.",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "199.00",
+          "priceCurrency": "GBP",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": "1",
+            "unitCode": "MON"
+          }
         }
+      },
+      {
+        "@type": "Offer",
+        "name": "The GLP-1 Muscle Protocol",
+        "price": "149.00",
+        "priceCurrency": "GBP",
+        "description": "Specialised online fitness & nutrition coaching for individuals on GLP-1 weight-loss medication to preserve and build muscle.",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "149.00",
+          "priceCurrency": "GBP",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": "1",
+            "unitCode": "MON"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "10-Session In-Person Personal Training Block",
+        "price": "350.00",
+        "priceCurrency": "GBP",
+        "description": "Block of 10 face-to-face personal training sessions in Welwyn Garden City, Hertfordshire."
+      },
+      {
+        "@type": "Offer",
+        "name": "Macro Friendly Meal Prep (Cookbook & Short Course)",
+        "price": "4.00",
+        "priceCurrency": "GBP",
+        "url": "https://linktr.ee/ramintacoaching",
+        "description": "Step-by-step guide to meal prep with measurements, macros explained, weight goal calculator, and 300 meal ideas in one place."
       }
     ]
   }
@@ -190,10 +241,46 @@
   {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": "https://raminta.coach/#raminta",
     "name": "Raminta",
+    "gender": "Female",
     "jobTitle": "Fitness & Nutrition Coach",
     "url": "https://raminta.coach/",
+    "image": "https://raminta.coach/assets/img/raminta.jpg",
     "email": "info@raminta.coach",
+    "knowsLanguage": [
+      {
+        "@type": "Language",
+        "name": "English",
+        "alternateName": "en"
+      }
+    ],
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Level 3 Personal Trainer (PT L3)",
+        "credentialCategory": "certification"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Precision Nutrition Level 1 (PN1)",
+        "credentialCategory": "certification",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Precision Nutrition"
+        }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "GLP-1 Weight Loss Coach",
+        "credentialCategory": "certification"
+      }
+    ],
+    "skills": [
+      "Personal Training", "Nutrition Coaching", "GLP-1 Coaching",
+      "Fitness Training", "Strength & Conditioning", "Weight Loss Coaching",
+      "Macro Calculation"
+    ],
     "worksFor": {
       "@type": "Organization",
       "name": "Raminta Coaching",
@@ -208,7 +295,11 @@
     "sameAs": [
       "https://www.instagram.com/ramintacoaching/",
       "https://www.tiktok.com/@ramintacoaching",
-      "https://www.youtube.com/@ramintacoaching"
+      "https://www.youtube.com/@ramintacoaching",
+      "https://linktr.ee/ramintacoaching"
+    ],
+    "knowsAbout": [
+      "Fitness", "Nutrition", "Weight Loss", "Healthy Eating", "Strength Training"
     ]
   }
   </script>
