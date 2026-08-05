@@ -124,7 +124,7 @@ h3 { font-size: 1.25rem; }
 }
 
 .accent {
-  color: var(--sage);
+  color: var(--green);
 }
 
 section p + p {
@@ -2068,4 +2068,33 @@ section p + p {
 .cta-success p {
   color: var(--ink-soft);
   font-size: 0.95rem;
+}
+
+/* ── Inline Style Cleanups ── */
+.cookie-settings-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+.cookie-settings-btn-colored {
+  color: var(--green);
+}
+
+.powered-by {
+  margin-top: 8px;
+  font-size: 0.85em;
+  opacity: 0.8;
+}
+.powered-by a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.text-optional {
+  font-weight: 400;
+  opacity: 0.7;
 }
