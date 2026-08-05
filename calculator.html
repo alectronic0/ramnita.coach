@@ -62,11 +62,9 @@
   <script src="js/cookieconsent-config.js" defer></script>
 
   <!-- Shared styles -->
-  <link rel="stylesheet" href="css/style.css?v=20260722">
+  <link rel="stylesheet" href="css/style.css?v=20260805">
   <!-- Calculator-specific shared styles -->
-  <link rel="stylesheet" href="css/calculator.css?v=20260805">
-
-  <style>
+<style>
     /* ── Page-specific overrides (calculator.html only) ──────────────── */
     body {
       background: var(--beige);
@@ -786,13 +784,10 @@
   <button type="button" class="cookie-floating-btn" data-cc="show-preferencesModal" aria-label="Cookie Settings" title="Cookie Settings">🍪</button>
 
   <!-- Calculator logic (shared) -->
-  <script src="js/calculator.js?v=20260722"></script>
-  <!-- CTA drawer logic (shared with index.html) -->
-  <script src="js/calculator-cta.js?v=20260805"></script>
-
-  <script>
+<!-- CTA drawer logic (shared with index.html) -->
+<script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-  <script src="js/analytics.js?v=20260805"></script>
+  <script src="js/app.js?v=20260805" defer></script>
 </body>
 </html>
