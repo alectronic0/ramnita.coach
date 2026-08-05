@@ -211,8 +211,8 @@ section p + p {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--sage-soft);
-  color: var(--green-deep);
+  background: var(--green);
+  color: var(--white);
   font-family: var(--font-display);
   font-size: 1.35rem;
   font-weight: 600;
@@ -226,7 +226,7 @@ section p + p {
 
 .brand-name em {
   font-style: normal;
-  color: var(--sage);
+  color: var(--green);
 }
 
 .nav-menu {

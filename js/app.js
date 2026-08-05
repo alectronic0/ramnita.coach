@@ -1181,12 +1181,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Chart palette: data mark green validated for chart use; everything else
   // uses text/surface tokens from the site design system.
   const C = {
-    data: '#4d8a52',
-    dataSoft: 'rgba(77, 138, 82, 0.10)',
-    grid: '#eae7de',
-    axisText: '#5b635b',
+    data: '#6B7A5E',                // Deep Sage
+    dataSoft: 'rgba(107, 122, 94, 0.10)', // Soft Sage
+    grid: '#E9DFCE',                // Warm Cream border
+    axisText: '#5c514b',            // Soft Charcoal Brown
     surface: '#ffffff',
-    up: '#a3552e', // weight moving up (against goal)
+    up: '#B5654A',                  // Terracotta
   };
 
   const fmtDate = (iso) =>
