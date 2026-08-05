@@ -323,7 +323,7 @@ section p + p {
 }
 
 .hero-card-leaf {
-  color: var(--sage);
+  color: var(--accent);
   margin-bottom: 1.1rem;
 }
 
@@ -565,7 +565,7 @@ section p + p {
   font-family: var(--font-display);
   font-size: 3rem;
   line-height: 1;
-  color: var(--sage);
+  color: var(--accent);
   display: block;
   margin-bottom: 0.4rem;
 }
@@ -883,7 +883,7 @@ section p + p {
   transform: translateY(-50%);
   font-family: var(--font-display);
   font-size: 1.4rem;
-  color: var(--sage);
+  color: var(--green);
   transition: transform 0.2s ease;
 }
 
@@ -1015,7 +1015,7 @@ section p + p {
   border: none;
   padding: 4px;
   cursor: pointer;
-  color: var(--sage);
+  color: var(--green);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1393,7 +1393,7 @@ section p + p {
 
 .results-prompt .prompt-icon {
   margin: 0 auto 1.5rem;
-  color: var(--sage);
+  color: var(--green);
   background: var(--off-white);
   width: 80px;
   height: 80px;
@@ -1578,7 +1578,7 @@ section p + p {
 }
 
 .bar-protein { background: var(--green); }
-.bar-fat { background: var(--sage); }
+.bar-fat { background: var(--accent); }
 .bar-carb { background: var(--beige-deep); }
 
 .macro-desc {
