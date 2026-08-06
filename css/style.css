@@ -200,15 +200,19 @@ section p + p {
 }
 
 .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.nav .brand {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  justify-content: center;
   white-space: nowrap;
-  text-decoration: none;
 }
 
 .brand-logo {
