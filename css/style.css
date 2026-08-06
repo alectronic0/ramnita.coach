@@ -250,6 +250,7 @@ section p + p {
   font-family: var(--font-display);
   font-size: 1.35rem;
   font-weight: 600;
+  flex-shrink: 0;
 }
 
 .brand-name {
