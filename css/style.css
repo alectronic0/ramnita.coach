@@ -221,6 +221,24 @@ section p + p {
   display: block;
 }
 
+.btn-header-cta {
+  padding: 0.55rem 1.3rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+@media (max-width: 580px) {
+  .btn-header-cta {
+    padding: 0.45rem 1rem;
+    font-size: 0.88rem;
+  }
+  .nav .brand-name {
+    display: none;
+  }
+}
+
 .brand-mark {
   display: grid;
   place-items: center;
