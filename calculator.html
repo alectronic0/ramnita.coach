@@ -70,65 +70,6 @@
       background: var(--beige);
     }
 
-    /* Minimal header */
-    .calc-header {
-      background: var(--off-white);
-      border-bottom: 1px solid var(--beige-deep);
-      padding: 1rem 0;
-    }
-
-    .calc-header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .calc-header .brand {
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-    }
-
-    .calc-header .brand-mark {
-      width: 36px;
-      height: 36px;
-      background: var(--green);
-      color: var(--white);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 1rem;
-    }
-
-    .calc-header .brand-name {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      color: var(--ink);
-    }
-
-    .calc-header .brand-name em {
-      font-style: italic;
-      color: var(--green);
-    }
-
-    .calc-header-cta {
-      font-size: 0.9rem;
-      color: var(--ink-soft);
-    }
-
-    .calc-header-cta a {
-      color: var(--green);
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .calc-header-cta a:hover {
-      text-decoration: underline;
-    }
 
     /* Page hero */
     .calc-hero {
@@ -363,19 +304,21 @@
 </head>
 <body>
 
-  <!-- ===== Minimal Header ===== -->
-  <header class="calc-header" id="top">
-    <div class="container calc-header-inner">
-      <a href="/" class="brand" aria-label="Raminta Coaching home">
+  <!-- ===== Header ===== -->
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="index.html" class="brand">
         <span class="brand-mark" aria-hidden="true">R</span>
         <span class="brand-name">Raminta <em>Coaching</em></span>
       </a>
-      <p class="calc-header-cta">
-        <a href="https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" target="_blank" rel="noopener">View coaching plans</a>
-        &nbsp;·&nbsp;
-        <a href="mailto:info@raminta.coach">Get in touch</a>
-      </p>
-    </div>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="store.html">Store</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main>
