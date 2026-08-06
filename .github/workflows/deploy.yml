@@ -12,9 +12,6 @@ permissions:
   id-token: write
 
 # Allow one concurrent deployment
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -46,13 +43,6 @@ jobs:
             sed -i "s|<lastmod>.*</lastmod>|<lastmod>${TODAY}</lastmod>|g" sitemap.xml
           fi
 
-      - name: Run Lighthouse CI
-        uses: treosh/lighthouse-ci-action@v12
-        continue-on-error: true
-        with:
-          staticDistDir: ./
-          uploadArtifacts: true
-          temporaryPublicStorage: true
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
