@@ -280,8 +280,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeDeficitValue = 500; // default standard deficit
 
   // Keep track of unit modes for dynamic conversion on toggle
-  let activeHeightUnit = null;
-  let activeWeightUnit = null;
+  let activeHeightUnit = document.querySelector('input[name="heightUnits"]:checked')?.value || 'cm';
+  let activeWeightUnit = document.querySelector('input[name="weightUnits"]:checked')?.value || 'kg';
 
   // Toggle Height Units (cm vs. ft/in)
   heightUnitToggles.forEach(toggle => {
