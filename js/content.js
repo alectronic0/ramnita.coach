@@ -78,7 +78,7 @@ window.SiteContent = {
       </div>
     </div>
     <div class="footer-bottom container">
-      <p>&copy; <span id="year">2026</span> Raminta Coaching. All rights reserved. &middot; <button type="button" data-cc="show-preferencesModal" class="cookie-settings-btn">Cookie Settings 🍪</button></p>
+      <p>&copy; <span id="year">2026</span> Raminta Coaching. All rights reserved.</p>
       <p class="powered-by">Powered by <a href="https://alec.today/" target="_blank" rel="noopener">Alec Doran-Twyford (Alectronic&trade;)</a></p>
     </div>
   </footer>`,
