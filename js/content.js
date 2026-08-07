@@ -65,12 +65,7 @@ window.SiteContent = {
           </li>
         </ul>
       </div>
-      <div>
-        <h3>Legals</h3>
-        <ul class="footer-links">
-          <li><button type="button" data-cc="show-preferencesModal" class="btn-link">Cookie Preferences</button></li>
-        </ul>
-      </div>
+
       <div>
         <h3>Coaching</h3>
         <ul class="footer-links">
