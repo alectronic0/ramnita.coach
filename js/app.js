@@ -3,6 +3,16 @@
 // Opt in to scroll-reveal styling only when JS is available
 document.documentElement.classList.add('js');
 
+if (window.SiteContent) {
+  if (!document.querySelector('.site-header') && window.SiteContent.header) {
+    document.body.insertAdjacentHTML('afterbegin', window.SiteContent.header);
+  }
+  if (!document.querySelector('.site-footer') && window.SiteContent.footer) {
+    document.body.insertAdjacentHTML('beforeend', window.SiteContent.footer);
+  }
+}
+
+
 // Mobile navigation toggle
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
@@ -1535,9 +1545,13 @@ document.addEventListener('DOMContentLoaded', () => {
   async function init() {
     el('year').textContent = new Date().getFullYear();
     try {
-      const res = await fetch(`data/clients/${CLIENT_ID}.json`);
-      if (!res.ok) throw new Error(res.statusText);
-      base = await res.json();
+      
+      if (window.SiteContent && window.SiteContent.clients && window.SiteContent.clients[CLIENT_ID]) {
+        base = window.SiteContent.clients[CLIENT_ID];
+      } else {
+        throw new Error('Client not found');
+      }
+
     } catch {
       el('dash-error').hidden = false;
       return;
