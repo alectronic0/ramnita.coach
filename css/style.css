@@ -6,16 +6,16 @@
 :root {
   /* Colors */
   --white: #ffffff;
-  --off-white: #F7F1EA;     /* Warm Cream */
-  --beige: #F1EADF;         /* Tinted Warm Cream */
-  --beige-deep: #E9DFCE;    /* Darker Cream/Clay */
-  --sage: #6B7A5E;          /* Deep Sage */
-  --sage-soft: #E2E6DF;     /* Soft Sage background */
-  --green: #B5654A;         /* Terracotta / Clay */
-  --green-deep: #2B2420;    /* Charcoal Brown headings */
-  --ink: #2B2420;           /* Charcoal Brown text */
-  --ink-soft: #5c514b;      /* Muted Charcoal Brown */
-  --accent: #C99A4A;        /* Muted Gold/Ochre */
+  --off-white: #fbfaf7;
+  --beige: #f3ede2;
+  --beige-deep: #e9e0cf;
+  --sage: #9db49a;
+  --sage-soft: #dde8da;
+  --green: #5f7a5e;
+  --green-deep: #3c503c;
+  --ink: #2e352e;
+  --ink-soft: #5b635b;
+  --accent: #C99A4A;        /* Muted Gold/Ochre (Keep for calculator) */
 
   /* Type */
   --font-display: "Fraunces", Georgia, serif;
@@ -2915,8 +2915,8 @@ section p + p {
     grid-template-columns: 1fr;
   }
 }
-    /* ── Page-specific overrides (calculator.html only) ──────────────── */
-    body {
+    /* Page-specific overrides (calculator.html only) */
+    body.page-calculator {
       background: var(--beige);
     }
 
