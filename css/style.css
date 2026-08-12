@@ -500,7 +500,7 @@ section p + p {
 /* ===== Steps ===== */
 .steps {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
@@ -3132,3 +3132,36 @@ section p + p {
         padding: 2.5rem 0 1.5rem;
       }
     }
+
+/* Service Icons Fix */
+.service-icon {
+  margin-bottom: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: var(--sage-soft);
+  color: var(--sage);
+}
+
+.service-icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+/* 2x2 Services Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -10,6 +10,11 @@ if (window.SiteContent) {
   if (!document.querySelector('.site-footer') && window.SiteContent.footer) {
     document.body.insertAdjacentHTML('beforeend', window.SiteContent.footer);
   }
+  
+  const mainEl = document.querySelector('main#main-content');
+  if (mainEl && window.SiteContent.sections && mainEl.children.length === 0) {
+    mainEl.innerHTML = Object.values(window.SiteContent.sections).join('\n');
+  }
 }
 
 
@@ -1604,3 +1609,76 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+
+// --- Lead Quiz Logic ---
+window.currentQuizStep = 1;
+window.quizTotalSteps = 6;
+
+window.quizNext = function() {
+  const currentInputs = document.querySelectorAll('#q-step-' + window.currentQuizStep + ' input[type="radio"]');
+  if (currentInputs.length > 0) {
+    let checked = false;
+    currentInputs.forEach(i => { if (i.checked) checked = true; });
+    if (!checked) return alert("Please select an option.");
+  }
+  
+  document.getElementById('q-step-' + window.currentQuizStep).style.display = 'none';
+  window.currentQuizStep++;
+  document.getElementById('q-step-' + window.currentQuizStep).style.display = 'block';
+  
+  document.getElementById('quiz-back-btn').style.display = 'inline-flex';
+  
+  if (window.currentQuizStep === window.quizTotalSteps) {
+    document.getElementById('quiz-next-btn').style.display = 'none';
+    document.getElementById('quiz-submit-btn').style.display = 'inline-flex';
+  }
+};
+
+window.quizBack = function() {
+  if (window.currentQuizStep > 1) {
+    document.getElementById('q-step-' + window.currentQuizStep).style.display = 'none';
+    window.currentQuizStep--;
+    document.getElementById('q-step-' + window.currentQuizStep).style.display = 'block';
+    
+    document.getElementById('quiz-next-btn').style.display = 'inline-flex';
+    document.getElementById('quiz-submit-btn').style.display = 'none';
+    
+    if (window.currentQuizStep === 1) {
+      document.getElementById('quiz-back-btn').style.display = 'none';
+    }
+  }
+};
+
+window.processQuiz = function() {
+  const q2 = document.querySelector('input[name="q2"]:checked')?.value;
+  const q5 = document.querySelector('input[name="q5"]:checked')?.value;
+  const name = document.getElementById('q-name').value;
+  
+  let recTitle = "Consistency Foundation";
+  if (q2 === "Yes") {
+     recTitle = "GLP-1 Muscle Protocol";
+  }
+  
+  let linkHref = "https://app.hubfit.com/plans/688387865c56841b3dd9c6ea";
+  let linkText = "Book Your Consultation";
+  if (q5 === "Exploring" || q5 === "Curious") {
+     linkHref = "https://blog.raminta.coach";
+     linkText = "Get the Free Guide";
+  }
+
+  document.getElementById('lead-quiz-form').style.display = 'none';
+  document.getElementById('result-title').innerText = "Hi " + name + ", your recommended plan is:\n" + recTitle;
+  document.getElementById('result-desc').innerText = "Based on your goals and experience, this is the perfect starting point for you.";
+  document.getElementById('result-link').href = linkHref;
+  document.getElementById('result-link').innerText = linkText;
+  document.getElementById('quiz-result').style.display = 'block';
+};
+
+// Auto-advance
+document.addEventListener('change', function(e) {
+  if (e.target && e.target.type === 'radio' && e.target.closest('#lead-quiz-form')) {
+    setTimeout(() => {
+       if(window.currentQuizStep < window.quizTotalSteps) window.quizNext();
+    }, 300);
+  }
+});
