@@ -351,7 +351,7 @@ function renderRoadmap(d) {
           <h2>${d.title}</h2>
           <p class="section-sub">${d.subtitle}</p>
         </div>
-        <div class="steps">
+        <div class="steps steps-3">
           ${d.phases.map(phase => `
           <article class="step reveal">
             <span class="step-num">${phase.num}</span>
