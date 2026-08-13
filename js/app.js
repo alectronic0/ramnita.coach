@@ -1739,8 +1739,7 @@ window.processQuiz = function() {
   }
 
   window.fadeTransition('lead-quiz-form', 'quiz-result', () => {
-    document.getElementById('result-title').innerText = "Hi " + name + ", your recommended plan is:
-" + recTitle;
+    document.getElementById('result-title').innerText = "Hi " + name + ", your recommended plan is:\\n" + recTitle;
     document.getElementById('result-desc').innerText = "Based on your goals and experience, this is the perfect starting point for you.";
     document.getElementById('result-link').href = linkHref;
     document.getElementById('result-link').innerText = linkText;
