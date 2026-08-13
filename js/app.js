@@ -239,14 +239,23 @@ function renderPersonalTraining(d) {
         <div class="reveal">
           <p class="eyebrow">${d.eyebrow}</p>
           <h2>${d.title}</h2>
-          <p class="lead">${d.lead}</p>
-          ${d.paragraphs.map(p => `<p>${p}</p>`).join('\n          ')}
-          <a class="btn btn-primary" href="${d.cta.href}" data-track="pt_cta_click" data-track-label="${d.cta.trackLabel}">${d.cta.text}</a>
+          ${d.paragraphs.map(p => `<p>\n            ${p}\n          </p>`).join('\n          ')}
+          <a class="btn btn-primary" href="${d.cta.href}" data-track="contact_click" data-track-label="${d.cta.trackLabel}">${d.cta.text}</a>
         </div>
-        <div class="reveal pt-image-col">
-          <figure class="photo-frame">
-            <img src="${d.image.src}" alt="${d.image.alt}" loading="lazy" onerror="this.parentElement.style.display='none'">
-          </figure>
+        <div class="about-panel reveal">
+          <h3>Where we train</h3>
+          <ul class="location-list">
+            ${d.gymLocations.map(gym => `
+            <li>
+              <img class="gym-logo" src="${gym.logo}" alt="${gym.name} logo" width="28" height="28">
+              <div>
+                <strong>${gym.name}</strong>
+                <span>${gym.address}</span>
+                <a href="${gym.mapUrl}" target="_blank" rel="noopener">Open in Google Maps</a>
+              </div>
+            </li>`).join('')}
+          </ul>
+          <p class="panel-note">${d.panelNote}</p>
         </div>
       </div>
       <div class="container map-block reveal">
@@ -382,43 +391,6 @@ function renderAfter12Weeks(d) {
     </section>`;
 }
 
-function renderInPerson(d) {
-  return `
-    <section class="section section-tinted" id="personal-training">
-      <div class="container grid-2">
-        <div class="reveal">
-          <p class="eyebrow">${d.eyebrow}</p>
-          <h2>${d.title}</h2>
-          ${d.paragraphs.map(p => `<p>\n            ${p}\n          </p>`).join('\n          ')}
-          <a class="btn btn-primary" href="${d.cta.href}" data-track="contact_click" data-track-label="${d.cta.trackLabel}">${d.cta.text}</a>
-        </div>
-        <div class="about-panel reveal">
-          <h3>Where we train</h3>
-          <ul class="location-list">
-            ${d.gymLocations.map(gym => `
-            <li>
-              <img class="gym-logo" src="${gym.logo}" alt="${gym.name} logo" width="28" height="28">
-              <div>
-                <strong>${gym.name}</strong>
-                <span>${gym.address}</span>
-                <a href="${gym.mapUrl}" target="_blank" rel="noopener">Open in Google Maps</a>
-              </div>
-            </li>`).join('')}
-          </ul>
-          <p class="panel-note">${d.panelNote}</p>
-        </div>
-      </div>
-      <div class="container map-block reveal">
-        <div id="gym-map" class="gym-map" aria-label="Map of training locations in Welwyn Garden City"></div>
-        <noscript>
-          <p>Enable JavaScript to see the map, or open the locations directly:
-            <a href="https://www.google.com/maps/search/?api=1&amp;query=Norton+Gym+26-28+Hyde+Way+Welwyn+Garden+City+AL7+3UQ">Norton Gym</a> &middot;
-            <a href="https://www.google.com/maps/search/?api=1&amp;query=Anytime+Fitness+Welwyn+Garden+City">Anytime Fitness Welwyn Garden City</a>
-          </p>
-        </noscript>
-      </div>
-    </section>`;
-}
 
 function renderFaq(d) {
   return `
@@ -523,7 +495,6 @@ function renderStart(d) {
       different: renderDifferent,
       roadmap: renderRoadmap,
       after12Weeks: renderAfter12Weeks,
-      inPerson: renderInPerson,
       faq: renderFaq,
       contact: renderContact,
       start: renderStart

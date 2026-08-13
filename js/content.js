@@ -126,15 +126,18 @@ window.SiteContent = {
       cta: { text: "Start Online Coaching", href: "https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" }
     },
     personalTraining: {
-      eyebrow: "Private In-Person Coaching",
+      eyebrow: "Local Add-on",
       title: "Personal Trainer in Welwyn Garden City",
-      lead: "By application only. Currently 1–2 spots available, minimum 6-month commitment.",
       paragraphs: [
-        "Most of my coaching capacity goes to my online clients — in-person spots are deliberately kept small, and right now I only have room for one or two new clients ready to commit for at least 6 months.",
-        "If you're local and ready for that kind of commitment, apply below and I'll be in touch to see if it's the right fit on both sides."
+        "<strong>Do you offer in-person sessions?</strong><br>Yes, in Welwyn Garden City &mdash; currently by application only.",
+        "For clients who want hands-on technique coaching or simply train better with someone beside them, I offer limited spaces at Norton Gym and Anytime Fitness as an add-on to online coaching."
       ],
-      cta: { text: "Apply for In-Person Coaching", href: "#contact", trackLabel: "Apply for In-Person Coaching" },
-      image: { src: "assets/img/pt-session.jpg", alt: "Raminta coaching a client in the gym" }
+      cta: { text: "Enquire About PT Sessions", href: "mailto:info@raminta.coach?subject=Personal%20Training%20in%20Welwyn%20Garden%20City", trackLabel: "Enquire About PT Sessions" },
+      gymLocations: [
+        { name: "Norton Gym", logo: "assets/norton-gym.png", address: "26–28 Hyde Way, Welwyn Garden City AL7 3UQ", mapUrl: "https://www.google.com/maps/search/?api=1&amp;query=Norton+Gym+26-28+Hyde+Way+Welwyn+Garden+City+AL7+3UQ" },
+        { name: "Anytime Fitness", logo: "assets/anytime-fitness.png", address: "Welwyn Garden City", mapUrl: "https://www.google.com/maps/search/?api=1&amp;query=Anytime+Fitness+Welwyn+Garden+City" }
+      ],
+      panelNote: "Currently by application only, with limited spaces available."
     },
     newsletter: {
       eyebrow: "Newsletter",
@@ -182,20 +185,6 @@ window.SiteContent = {
         "<strong>Graduate with your plan</strong> &mdash; I'll leave you with a full plan to follow on your own: your training program, nutrition structure, and everything you need to keep going independently.",
         "<strong>Stay on for ongoing support</strong> &mdash; Continue on a lower-cost maintenance plan, with lighter check-ins and continued accountability, if you'd rather keep the support without the full coaching intensity."
       ]
-    },
-    inPerson: {
-      eyebrow: "Local Add-on",
-      title: "Personal Trainer in Welwyn Garden City",
-      paragraphs: [
-        "<strong>Do you offer in-person sessions?</strong><br>Yes, in Welwyn Garden City &mdash; currently by application only.",
-        "For clients who want hands-on technique coaching or simply train better with someone beside them, I offer limited spaces at Norton Gym and Anytime Fitness as an add-on to online coaching."
-      ],
-      cta: { text: "Enquire About PT Sessions", href: "mailto:info@raminta.coach?subject=Personal%20Training%20in%20Welwyn%20Garden%20City", trackLabel: "Enquire About PT Sessions" },
-      gymLocations: [
-        { name: "Norton Gym", logo: "assets/norton-gym.png", address: "26–28 Hyde Way, Welwyn Garden City AL7 3UQ", mapUrl: "https://www.google.com/maps/search/?api=1&amp;query=Norton+Gym+26-28+Hyde+Way+Welwyn+Garden+City+AL7+3UQ" },
-        { name: "Anytime Fitness", logo: "assets/anytime-fitness.png", address: "Welwyn Garden City", mapUrl: "https://www.google.com/maps/search/?api=1&amp;query=Anytime+Fitness+Welwyn+Garden+City" }
-      ],
-      panelNote: "Currently by application only, with limited spaces available."
     },
     faq: {
       eyebrow: "FAQ",
