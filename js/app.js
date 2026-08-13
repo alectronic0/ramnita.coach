@@ -1614,45 +1614,117 @@ document.addEventListener('DOMContentLoaded', () => {
 window.currentQuizStep = 1;
 window.quizTotalSteps = 6;
 
-window.quizNext = function() {
-  const currentInputs = document.querySelectorAll('#q-step-' + window.currentQuizStep + ' input[type="radio"]');
+window.updateQuizButtons = function() {
+  const currentInputs = document.querySelectorAll('#q-step-' + window.currentQuizStep + ' input[type="radio"], #q-step-' + window.currentQuizStep + ' input[type="text"], #q-step-' + window.currentQuizStep + ' input[type="email"]');
+  let isValid = false;
+  
   if (currentInputs.length > 0) {
-    let checked = false;
-    currentInputs.forEach(i => { if (i.checked) checked = true; });
-    if (!checked) return alert("Please select an option.");
+    if (currentInputs[0].type === 'radio') {
+      currentInputs.forEach(i => { if (i.checked) isValid = true; });
+    } else {
+      let allTextValid = true;
+      currentInputs.forEach(i => { if (i.value.trim() === '') allTextValid = false; });
+      isValid = allTextValid;
+    }
+  } else {
+    isValid = true; // No inputs on this step
   }
   
-  document.getElementById('q-step-' + window.currentQuizStep).style.display = 'none';
-  window.currentQuizStep++;
-  document.getElementById('q-step-' + window.currentQuizStep).style.display = 'block';
+  const nextBtn = document.getElementById('quiz-next-btn');
+  const submitBtn = document.getElementById('quiz-submit-btn');
   
-  document.getElementById('quiz-back-btn').style.display = 'inline-flex';
-  
-  if (window.currentQuizStep === window.quizTotalSteps) {
-    document.getElementById('quiz-next-btn').style.display = 'none';
-    document.getElementById('quiz-submit-btn').style.display = 'inline-flex';
+  if (nextBtn) {
+    nextBtn.disabled = !isValid;
+    nextBtn.style.opacity = isValid ? '1' : '0.5';
+    nextBtn.style.cursor = isValid ? 'pointer' : 'not-allowed';
   }
+  
+  if (submitBtn) {
+    submitBtn.disabled = !isValid;
+    submitBtn.style.opacity = isValid ? '1' : '0.5';
+    submitBtn.style.cursor = isValid ? 'pointer' : 'not-allowed';
+  }
+};
+
+window.fadeTransition = function(hideId, showId, callback) {
+  const hideEl = document.getElementById(hideId);
+  const showEl = document.getElementById(showId);
+  
+  if(hideEl) {
+    hideEl.style.transition = 'opacity 0.2s ease-out';
+    hideEl.style.opacity = '0';
+    setTimeout(() => {
+      hideEl.style.display = 'none';
+      if(showEl) {
+        showEl.style.display = 'block';
+        // force reflow
+        void showEl.offsetWidth;
+        showEl.style.transition = 'opacity 0.3s ease-in';
+        showEl.style.opacity = '1';
+      }
+      if(callback) callback();
+    }, 200);
+  }
+};
+
+window.quizNext = function() {
+  const currentInputs = document.querySelectorAll('#q-step-' + window.currentQuizStep + ' input[type="radio"], #q-step-' + window.currentQuizStep + ' input[type="text"], #q-step-' + window.currentQuizStep + ' input[type="email"]');
+  if (currentInputs.length > 0) {
+    if (currentInputs[0].type === 'radio') {
+      let checked = false;
+      currentInputs.forEach(i => { if (i.checked) checked = true; });
+      if (!checked) return;
+    } else {
+      let allTextValid = true;
+      currentInputs.forEach(i => { if (i.value.trim() === '') allTextValid = false; });
+      if (!allTextValid) return;
+    }
+  }
+  
+  window.fadeTransition('q-step-' + window.currentQuizStep, 'q-step-' + (window.currentQuizStep + 1), () => {
+    window.currentQuizStep++;
+    document.getElementById('quiz-back-btn').style.display = 'inline-flex';
+    
+    if (window.currentQuizStep === window.quizTotalSteps) {
+      document.getElementById('quiz-next-btn').style.display = 'none';
+      document.getElementById('quiz-submit-btn').style.display = 'inline-flex';
+    }
+    window.updateQuizButtons();
+  });
 };
 
 window.quizBack = function() {
   if (window.currentQuizStep > 1) {
-    document.getElementById('q-step-' + window.currentQuizStep).style.display = 'none';
-    window.currentQuizStep--;
-    document.getElementById('q-step-' + window.currentQuizStep).style.display = 'block';
-    
-    document.getElementById('quiz-next-btn').style.display = 'inline-flex';
-    document.getElementById('quiz-submit-btn').style.display = 'none';
-    
-    if (window.currentQuizStep === 1) {
-      document.getElementById('quiz-back-btn').style.display = 'none';
-    }
+    window.fadeTransition('q-step-' + window.currentQuizStep, 'q-step-' + (window.currentQuizStep - 1), () => {
+      window.currentQuizStep--;
+      
+      document.getElementById('quiz-next-btn').style.display = 'inline-flex';
+      document.getElementById('quiz-submit-btn').style.display = 'none';
+      
+      if (window.currentQuizStep === 1) {
+        document.getElementById('quiz-back-btn').style.display = 'none';
+      }
+      window.updateQuizButtons();
+    });
   }
 };
 
 window.processQuiz = function() {
-  const q2 = document.querySelector('input[name="q2"]:checked')?.value;
-  const q5 = document.querySelector('input[name="q5"]:checked')?.value;
-  const name = document.getElementById('q-name').value;
+  const form = document.getElementById('lead-quiz-form');
+  const formData = new FormData(form);
+  
+  // Submit to Cloudflare Worker silently in background
+  fetch('https://api.raminta.coach/quiz', {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  }).catch(err => console.error('Form submission failed', err));
+  
+  const q2 = formData.get('q2');
+  const q5 = formData.get('q5');
+  const name = formData.get('q-name') || '';
   
   let recTitle = "Consistency Foundation";
   if (q2 === "Yes") {
@@ -1666,19 +1738,33 @@ window.processQuiz = function() {
      linkText = "Get the Free Guide";
   }
 
-  document.getElementById('lead-quiz-form').style.display = 'none';
-  document.getElementById('result-title').innerText = "Hi " + name + ", your recommended plan is:\n" + recTitle;
-  document.getElementById('result-desc').innerText = "Based on your goals and experience, this is the perfect starting point for you.";
-  document.getElementById('result-link').href = linkHref;
-  document.getElementById('result-link').innerText = linkText;
-  document.getElementById('quiz-result').style.display = 'block';
+  window.fadeTransition('lead-quiz-form', 'quiz-result', () => {
+    document.getElementById('result-title').innerText = "Hi " + name + ", your recommended plan is:
+" + recTitle;
+    document.getElementById('result-desc').innerText = "Based on your goals and experience, this is the perfect starting point for you.";
+    document.getElementById('result-link').href = linkHref;
+    document.getElementById('result-link').innerText = linkText;
+  });
 };
 
-// Auto-advance
+// Listen to all inputs to update button state
+document.addEventListener('input', function(e) {
+  if (e.target && e.target.closest('#lead-quiz-form')) {
+    window.updateQuizButtons();
+  }
+});
+
+// Auto-advance for radios
 document.addEventListener('change', function(e) {
   if (e.target && e.target.type === 'radio' && e.target.closest('#lead-quiz-form')) {
+    window.updateQuizButtons();
     setTimeout(() => {
        if(window.currentQuizStep < window.quizTotalSteps) window.quizNext();
-    }, 300);
+    }, 400);
   }
+});
+
+// Initialize buttons on load
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(window.updateQuizButtons, 100);
 });

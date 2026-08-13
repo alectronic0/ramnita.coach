@@ -911,8 +911,8 @@ window.SiteContent = {
             <div class="quiz-step" id="q-step-6" style="display: none;">
               <h3 style="margin-bottom: 1.5rem; font-size: 1.25rem;">6. Where should I send your result?</h3>
               <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
-                <input type="text" id="q-name" placeholder="Your Name" required style="padding: 1rem; border: 1px solid #eaeaea; border-radius: 8px; width: 100%; font-family: inherit;">
-                <input type="email" id="q-email" placeholder="Your Email" required style="padding: 1rem; border: 1px solid #eaeaea; border-radius: 8px; width: 100%; font-family: inherit;">
+                <input type="text" id="q-name" name="name" placeholder="Your Name" required style="padding: 1rem; border: 1px solid #eaeaea; border-radius: 8px; width: 100%; font-family: inherit;">
+                <input type="email" id="q-email" name="email" placeholder="Your Email" required style="padding: 1rem; border: 1px solid #eaeaea; border-radius: 8px; width: 100%; font-family: inherit;">
               </div>
             </div>
 
