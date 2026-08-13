@@ -1714,13 +1714,13 @@ window.processQuiz = function() {
   const formData = new FormData(form);
   
   // Submit to Cloudflare Worker silently in background
-  fetch('https://api.raminta.coach/quiz', {
+  /* fetch('https://api.raminta.coach/quiz', {
     method: 'POST',
     body: formData,
     headers: {
       'Accept': 'application/json'
     }
-  }).catch(err => console.error('Form submission failed', err));
+  }).catch(err => console.error('Form submission failed', err)); */
   
   const q2 = formData.get('q2');
   const q5 = formData.get('q5');

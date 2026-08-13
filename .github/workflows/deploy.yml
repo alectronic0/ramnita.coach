@@ -66,25 +66,25 @@ jobs:
           curl -s "https://www.google.com/ping?sitemap=https://raminta.coach/sitemap.xml" -o /dev/null
           echo "Sitemap pinged: https://raminta.coach/sitemap.xml"
 
-  terraform:
-    name: Deploy Worker via Terraform
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+#   terraform:
+#     name: Deploy Worker via Terraform
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
       
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+#       - name: Setup Terraform
+#         uses: hashicorp/setup-terraform@v3
 
-      - name: Terraform Init
-        working-directory: ./terraform
-        run: terraform init
+#       - name: Terraform Init
+#         working-directory: ./terraform
+#         run: terraform init
 
-      - name: Terraform Apply
-        working-directory: ./terraform
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          TF_VAR_cloudflare_account_id: ${{ secrets.TF_VAR_CLOUDFLARE_ACCOUNT_ID }}
-          TF_VAR_cloudflare_zone_id: ${{ secrets.TF_VAR_CLOUDFLARE_ZONE_ID }}
-          TF_VAR_smtp2go_api_key: ${{ secrets.TF_VAR_SMTP2GO_API_KEY }}
-        run: terraform apply -auto-approve
+#       - name: Terraform Apply
+#         working-directory: ./terraform
+#         env:
+#           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+#           TF_VAR_cloudflare_account_id: ${{ secrets.TF_VAR_CLOUDFLARE_ACCOUNT_ID }}
+#           TF_VAR_cloudflare_zone_id: ${{ secrets.TF_VAR_CLOUDFLARE_ZONE_ID }}
+#           TF_VAR_smtp2go_api_key: ${{ secrets.TF_VAR_SMTP2GO_API_KEY }}
+#         run: terraform apply -auto-approve
