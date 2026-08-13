@@ -1,176 +1,75 @@
 window.SiteContent = {
-  header: `<header class="site-header" id="top">
-    <nav class="nav container" aria-label="Main navigation">
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-      <a href="index.html" class="brand" aria-label="Raminta Coaching home">
-        <span class="brand-mark" aria-hidden="true">R</span>
-        <span class="brand-name">Raminta <em>Coaching</em></span>
-      </a>
-      <a class="btn btn-primary btn-header-cta" href="https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" target="_blank" rel="noopener" data-track="nav_cta_click" data-track-label="Start Today — nav">Start Today</a>
-      <ul class="nav-menu" id="nav-menu">
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#journey">How It Works</a></li>
-        <li><a href="index.html#online-coaching">Online Coaching</a></li>
-        <li><a href="index.html#personal-training">Personal Training</a></li>
-        <li><a href="calculator.html">Calculator</a></li>
-        <li><a href="store.html">Shop</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>`,
-  footer: `<footer id="footer" class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <a href="index.html" class="brand footer-brand">
-          <span class="brand-mark" aria-hidden="true">R</span>
-          <span class="brand-name">Raminta <em>Coaching</em></span>
-        </a>
-        <p class="footer-tag">Online fitness &amp; nutrition coach. Personal trainer in Welwyn Garden City, Hertfordshire.</p>
-      </div>
-      <div>
-        <h3>Get in touch</h3>
-        <ul class="footer-links">
-          <li><a href="mailto:info@raminta.coach">info@raminta.coach</a></li>
-          <li>Welwyn Garden City, Hertfordshire, UK</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Follow</h3>
-        <ul class="footer-links social-links">
-          <li>
-            <a href="https://www.instagram.com/ramintacoaching/" target="_blank" rel="noopener">
-              <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
-              Instagram
-            </a>
-          </li>
-          <li>
-            <a href="https://www.tiktok.com/@ramintacoaching" target="_blank" rel="noopener">
-              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.4 2 1.7 3.4 3.9 3.6v3c-1.5 0-2.8-.4-3.9-1.2v5.9c0 3.7-2.5 6.1-5.8 6.1-3 0-5.3-2.2-5.3-5.1 0-2.9 2.2-5 5.3-5 .3 0 .7 0 1 .1v3.1a2.6 2.6 0 0 0-1-.2c-1.4 0-2.4.9-2.4 2.1 0 1.3 1 2.1 2.3 2.1 1.6 0 2.7-1.1 2.7-3.2V3h3.2z"/></svg>
-              TikTok
-            </a>
-          </li>
-          <li>
-            <a href="https://www.youtube.com/@ramintacoaching" target="_blank" rel="noopener">
-              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12c0 1.6.1 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.3-1.6.4-3.2.4-4.8s-.1-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg>
-              YouTube
-            </a>
-          </li>
-          <li>
-            <a href="https://linktr.ee/ramintacoaching" target="_blank" rel="noopener">
-              <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M12 8l-5-4M12 8l5-4M12 14l-5-4M12 14l5-4"/></svg>
-              Linktree
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <h3>Coaching</h3>
-        <ul class="footer-links">
-          <li><a href="https://app.hubfit.com/plans/688387865c56841b3dd9c6ea" target="_blank" rel="noopener">Coaching Plans (Hubfit)</a></li>
-          <li><a href="index.html#online-coaching">Online Coaching</a></li>
-          <li><a href="index.html#personal-training">Personal Training WGC</a></li>
-          <li><a href="store.html">Shop — Raminta&rsquo;s Picks</a></li>
-          <li><a href="client.html">Client Portal (beta)</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom container">
-      <p>&copy; <span id="year">2026</span> Raminta Coaching. All rights reserved.</p>
-      <p class="powered-by">Powered by <a href="https://alec.today/" target="_blank" rel="noopener">Alec Doran-Twyford (Alectronic&trade;)</a></p>
-    </div>
-  </footer>`,
+  header: {
+    brandMark: "R",
+    brandName: "Raminta",
+    brandEmphasis: "Coaching",
+    ctaText: "Start Today",
+    ctaHref: "https://app.hubfit.com/plans/688387865c56841b3dd9c6ea",
+    navItems: [
+      { text: "About", href: "index.html#about" },
+      { text: "How It Works", href: "index.html#journey" },
+      { text: "Online Coaching", href: "index.html#online-coaching" },
+      { text: "Personal Training", href: "index.html#personal-training" },
+      { text: "Calculator", href: "calculator.html" },
+      { text: "Shop", href: "store.html" },
+      { text: "Contact", href: "index.html#contact" }
+    ]
+  },
+  footer: {
+    brandMark: "R",
+    brandName: "Raminta",
+    brandEmphasis: "Coaching",
+    tagline: "Online fitness & nutrition coach. Personal trainer in Welwyn Garden City, Hertfordshire.",
+    contact: {
+      email: "info@raminta.coach",
+      location: "Welwyn Garden City, Hertfordshire, UK"
+    },
+    socials: [
+      { name: "Instagram", href: "https://www.instagram.com/ramintacoaching/", svg: '<svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>' },
+      { name: "TikTok", href: "https://www.tiktok.com/@ramintacoaching", svg: '<svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.4 2 1.7 3.4 3.9 3.6v3c-1.5 0-2.8-.4-3.9-1.2v5.9c0 3.7-2.5 6.1-5.8 6.1-3 0-5.3-2.2-5.3-5.1 0-2.9 2.2-5 5.3-5 .3 0 .7 0 1 .1v3.1a2.6 2.6 0 0 0-1-.2c-1.4 0-2.4.9-2.4 2.1 0 1.3 1 2.1 2.3 2.1 1.6 0 2.7-1.1 2.7-3.2V3h3.2z"/></svg>' },
+      { name: "YouTube", href: "https://www.youtube.com/@ramintacoaching", svg: '<svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12c0 1.6.1 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.3-1.6.4-3.2.4-4.8s-.1-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg>' },
+      { name: "Linktree", href: "https://linktr.ee/ramintacoaching", svg: '<svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M12 8l-5-4M12 8l5-4M12 14l-5-4M12 14l5-4"/></svg>' }
+    ],
+    coachingLinks: [
+      { text: "Coaching Plans (Hubfit)", href: "https://app.hubfit.com/plans/688387865c56841b3dd9c6ea", external: true },
+      { text: "Online Coaching", href: "index.html#online-coaching" },
+      { text: "Personal Training WGC", href: "index.html#personal-training" },
+      { text: "Shop \u2014 Raminta\u2019s Picks", href: "store.html" },
+      { text: "Client Portal (beta)", href: "client.html" }
+    ],
+    copyrightYear: "2026",
+    poweredBy: { name: "Alec Doran-Twyford (Alectronic\u2122)", href: "https://alec.today/" }
+  },
   sections: {
-    ctaOverlay: `<!-- CTA Drawer Overlay -->
-    <div class="cta-overlay" id="cta-overlay" aria-modal="true" role="dialog" aria-label="Get your personalised plan">
-      <div class="cta-backdrop" id="cta-backdrop"></div>
-      <div class="cta-drawer" id="cta-drawer">
-        <div class="cta-drawer-handle" aria-hidden="true"></div>
-        <button class="cta-drawer-close" id="cta-close-btn" aria-label="Close">
-          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
-        </button>
-
-        <div id="cta-form-state">
-          <h2>Get your personalised plan &#127807;</h2>
-          <p class="cta-sub">Your calorie targets are a great starting point. Share a few details and Raminta will reach out with a plan tailored specifically to you &mdash; no obligation, no pressure.</p>
-
-          <form class="cta-form" id="cta-enquiry-form"
-                action="https://formsubmit.co/info@raminta.coach"
-                method="POST">
-
-            <input type="hidden" name="_subject" value="Calculator Lead &mdash; Personalised Plan Request">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://raminta.coach/thanks.html">
-            <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none;">
-            <input type="hidden" name="Calorie Results" id="hidden-results">
-
-            <div class="form-row-2">
-              <label>
-                Your name
-                <input type="text" name="name" required autocomplete="name" placeholder="Jane Smith">
-              </label>
-              <label>
-                Your email
-                <input type="email" name="email" required autocomplete="email" placeholder="you@example.com">
-              </label>
-            </div>
-
-            <label>
-              Your goal
-              <select name="goal">
-                <option value="">Select your main goal&hellip;</option>
-                <option>Lose weight / body fat</option>
-                <option>Build muscle &amp; tone up</option>
-                <option>Improve overall fitness</option>
-                <option>Improve nutrition habits</option>
-                <option>Something else</option>
-              </select>
-            </label>
-
-            <label>
-              I'm interested in
-              <select name="interest">
-                <option>Online Coaching</option>
-                <option>Personal Training (Welwyn Garden City)</option>
-                <option>Online Coaching + Personal Training</option>
-                <option>Just curious / not sure yet</option>
-              </select>
-            </label>
-
-            <label>
-              Anything else you'd like to share? <span class="text-optional">(optional)</span>
-              <textarea name="message" rows="3" placeholder="e.g. current struggles, schedule, questions for Raminta&hellip;"></textarea>
-            </label>
-
-            <div class="cta-results-badge" id="cta-results-badge">
-              <span class="badge-label">&#128202; Your calculator results</span>
-              <div class="badge-lines" id="cta-results-summary"></div>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-lg btn-cta-submit">
-              Send to Raminta &rarr;
-            </button>
-
-            <p class="privacy-note">
-              Your details are only used to respond to your enquiry. &nbsp;<a href="mailto:info@raminta.coach">info@raminta.coach</a>
-            </p>
-          </form>
-        </div>
-
-        <div class="cta-success" id="cta-success-state">
-          <div class="success-icon">
-            <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <h3>You're all set!</h3>
-          <p>Raminta will be in touch shortly.</p>
-        </div>
-      </div>
-    </div>`,
+    ctaOverlay: {
+      title: "Get your personalised plan \ud83c\udf3f",
+      subtitle: "Your calorie targets are a great starting point. Share a few details and Raminta will reach out with a plan tailored specifically to you \u2014 no obligation, no pressure.",
+      formAction: "https://formsubmit.co/info@raminta.coach",
+      hiddenFields: {
+        subject: "Calculator Lead \u2014 Personalised Plan Request",
+        template: "table",
+        captcha: "false",
+        next: "https://raminta.coach/thanks.html"
+      },
+      goalOptions: [
+        "Lose weight / body fat",
+        "Build muscle & tone up",
+        "Improve overall fitness",
+        "Improve nutrition habits",
+        "Something else"
+      ],
+      interestOptions: [
+        "Online Coaching",
+        "Personal Training (Welwyn Garden City)",
+        "Online Coaching + Personal Training",
+        "Just curious / not sure yet"
+      ],
+      submitText: "Send to Raminta \u2192",
+      privacyNote: "Your details are only used to respond to your enquiry.",
+      privacyEmail: "info@raminta.coach",
+      successTitle: "You\u2019re all set!",
+      successText: "Raminta will be in touch shortly."
+    },
     hero: {
       eyebrow: "Online Coaching &middot; Welwyn Garden City &middot; Hertfordshire",
       h1: "Online Fitness &amp; Nutrition Coach<br><span class=\"accent\">Helping You Lose Fat, Not Muscle</span>",

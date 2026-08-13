@@ -5,12 +5,128 @@ document.documentElement.classList.add('js');
 
 if (window.SiteContent) {
   if (!document.querySelector('.site-header') && window.SiteContent.header) {
-    document.body.insertAdjacentHTML('afterbegin', window.SiteContent.header);
+    const headerHtml = typeof window.SiteContent.header === 'string' ? window.SiteContent.header : renderHeader(window.SiteContent.header);
+    document.body.insertAdjacentHTML('afterbegin', headerHtml);
   }
   if (!document.querySelector('.site-footer') && window.SiteContent.footer) {
-    document.body.insertAdjacentHTML('beforeend', window.SiteContent.footer);
+    const footerHtml = typeof window.SiteContent.footer === 'string' ? window.SiteContent.footer : renderFooter(window.SiteContent.footer);
+    document.body.insertAdjacentHTML('beforeend', footerHtml);
   }
   
+
+
+function renderHeader(d) {
+  return `<header class="site-header" id="top">
+    <nav class="nav container" aria-label="Main navigation">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="index.html" class="brand" aria-label="Raminta Coaching home">
+        <span class="brand-mark" aria-hidden="true">${d.brandMark}</span>
+        <span class="brand-name">${d.brandName} <em>${d.brandEmphasis}</em></span>
+      </a>
+      <a class="btn btn-primary btn-header-cta" href="${d.ctaHref}" target="_blank" rel="noopener" data-track="nav_cta_click" data-track-label="Start Today — nav">${d.ctaText}</a>
+      <ul class="nav-menu" id="nav-menu">
+        ${d.navItems.map(i => `<li><a href="${i.href}">${i.text}</a></li>`).join('\n        ')}
+      </ul>
+    </nav>
+  </header>`;
+}
+
+function renderFooter(d) {
+  return `<footer id="footer" class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="brand footer-brand">
+          <span class="brand-mark" aria-hidden="true">${d.brandMark}</span>
+          <span class="brand-name">${d.brandName} <em>${d.brandEmphasis}</em></span>
+        </a>
+        <p class="footer-tag">${d.tagline}</p>
+      </div>
+      <div>
+        <h3>Get in touch</h3>
+        <ul class="footer-links">
+          <li><a href="mailto:${d.contact.email}">${d.contact.email}</a></li>
+          <li>${d.contact.location}</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Follow</h3>
+        <ul class="footer-links social-links">
+          ${d.socials.map(s => `<li><a href="${s.href}" target="_blank" rel="noopener">${s.svg} ${s.name}</a></li>`).join('\n          ')}
+        </ul>
+      </div>
+      <div>
+        <h3>Coaching</h3>
+        <ul class="footer-links">
+          ${d.coachingLinks.map(l => `<li><a href="${l.href}"${l.external ? ' target="_blank" rel="noopener"' : ''}>${l.text}</a></li>`).join('\n          ')}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; <span id="year">${d.copyrightYear}</span> Raminta Coaching. All rights reserved.</p>
+      <p class="powered-by">Powered by <a href="${d.poweredBy.href}" target="_blank" rel="noopener">${d.poweredBy.name}</a></p>
+    </div>
+  </footer>`;
+}
+
+function renderCtaOverlay(d) {
+  return `<!-- CTA Drawer Overlay -->
+    <div class="cta-overlay" id="cta-overlay" aria-modal="true" role="dialog" aria-label="Get your personalised plan">
+      <div class="cta-backdrop" id="cta-backdrop"></div>
+      <div class="cta-drawer" id="cta-drawer">
+        <div class="cta-drawer-handle" aria-hidden="true"></div>
+        <button class="cta-drawer-close" id="cta-close-btn" aria-label="Close">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        <div id="cta-form-state">
+          <h2>${d.title}</h2>
+          <p class="cta-sub">${d.subtitle}</p>
+          <form class="cta-form" id="cta-enquiry-form" action="${d.formAction}" method="POST">
+            <input type="hidden" name="_subject" value="${d.hiddenFields.subject}">
+            <input type="hidden" name="_template" value="${d.hiddenFields.template}">
+            <input type="hidden" name="_captcha" value="${d.hiddenFields.captcha}">
+            <input type="hidden" name="_next" value="${d.hiddenFields.next}">
+            <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none;">
+            <input type="hidden" name="Calorie Results" id="hidden-results">
+            <div class="form-row-2">
+              <label>Your name <input type="text" name="name" required autocomplete="name" placeholder="Jane Smith"></label>
+              <label>Your email <input type="email" name="email" required autocomplete="email" placeholder="you@example.com"></label>
+            </div>
+            <label>Your goal
+              <select name="goal">
+                <option value="">Select your main goal…</option>
+                ${d.goalOptions.map(o => `<option>${o}</option>`).join('\n                ')}
+              </select>
+            </label>
+            <label>I'm interested in
+              <select name="interest">
+                ${d.interestOptions.map(o => `<option>${o}</option>`).join('\n                ')}
+              </select>
+            </label>
+            <label>Anything else you'd like to share? <span class="text-optional">(optional)</span>
+              <textarea name="message" rows="3" placeholder="e.g. current struggles, schedule, questions for Raminta…"></textarea>
+            </label>
+            <div class="cta-results-badge" id="cta-results-badge">
+              <span class="badge-label">📊 Your calculator results</span>
+              <div class="badge-lines" id="cta-results-summary"></div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-cta-submit">${d.submitText}</button>
+            <p class="privacy-note">${d.privacyNote} &nbsp;<a href="mailto:${d.privacyEmail}">${d.privacyEmail}</a></p>
+          </form>
+        </div>
+        <div class="cta-success" id="cta-success-state">
+          <div class="success-icon">
+            <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>${d.successTitle}</h3>
+          <p>${d.successText}</p>
+        </div>
+      </div>
+    </div>`;
+}
 
 function renderHero(d) {
   return `
@@ -396,6 +512,7 @@ function renderStart(d) {
   if (mainEl && window.SiteContent.sections && mainEl.children.length === 0) {
     const s = window.SiteContent.sections;
     const renderers = {
+    ctaOverlay: renderCtaOverlay,
       hero: renderHero,
       about: renderAbout,
       journey: renderJourney,
