@@ -11,10 +11,414 @@ if (window.SiteContent) {
     document.body.insertAdjacentHTML('beforeend', window.SiteContent.footer);
   }
   
+
+function renderHero(d) {
+  return `
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">${d.eyebrow}</p>
+          <h1>${d.h1}</h1>
+          <p class="lead">${d.lead}</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="${d.ctaPrimary.href}" target="_blank" rel="noopener" data-track="hero_cta_click" data-track-label="${d.ctaPrimary.trackLabel}">${d.ctaPrimary.text}</a>
+            <a class="btn btn-ghost" href="${d.ctaSecondary.href}" data-track="hero_cta_click" data-track-label="${d.ctaSecondary.trackLabel}">${d.ctaSecondary.text}</a>
+          </div>
+          <ul class="hero-points">
+            ${d.points.map(p => `<li>${p}</li>`).join('\n            ')}
+          </ul>
+        </div>
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="hero-card">
+            <div class="hero-card-leaf">
+              <svg aria-hidden="true" viewBox="0 0 64 64" width="52" height="52" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <path d="M32 56 C32 34 40 18 56 8 C56 32 46 48 32 56 Z"/>
+                <path d="M32 56 C32 40 26 28 12 20 C13 38 21 50 32 56 Z"/>
+              </svg>
+            </div>
+            <p class="hero-card-quote">&ldquo;${d.quote}&rdquo;</p>
+            <p class="hero-card-sign">${d.quoteSign}</p>
+          </div>
+        </div>
+      </div>
+    </section>`;
+}
+
+function renderAbout(d) {
+  return `
+    <section class="section" id="about">
+      <div class="container grid-2">
+        <div class="reveal">
+          <p class="eyebrow">${d.eyebrow}</p>
+          <h2>${d.title}</h2>
+          ${d.paragraphs.map(p => `<p>${p}</p>`).join('\n          ')}
+          <a class="btn btn-ghost" href="${d.socialLink.href}" target="_blank" rel="noopener">${d.socialLink.text}</a>
+        </div>
+        <div class="about-side reveal">
+          <figure class="photo-frame">
+            <img src="${d.image.src}" alt="${d.image.alt}" loading="lazy" onerror="this.parentElement.style.display='none'">
+          </figure>
+          <div class="about-panel">
+          <h3>${d.checklistTitle}</h3>
+          <ul class="check-list">
+            ${d.checklist.map(item => `<li>${item}</li>`).join('\n            ')}
+          </ul>
+          </div>
+        </div>
+      </div>
+    </section>`;
+}
+
+function renderJourney(d) {
+  return `
+    <section class="section section-tinted" id="journey">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">${d.eyebrow}</p>
+          <h2>${d.title}</h2>
+          <p class="section-sub">${d.subtitle}</p>
+        </div>
+        <div class="steps">
+          ${d.steps.map(step => `
+          <article class="step reveal">
+            <span class="step-num">${step.num}</span>
+            <h3>${step.title}</h3>
+            <p>${step.desc}</p>
+          </article>`).join('')}
+        </div>
+      </div>
+    </section>`;
+}
+
+function renderOnlineCoaching(d) {
+  return `
+    <section class="section" id="online-coaching">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">${d.eyebrow}</p>
+          <h2>${d.title}</h2>
+          <p class="section-sub">${d.subtitle}</p>
+        </div>
+        <div class="services-grid">
+          ${d.services.map(s => `
+          <div class="service-card reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">${s.svgPath.startsWith('<') ? s.svgPath : `<path d="${s.svgPath}"/>`}</svg>
+            </div>
+            <h3>${s.title}</h3>
+            <p>${s.desc}</p>
+          </div>`).join('')}
+        </div>
+        <div class="center reveal" style="margin-top: 3rem;">
+          <a class="btn btn-primary btn-lg" href="${d.cta.href}" target="_blank" rel="noopener">${d.cta.text}</a>
+        </div>
+      </div>
+    </section>`;
+}
+
+function renderPersonalTraining(d) {
+  return `
+    <section class="section section-tinted" id="personal-training">
+      <div class="container grid-2">
+        <div class="reveal">
+          <p class="eyebrow">${d.eyebrow}</p>
+          <h2>${d.title}</h2>
+          <p class="lead">${d.lead}</p>
+          ${d.paragraphs.map(p => `<p>${p}</p>`).join('\n          ')}
+          <a class="btn btn-primary" href="${d.cta.href}" data-track="pt_cta_click" data-track-label="${d.cta.trackLabel}">${d.cta.text}</a>
+        </div>
+        <div class="reveal pt-image-col">
+          <figure class="photo-frame">
+            <img src="${d.image.src}" alt="${d.image.alt}" loading="lazy" onerror="this.parentElement.style.display='none'">
+          </figure>
+        </div>
+      </div>
+      <div class="container map-block reveal">
+        <div id="gym-map" class="gym-map" aria-label="Map of training locations in Welwyn Garden City"></div>
+        <noscript>
+          <p>Enable JavaScript to see the map, or open the locations directly:
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Norton+Gym+26-28+Hyde+Way+Welwyn+Garden+City+AL7+3UQ">Norton Gym</a> &middot;
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Anytime+Fitness+Welwyn+Garden+City">Anytime Fitness Welwyn Garden City</a>
+          </p>
+        </noscript>
+      </div>
+    </section>`;
+}
+
+function renderNewsletter(d) {
+  return `
+    <section class="section" id="newsletter">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">${d.eyebrow}</p>
+          <h2>${d.title}</h2>
+          <p class="section-sub">${d.subtitle}</p>
+        </div>
+        <div class="reveal" style="text-align: center; max-width: 700px; margin: 0 auto 3rem auto;">
+          <p>${d.description}</p>
+        </div>
+        <div class="center reveal">
+          <a class="btn btn-primary btn-lg" href="${d.cta.href}" target="_blank" rel="noopener">${d.cta.text}</a>
+        </div>
+      </div>
+    </section>`;
+}
+
+function renderTestimonials(d) {
+  let progressHtml = "";
+  if (d.progressPhotos && d.progressPhotos.enabled) {
+     progressHtml = `
+        <div class="section-head reveal" style="margin-top: 4rem;">
+          <h2>Progress Photos</h2>
+        </div>
+        <div class="cards newsletter-cards">
+           ${Array(d.progressPhotos.count).fill(0).map(() => `
+           <article class="card reveal" style="min-height: 200px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.05);">
+             <p>[Before / after photo]</p>
+           </article>`).join('')}
+        </div>`;
+  } else if (d.progressPhotos && d.progressPhotos.count) {
+     progressHtml = `
+        <!-- <div class="section-head reveal" style="margin-top: 4rem;">
+          <h2>Progress Photos</h2>
+        </div>
+        <div class="cards newsletter-cards">
+           ${Array(d.progressPhotos.count).fill(0).map(() => `
+           <article class="card reveal" style="min-height: 200px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.05);">
+             <p>[Before / after photo]</p>
+           </article>`).join('')}
+        </div> -->`;
+  }
+  return `
+    <section class="section section-tinted" id="social-proof">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">${d.eyebrow}</p>
+          <h2>${d.title}</h2>
+          <p class="section-sub">${d.subtitle}</p>
+        </div>
+        <div class="testimonials">
+          ${d.quotes.map(q => `
+          <blockquote class="testimonial reveal">
+            <p>"${q.text}"</p>
+            <footer>— ${q.author}</footer>
+          </blockquote>`).join('')}
+        </div>
+        ${progressHtml}
+      </div>
+    </section>`;
+}
+
+function renderDifferent(d) {
+  return `
+    <section class="section" id="different">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>${d.title}</h2>
+          <p class="section-sub">${d.subtitle}</p>
+        </div>
+        <ul class="diff-list reveal" style="max-width: 700px; margin: 0 auto; list-style: none; padding: 0;">
+          ${d.items.map(item => `
+          <li style="margin-bottom: 1rem;">${item.type === 'check' ? `<strong>&#10003; ${item.text}</strong>` : `&#10007; ${item.text}`}</li>
+          `).join('')}
+        </ul>
+      </div>
+    </section>`;
+}
+
+function renderRoadmap(d) {
+  return `
+    <section class="section section-tinted" id="roadmap">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">${d.eyebrow}</p>
+          <h2>${d.title}</h2>
+          <p class="section-sub">${d.subtitle}</p>
+        </div>
+        <div class="steps">
+          ${d.phases.map(phase => `
+          <article class="step reveal">
+            <span class="step-num">${phase.num}</span>
+            <h3>${phase.title}</h3>
+            <p>${phase.desc}</p>
+          </article>`).join('')}
+        </div>
+      </div>
+    </section>`;
+}
+
+function renderAfter12Weeks(d) {
+  return `
+    <section class="section" id="after-12-weeks">
+      <div class="container reveal">
+        <div class="section-head">
+          <h2>${d.title}</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto;">
+          <p class="lead">${d.lead}</p>
+          <ol style="margin-top: 2rem; line-height: 1.6;">
+            ${d.options.map((opt, i) => `
+            <li${i === 0 ? ' style="margin-bottom: 1.5rem;"' : ''}>${opt}</li>
+            `).join('')}
+          </ol>
+        </div>
+      </div>
+    </section>`;
+}
+
+function renderInPerson(d) {
+  return `
+    <section class="section section-tinted" id="personal-training">
+      <div class="container grid-2">
+        <div class="reveal">
+          <p class="eyebrow">${d.eyebrow}</p>
+          <h2>${d.title}</h2>
+          ${d.paragraphs.map(p => `<p>\n            ${p}\n          </p>`).join('\n          ')}
+          <a class="btn btn-primary" href="${d.cta.href}" data-track="contact_click" data-track-label="${d.cta.trackLabel}">${d.cta.text}</a>
+        </div>
+        <div class="about-panel reveal">
+          <h3>Where we train</h3>
+          <ul class="location-list">
+            ${d.gymLocations.map(gym => `
+            <li>
+              <img class="gym-logo" src="${gym.logo}" alt="${gym.name} logo" width="28" height="28">
+              <div>
+                <strong>${gym.name}</strong>
+                <span>${gym.address}</span>
+                <a href="${gym.mapUrl}" target="_blank" rel="noopener">Open in Google Maps</a>
+              </div>
+            </li>`).join('')}
+          </ul>
+          <p class="panel-note">${d.panelNote}</p>
+        </div>
+      </div>
+      <div class="container map-block reveal">
+        <div id="gym-map" class="gym-map" aria-label="Map of training locations in Welwyn Garden City"></div>
+        <noscript>
+          <p>Enable JavaScript to see the map, or open the locations directly:
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Norton+Gym+26-28+Hyde+Way+Welwyn+Garden+City+AL7+3UQ">Norton Gym</a> &middot;
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Anytime+Fitness+Welwyn+Garden+City">Anytime Fitness Welwyn Garden City</a>
+          </p>
+        </noscript>
+      </div>
+    </section>`;
+}
+
+function renderFaq(d) {
+  return `
+    <section class="section" id="faq">
+      <div class="container container-narrow">
+        <div class="section-head reveal">
+          <p class="eyebrow">${d.eyebrow}</p>
+          <h2>${d.title}</h2>
+        </div>
+        <div class="faq reveal">
+          ${d.items.map(item => `
+          <details>
+            <summary>${item.q}</summary>
+            <p>${item.a}</p>
+          </details>`).join('')}
+        </div>
+        
+        <div class="faq-disclaimer reveal" style="margin-top: 2rem; padding: 1rem; background: rgba(0,0,0,0.03); border-radius: 8px; font-size: 0.9em;">
+          ${d.disclaimer}
+        </div>
+      </div>
+    </section>`;
+}
+
+function renderContact(d) {
+  return `
+    <section class="section" id="contact">
+      <div class="container container-narrow">
+        <div class="section-head reveal">
+          <p class="eyebrow">${d.eyebrow}</p>
+          <h2>${d.title}</h2>
+          <p class="section-sub">${d.subtitle}</p>
+        </div>
+        
+        <div class="quiz-container reveal" id="lead-quiz-container" style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.08);">
+          <form id="lead-quiz-form" onsubmit="event.preventDefault(); window.processQuiz();">
+            ${d.quizSteps.map((step, idx) => `
+            <!-- Step ${idx + 1} ${idx === d.quizSteps.length - 1 ? '(Final)' : ''} -->
+            <div class="quiz-step" id="q-step-${idx + 1}"${idx > 0 ? ' style="display: none;"' : ''}>
+              <h3 style="margin-bottom: 1.5rem; font-size: 1.25rem;">${step.question}</h3>
+              ${step.options ? `
+              <div class="quiz-options" style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem;">
+                ${step.options.map((opt, i) => `
+                <label style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem; border: 1px solid #eaeaea; border-radius: 8px; cursor: pointer;${idx === 0 ? ' transition: all 0.2s;' : ''}"><input type="radio" name="${step.name}" value="${opt.value}"${i === 0 && idx === 0 ? ' required' : (idx > 0 && i === 0 ? ' required' : '')}> ${opt.text}</label>
+                `).join('').trim()}
+              </div>` : `
+              <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+                ${step.inputs.map(input => `
+                <input type="${input.type}" id="${input.id}" name="${input.name}" placeholder="${input.placeholder}" required style="padding: 1rem; border: 1px solid #eaeaea; border-radius: 8px; width: 100%; font-family: inherit;">
+                `).join('').trim()}
+              </div>`}
+            </div>
+            `).join('').trim()}
+
+            <!-- Controls -->
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eaeaea; padding-top: 1.5rem;">
+              <button type="button" class="btn btn-ghost" id="quiz-back-btn" style="display: none;" onclick="window.quizBack()">Back</button>
+              <div style="flex-grow: 1;"></div>
+              <button type="button" class="btn btn-primary" id="quiz-next-btn" onclick="window.quizNext()">Next</button>
+              <button type="submit" class="btn btn-primary" id="quiz-submit-btn" style="display: none;">Get My Recommendation</button>
+            </div>
+          </form>
+
+          <!-- Result Area -->
+          <div id="quiz-result" style="display: none; text-align: center; padding: 1rem 0;">
+             <h3 id="result-title" style="margin-bottom: 1rem;">${d.resultsConfig.title}</h3>
+             <p id="result-desc" style="margin-bottom: 2rem;"></p>
+             <a id="result-link" class="btn btn-primary btn-lg" href="#" target="_blank" rel="noopener">${d.resultsConfig.ctaText}</a>
+          </div>
+        </div>
+      </div>
+    </section>`;
+}
+
+function renderStart(d) {
+  return `
+    <section class="section cta-band" id="start">
+      <div class="container reveal">
+        <h2>${d.title}</h2>
+        <p>${d.description}</p>
+        <div class="hero-actions center">
+          <a class="btn btn-light btn-lg" href="${d.ctaPrimary.href}" target="_blank" rel="noopener" data-track="coaching_plans_click" data-track-label="${d.ctaPrimary.trackLabel}">${d.ctaPrimary.text}</a>
+          <a class="btn btn-outline-light" href="${d.ctaSecondary.href}">${d.ctaSecondary.text}</a>
+        </div>
+      </div>
+    </section>`;
+}
+
+
   const mainEl = document.querySelector('main#main-content');
   if (mainEl && window.SiteContent.sections && mainEl.children.length === 0) {
-    mainEl.innerHTML = Object.values(window.SiteContent.sections).join('\n');
+    const s = window.SiteContent.sections;
+    const renderers = {
+      hero: renderHero,
+      about: renderAbout,
+      journey: renderJourney,
+      onlineCoaching: renderOnlineCoaching,
+      personalTraining: renderPersonalTraining,
+      newsletter: renderNewsletter,
+      testimonials: renderTestimonials,
+      different: renderDifferent,
+      roadmap: renderRoadmap,
+      after12Weeks: renderAfter12Weeks,
+      inPerson: renderInPerson,
+      faq: renderFaq,
+      contact: renderContact,
+      start: renderStart
+    };
+    const htmlParts = [];
+    for (const [key, data] of Object.entries(s)) {
+      if (typeof data === 'string') { htmlParts.push(data); continue; }
+      if (renderers[key]) htmlParts.push(renderers[key](data));
+    }
+    mainEl.innerHTML = htmlParts.join('\n');
   }
+
 }
 
 
