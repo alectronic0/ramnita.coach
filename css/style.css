@@ -90,6 +90,10 @@ a {
   text-align: center;
 }
 
+.center {
+  text-align: center;
+}
+
 .section-sub {
   color: var(--ink-soft);
   margin-top: 0.75rem;
