@@ -12,7 +12,7 @@ window.SiteContent = {
       { text: "Personal Training", href: "index.html#personal-training" },
       { text: "Calculator", href: "calculator.html" },
       { text: "Shop", href: "store.html" },
-      { text: "Contact", href: "index.html#contact" }
+      { text: "Contact", href: "mailto:info@raminta.coach" }
     ]
   },
   footer: {
@@ -75,7 +75,7 @@ window.SiteContent = {
       h1: "Online Fitness &amp; Nutrition Coach<br><span class=\"accent\">Helping You Lose Fat, Not Muscle</span>",
       lead: "Personalised training and real nutrition science &mdash; for anyone rebuilding strength after falling off, or navigating a GLP-1 journey the right way. Local to Welwyn Garden City? Add in-person personal training too.",
       ctaPrimary: { text: "View Coaching Plans", href: "https://app.hubfit.com/plans/688387865c56841b3dd9c6ea", trackLabel: "View Coaching Plans — hero" },
-      ctaSecondary: { text: "Book a Free Consultation", href: "#contact", trackLabel: "Book a Free Consultation — hero" },
+      ctaSecondary: { text: "Book a Free Consultation", href: "mailto:info@raminta.coach", trackLabel: "Book a Free Consultation — hero" },
       points: ["No strict diets", "Plans built around your schedule", "Message your coach anytime"],
       quote: "No guesswork. Just structure, support, and progress.",
       quoteSign: "— Raminta"
@@ -139,13 +139,13 @@ window.SiteContent = {
       ],
       panelNote: "Currently by application only, with limited spaces available."
     },
-    newsletter: {
+    /* newsletter: {
       eyebrow: "Newsletter",
       title: "The Research",
       subtitle: "Case studies, the science behind fat loss and muscle maintenance, and what I'm actually seeing work with clients — straight to your inbox.",
       description: "I go deeper here than a caption or a reel ever could — breaking down studies on protein, training, and GLP-1s, and sharing real client case studies (with permission) so you can see what actually works, not just what sounds good.",
       cta: { text: "Subscribe on Substack", href: "https://blog.raminta.coach" }
-    },
+    }, */
     testimonials: {
       eyebrow: "Social Proof",
       title: "Real Results &amp; Testimonials",
@@ -486,7 +486,7 @@ window.SiteContent = {
         </div>
       </div>
     </section>`,
-    contact: {
+    /* contact: {
       eyebrow: "Lead Quiz",
       title: "Find Your Right Fit",
       subtitle: "Short interactive quiz to get a personalised package recommendation.",
@@ -550,7 +550,7 @@ window.SiteContent = {
         title: "Your Recommendation",
         ctaText: "Take the Next Step"
       }
-    },
+    }, */
     start: {
       title: "Ready to feel consistent again?",
       description: "Start your coaching journey today — your plan, your pace, my support every step of the way.",
