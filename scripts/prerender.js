@@ -4,7 +4,8 @@ const http = require('http');
 const path = require('path');
 
 const requestHandler = (request, response) => {
-  let filePath = '.' + request.url;
+  // Strip cache-busting query strings (e.g. app.js?v=...) or the file lookup 404s and nothing renders
+  let filePath = '.' + decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
   if (filePath == './') filePath = './index.html';
   const extname = String(path.extname(filePath)).toLowerCase();
   const mimeTypes = {
@@ -81,6 +82,9 @@ server.listen(0, async () => {
     });
     
     let html = await page.content();
+    if (!/<main id="main-content">(?:(?!<\/main>)[\s\S])*<section/.test(html)) {
+      throw new Error('Pre-render produced an empty <main> — app.js likely failed to load');
+    }
     fs.writeFileSync('index.html', html);
     console.log('Successfully pre-rendered index.html');
     

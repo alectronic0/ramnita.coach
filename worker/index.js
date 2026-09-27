@@ -1,3 +1,10 @@
+const escapeHtml = (value) => String(value)
+  .replace(/&/g, "&amp;")
+  .replace(/</g, "&lt;")
+  .replace(/>/g, "&gt;")
+  .replace(/"/g, "&quot;")
+  .replace(/'/g, "&#39;");
+
 export default {
   async fetch(request, env) {
     // Handle CORS preflight requests
@@ -18,13 +25,14 @@ export default {
     try {
       // Parse the FormData sent from the frontend
       const formData = await request.formData();
-      const name = formData.get("name") || "Unknown";
-      const email = formData.get("email") || "No email provided";
-      const q1 = formData.get("q1") || "N/A";
-      const q2 = formData.get("q2") || "N/A";
-      const q3 = formData.get("q3") || "N/A";
-      const q4 = formData.get("q4") || "N/A";
-      const q5 = formData.get("q5") || "N/A";
+      const rawName = formData.get("name") || "Unknown";
+      const name = escapeHtml(rawName);
+      const email = escapeHtml(formData.get("email") || "No email provided");
+      const q1 = escapeHtml(formData.get("q1") || "N/A");
+      const q2 = escapeHtml(formData.get("q2") || "N/A");
+      const q3 = escapeHtml(formData.get("q3") || "N/A");
+      const q4 = escapeHtml(formData.get("q4") || "N/A");
+      const q5 = escapeHtml(formData.get("q5") || "N/A");
 
       // Build the email body
       const emailHtml = `
@@ -51,7 +59,7 @@ export default {
           api_key: env.SMTP2GO_API_KEY,
           to: [env.DESTINATION_EMAIL],
           sender: env.SENDER_EMAIL,
-          subject: `New Lead: ${name} (Raminta.coach Quiz)`,
+          subject: `New Lead: ${rawName} (Raminta.coach Quiz)`,
           html_body: emailHtml
         })
       });

@@ -507,6 +507,32 @@ function renderStart(d) {
     mainEl.innerHTML = htmlParts.join('\n');
   }
 
+  if (window.SiteContent.sections && window.SiteContent.sections.faq) {
+    injectFaqSchema(window.SiteContent.sections.faq.items);
+  }
+
+}
+
+// Google requires FAQPage markup to match the visible FAQ, so derive it from the same data
+function injectFaqSchema(items) {
+  if (document.getElementById('faq-schema')) return;
+
+  const parser = new DOMParser();
+  const toText = (html) => parser.parseFromString(html, 'text/html').body.textContent.trim();
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map(item => ({
+      '@type': 'Question',
+      name: toText(item.q),
+      acceptedAnswer: { '@type': 'Answer', text: toText(item.a) }
+    }))
+  };
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.id = 'faq-schema';
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
 }
 
 

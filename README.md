@@ -13,22 +13,24 @@ Hertfordshire.
 ## Structure
 
 ```
-index.html        Landing page (hero, about, journey, services, PT + map, FAQ, contact form)
-store.html        Shop — affiliate picks (Amazon tag minty03-21) + Linktree
-client.html       Client progress dashboard (beta, noindex)
-thanks.html       Contact-form success page
-404.html          Not-found page
-css/style.css     Design system & layout
-css/dashboard.css Client dashboard styles
-js/main.js        Mobile nav, scroll-reveal, footer year
-js/map.js         Leaflet training-locations map (coords config at top)
-js/dashboard.js   Progress charts (weight line, workouts bars, stat tiles)
-data/clients/     Per-client JSON data for the dashboard
-assets/           Favicon, gym logos, vendored Leaflet
-CNAME             Custom domain for GitHub Pages (raminta.coach)
-robots.txt        Crawler rules + sitemap pointer
-sitemap.xml       Sitemap for search engines
-SETUP.md          DNS, GitHub Pages, email-forwarding & form-activation guide
+index.html          Landing page shell — sections rendered from js/content.js by js/app.js
+calculator.html     Standalone calorie & macro calculator
+store.html          Shop — affiliate picks (Amazon tag minty03-21) + Linktree
+client.html         Client progress dashboard (beta, noindex)
+thanks.html         Contact-form success page
+404.html            Not-found page
+css/style.css       Design system & layout (all styles)
+js/content.js       Site content: sections, header/footer, FAQ, client data
+js/app.js           Renders content, nav, scroll-reveal, map, calculator, analytics
+js/cookie.js        Cookie consent (Vanilla CookieConsent + Google consent mode)
+scripts/prerender.js  CI step: bakes rendered HTML into index.html for crawlers
+worker/index.js     Cloudflare Worker — emails lead-quiz submissions via SMTP2GO
+terraform/          Cloudflare infrastructure
+assets/             Logos, gym logos, vendored Leaflet, img/ (coach photo)
+CNAME               Custom domain for GitHub Pages (raminta.coach)
+robots.txt          Crawler rules + sitemap pointer
+sitemap.xml         Sitemap for search engines
+SETUP.md            DNS, GitHub Pages, email-forwarding & form-activation guide
 ```
 
 ## Local preview
