@@ -2285,3 +2285,112 @@ document.addEventListener('change', function(e) {
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(window.updateQuizButtons, 100);
 });
+
+
+/* ==========================================
+   Unlisted gym guide (gyms-*.html)
+   ========================================== */
+
+function gymEsc(value) {
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function gymLink(href, text) {
+  if (!href) return '';
+  return `<a href="${gymEsc(href)}" target="_blank" rel="noopener">${gymEsc(text)}</a>`;
+}
+
+function gymList(items, cls) {
+  if (!items || !items.length) return '';
+  return `<ul class="${cls}">${items.map((i) => `<li>${gymEsc(i)}</li>`).join('')}</ul>`;
+}
+
+function renderGymMinty(m) {
+  const sessions = m.sessions.map((s) => `<tr><td>${gymEsc(s.pack)}</td><td>${gymEsc(s.price)}</td><td>${gymEsc(s.per)}</td></tr>`).join('');
+  const deal = m.riseDeal.map((r) => `<tr><td>${gymEsc(r.tier)}</td><td>${gymEsc(r.list)}</td><td><strong>${gymEsc(r.client)}</strong></td></tr>`).join('');
+  return `
+    <section class="card gym-card" id="minty">
+      <h2>${gymEsc(m.title)}</h2>
+      <p>${gymEsc(m.gymNote)}</p>
+      <div class="gym-table-wrap"><table class="gym-table">
+        <thead><tr><th scope="col">PT pack</th><th scope="col">Price</th><th scope="col">Per session</th></tr></thead>
+        <tbody>${sessions}</tbody>
+      </table></div>
+      <p class="gym-note">${gymEsc(m.sessionsNote)}</p>
+      <div class="gym-table-wrap"><table class="gym-table">
+        <thead><tr><th scope="col">Rise tier</th><th scope="col">List (12 months)</th><th scope="col">Anytime switch offer</th></tr></thead>
+        <tbody>${deal}</tbody>
+      </table></div>
+      <p class="gym-note">${gymEsc(m.riseDealNote)}</p>
+      ${m.nortonDeal ? `<p class="gym-note">${gymEsc(m.nortonDeal)}</p>` : ''}
+    </section>`;
+}
+
+function renderGymCard(g) {
+  const status = g.status ? ` <span class="gym-status">${gymEsc(g.status)}</span>` : '';
+  const links = [
+    gymLink(g.website, 'Website'),
+    g.join ? gymLink(g.join.href, g.join.text) : '',
+    gymLink(g.timetable, 'Class timetable')
+  ].filter(Boolean).join(' · ');
+  const prices = g.prices.length ? `
+      <div class="gym-table-wrap"><table class="gym-table">
+        <thead><tr><th scope="col">Membership</th><th scope="col">Price</th><th scope="col">Term</th><th scope="col">Includes</th></tr></thead>
+        <tbody>${g.prices.map((p) => `<tr><td>${gymEsc(p.tier)}</td><td>${gymEsc(p.price)}</td><td>${gymEsc(p.term)}</td><td>${gymEsc(p.extra)}</td></tr>`).join('')}</tbody>
+      </table></div>` : '';
+  const classes = g.classTypes.length ? `<h3>Classes</h3><p>${g.classTypes.map(gymEsc).join(', ')}</p>` : '';
+  const schedule = (g.schedule && g.schedule.length) ? `
+      <h3>Class schedule</h3>
+      <div class="gym-table-wrap"><table class="gym-table">
+        <thead><tr><th scope="col">Class</th><th scope="col">Per week</th><th scope="col">Usual start times</th></tr></thead>
+        <tbody>${g.schedule.map((c) => `<tr><td>${gymEsc(c.name)}</td><td>${gymEsc(c.perWeek)}</td><td>${gymEsc(c.times)}</td></tr>`).join('')}</tbody>
+      </table></div>
+      <p class="gym-note">${gymEsc(g.scheduleNote)}</p>` : '';
+  const facilities = g.facilities.length ? `<h3>Facilities</h3>${gymList(g.facilities, 'gym-plain')}` : '';
+  const proCon = (g.pros.length || g.cons.length) ? `
+      <div class="grid-2 gym-procon">
+        <div><h3>Good</h3>${gymList(g.pros, 'check-list')}</div>
+        <div><h3>Watch out for</h3>${gymList(g.cons, 'gym-cons')}</div>
+      </div>` : '';
+  const sources = g.sources.map((s) => gymLink(s, s.replace(/^https?:\/\//, ''))).join(', ');
+  return `
+    <section class="card gym-card" id="${gymEsc(g.id)}">
+      <h2>${gymEsc(g.name)}${status}</h2>
+      <p class="gym-meta">${gymEsc(g.address)}<br>${gymEsc(g.contact)}</p>
+      ${links ? `<p class="gym-links">${links}</p>` : ''}
+      <h3>Opening hours</h3>${gymList(g.hours, 'gym-plain')}
+      ${prices}
+      <p class="gym-note">${gymEsc(g.priceNote)}</p>
+      ${classes}${schedule}${facilities}${proCon}
+      <p class="gym-source">Sources: ${sources}</p>
+    </section>`;
+}
+
+function renderGymGuide(d) {
+  const toc = [`<li><a href="#minty">My rates and switch offers</a></li>`]
+    .concat(d.gyms.map((g) => `<li><a href="#${gymEsc(g.id)}">${gymEsc(g.name)}</a></li>`)).join('');
+  const head = d.columns.map((c) => `<th scope="col">${gymEsc(c)}</th>`).join('');
+  const rows = d.gyms.map((g) => `<tr><td><a href="#${gymEsc(g.id)}">${gymEsc(g.name)}</a></td><td>${gymEsc(g.from)}</td><td>${gymEsc(g.is247)}</td><td>${gymEsc(g.classes)}</td><td>${gymEsc(g.minty)}</td></tr>`).join('');
+  return `
+    <header class="gym-head">
+      <p class="eyebrow">${gymEsc(d.eyebrow)}</p>
+      <h1>${gymEsc(d.title)}</h1>
+      <p>${gymEsc(d.intro)}</p>
+    </header>
+    <nav class="card gym-card" aria-label="Contents"><h2>Contents</h2><ol class="gym-toc">${toc}</ol></nav>
+    <section class="card gym-card" id="compare">
+      <h2>At a glance</h2>
+      <div class="gym-table-wrap"><table class="gym-table"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>
+      <p class="gym-note">Checked ${gymEsc(d.asOf)}. Prices change; confirm with the gym before joining.</p>
+    </section>
+    ${renderGymMinty(d.minty)}
+    ${d.gyms.map(renderGymCard).join('')}`;
+}
+
+(function () {
+  const el = document.getElementById('gym-guide');
+  if (!el) return;
+  if (!window.SiteContent || !window.SiteContent.gymGuide) return;
+  el.innerHTML = renderGymGuide(window.SiteContent.gymGuide);
+})();
