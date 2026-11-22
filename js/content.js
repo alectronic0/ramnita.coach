@@ -561,43 +561,33 @@ window.SiteContent = {
   gymGuide: {
     eyebrow: "Client guide · unlisted",
     title: "Where to train in Welwyn Garden City",
-    intro: "Anytime Fitness WGC closes on 30 November 2026. From 1 December I'm training clients at Rise Gym. This page compares the local gyms so you can pick what suits you. Prices were checked on 21 November 2026 from each gym's own site; anything marked \"ask\" isn't published, so ring or email them before you sign up.",
-    asOf: "21 November 2026",
-    minty: {
-      title: "My rates and the switch offers",
-      gymNote: "Gym access is included in your session when you train with me, so you only need a membership if you want to train on your own between sessions.",
-      sessions: [
-        { pack: "10 sessions", price: "£500", per: "£50 each" },
-        { pack: "8 sessions", price: "£440", per: "£55 each" },
-        { pack: "4 sessions", price: "£240", per: "£60 each" },
-        { pack: "Single session", price: "£65", per: "£65" }
-      ],
-      sessionsNote: "Existing clients. New clients: £65 to £75 a session.",
-      riseDeal: [
-        { tier: "Platinum", list: "£70", client: "£59" },
-        { tier: "Elite", list: "£90", client: "£76" },
-        { tier: "Elite Plus", list: "£115", client: "£97" }
-      ],
-      riseDealNote: "Rise offer for Anytime Fitness members who move before 31 December 2026: £50 joining fee, the rest of 2026 free, then 15% off the headline (12-month) rate from January.",
-      nortonDeal: "Norton offer for Anytime Fitness members: no joining fee, £40 for December, then £55 a month from January."
-    },
-    columns: ["Gym", "From (per month)", "24/7", "Classes included", "Train with Minty here?"],
+    intro: "Anytime Fitness WGC closes on 30 November 2026. This page compares the local gyms so you can pick what suits you. Prices were checked on 21 and 22 November 2026 from each gym's own site; anything marked \"ask\" isn't published, so ring or email them before you sign up.",
+    asOf: "22 November 2026",
+    columns: ["Gym", "Membership", "Per month", "Includes"],
     gyms: [
       {
         id: "rise", name: "Rise Gym", status: "",
         address: "Unit B, Fretherne Road, Welwyn Garden City AL8 6PZ (3 min walk from the station)",
-        from: "£70 (£59 Anytime switch offer)", is247: "No", classes: "Yes, about 19 types", minty: "Yes, from 1 Dec",
+        from: "£70 (£59 Anytime switch offer)", is247: "No", classes: "Yes, about 19 types",
         website: "https://risegym.co.uk/clubs/rise-gym-welwyn-garden-city/",
         join: { text: "Join online", href: "https://booking.risegym.co.uk/Join/Step1.aspx?site=1" },
         timetable: "https://booking.risegym.co.uk/CCE/ClassCalendar.aspx?site=1",
         contact: "01707 892028 · wgcity@risegym.co.uk",
         hours: ["Mon to Fri 5:30am to 10pm", "Sat 7am to 6pm", "Sun 8am to 6pm"],
         prices: [
-          { tier: "Platinum (WGC only)", price: "£70 / £85 / £100", term: "12 / 6 / 1 month", extra: "All standard classes, Reformer £12 a class, 2h free Howard Centre parking" },
-          { tier: "Elite (WGC + Stevenage)", price: "£90 / £105 / £120", term: "12 / 6 / 1 month", extra: "Adds Stevenage, 5 Reformer a month, 2 guest passes a month, towels, 3h free Long Stay parking" },
-          { tier: "Elite Plus (WGC + Stevenage)", price: "£115 / £130 / £145", term: "12 / 6 / 1 month", extra: "Adds Revive Spa: saunas, ice baths" }
+          { tier: "Platinum (WGC only)", price: "£70 / £85 / £100", term: "12 / 6 / 1 month", extra: "All standard classes, Reformer £12 a class, 2h free Howard Centre parking", glance: { price: "£70 (£59 switch offer)", includes: "WGC gym, all standard classes, Reformer £12 a class" } },
+          { tier: "Elite (WGC + Stevenage)", price: "£90 / £105 / £120", term: "12 / 6 / 1 month", extra: "Adds Stevenage, 5 Reformer a month, 2 guest passes a month, towels, 3h free Long Stay parking", glance: { price: "£90 (£76 switch offer)", includes: "Platinum plus Stevenage, 5 Reformer a month, guest passes, towels" } },
+          { tier: "Elite Plus (WGC + Stevenage)", price: "£115 / £130 / £145", term: "12 / 6 / 1 month", extra: "Adds Revive Spa: saunas, ice baths", glance: { price: "£115 (£97 switch offer)", includes: "Elite plus Revive Spa: saunas, ice baths" } }
         ],
-        priceNote: "Price depends on tier and how long you commit: £70 is Platinum on 12 months, £145 is Elite Plus on a 1-month rolling term. £50 joining fee on every tier, includes 1 PT session. Anytime Fitness members get 15% off: see the switch offers above.",
+        offer: {
+          rows: [
+            { tier: "Platinum", list: "£70", client: "£59" },
+            { tier: "Elite", list: "£90", client: "£76" },
+            { tier: "Elite Plus", list: "£115", client: "£97" }
+          ],
+          note: "Rise offer for Anytime Fitness members who move before 31 December 2026: £50 joining fee, the rest of 2026 free, then 15% off the headline (12-month) rate from January."
+        },
+        priceNote: "Price depends on tier and how long you commit: £70 is Platinum on 12 months, £145 is Elite Plus on a 1-month rolling term. £50 joining fee on every tier, includes 1 PT session. Anytime Fitness members get 15% off: see below.",
         schedule: [
           { name: "Reformer Pilates", perWeek: 14, times: "12pm, 1pm, 2pm, 5:15pm, 6pm, 6:15pm" },
           { name: "Rise:Build", perWeek: 5, times: "6:30am, 9:30am, 9:45am, 6:15pm, 6:30pm" },
@@ -622,21 +612,21 @@ window.SiteContent = {
         scheduleNote: "Snapshot of the live timetable for 21 Nov to 4 Dec 2026, averaged per week. Book up to 3 days ahead in the Rise app. Calisthenics also runs but wasn't on this fortnight's timetable.",
         classTypes: ["Reformer Pilates", "Hot Pilates", "Yoga (hot, warm, power)", "HYROX", "Spin (Rise:Ride)", "Boxing (Rise:Box)", "Rise:Build", "Rise:Burn", "Calisthenics"],
         facilities: ["Strength, HYROX and combat zones", "Calisthenics rig", "Spin, HIIT, yoga and pilates studios", "Revive Spa (Elite Plus)", "Fuel bar and co-working space"],
-        pros: ["Biggest class range in town", "Early 5:30am weekday opening", "Boutique changing rooms and spa", "Where I train clients from December"],
+        pros: ["Biggest class range in town", "Early 5:30am weekday opening", "Boutique changing rooms and spa"],
         cons: ["Most expensive gym on this list", "Popular classes fill up, book ahead", "Cancelling needs a full calendar month's written notice", "No free on-site parking, only Howard Centre or Long Stay hours"],
         sources: ["https://risegym.co.uk/become-a-member/", "https://risegym.co.uk/clubs/rise-gym-welwyn-garden-city/"]
       },
       {
         id: "norton", name: "Norton Gym", status: "",
         address: "26–28 Hyde Way, Welwyn Garden City AL7 3UQ (5 min walk from the station)",
-        from: "£55 (Anytime switch offer)", is247: "No", classes: "Yes, 10 types free", minty: "Yes",
+        from: "£55 (Anytime switch offer)", is247: "No", classes: "Yes, 10 types free",
         website: "https://nortongymwgc.co.uk/",
         join: { text: "Join online", href: "https://secure.ashbournemanagement.co.uk/signupUK/index.aspx?fn=GRAF1" },
         timetable: "https://nortongymwgc.co.uk/pages/classes",
         contact: "01707 376199 · info@nortongymwgc.co.uk",
         hours: ["Mon to Fri 5am to 10pm", "Sat 7am to 7pm", "Sun 8am to 6pm"],
         prices: [
-          { tier: "Anytime Fitness switch offer", price: "£55", term: "From January", extra: "No joining fee, £40 for December" },
+          { tier: "Anytime Fitness switch offer", price: "£55", term: "From January", extra: "No joining fee, £40 for December", glance: { price: "£55 (£40 in Dec)", includes: "Gym and 10 class types, no joining fee" } },
           { tier: "12-month contract", price: "Ask", term: "12 months", extra: "£0 sign-up" },
           { tier: "Rolling monthly", price: "Ask", term: "Monthly", extra: "£0 sign-up" }
         ],
@@ -650,16 +640,16 @@ window.SiteContent = {
       {
         id: "gymgroup", name: "The Gym Group", status: "",
         address: "Unit 29, The Howard Centre, Welwyn Garden City AL8 6HA (1 min walk from the station)",
-        from: "£22.99 (off-peak)", is247: "Yes (off-peak: not 4pm to 8pm weekdays)", classes: "Yes, free", minty: "No, outside PTs not allowed",
+        from: "£22.99 (off-peak)", is247: "Yes (off-peak: not 4pm to 8pm weekdays)", classes: "Yes, free",
         website: "https://www.thegymgroup.com/find-a-gym/welwyn-garden-city-gyms/welwyn-garden-city/",
         join: { text: "Join on the gym page", href: "https://www.thegymgroup.com/find-a-gym/welwyn-garden-city-gyms/welwyn-garden-city/" },
         timetable: "https://www.thegymgroup.com/gym-classes/classes-timetable/welwyn-garden-city-classes/",
         contact: "No phone or email at the gym; support via support.thegymgroup.com",
         hours: ["Open 24/7", "Off-peak members: any time except Mon to Fri 4pm to 8pm"],
         prices: [
-          { tier: "Off-peak", price: "£22.99", term: "Rolling monthly", extra: "This gym only. Any time except Mon to Fri 4pm to 8pm (weekends are all day). £10 joining fee" },
-          { tier: "Standard", price: "£28.99", term: "Rolling monthly", extra: "This gym only, 24/7. £10 joining fee" },
-          { tier: "Ultimate", price: "£34.99", term: "Rolling monthly", extra: "24/7 plus every Gym Group gym, guest passes, 1 free freeze, Fiit workouts, body tracking. First month £28.99, £10 joining fee" },
+          { tier: "Off-peak", price: "£22.99", term: "Rolling monthly", extra: "This gym only. Any time except Mon to Fri 4pm to 8pm (weekends are all day). £10 joining fee", glance: { price: "£22.99", includes: "This gym and classes, not weekdays 4pm to 8pm" } },
+          { tier: "Standard", price: "£28.99", term: "Rolling monthly", extra: "This gym only, 24/7. £10 joining fee", glance: { price: "£28.99", includes: "This gym 24/7 and classes" } },
+          { tier: "Ultimate", price: "£34.99", term: "Rolling monthly", extra: "24/7 plus every Gym Group gym, guest passes, 1 free freeze, Fiit workouts, body tracking. First month £28.99, £10 joining fee", glance: { price: "£34.99", includes: "Every Gym Group gym 24/7, guest passes, Fiit workouts" } },
           { tier: "Ultimate saver", price: "£379 / £299", term: "12 / 9 months upfront", extra: "No joining fee" },
           { tier: "Standard saver", price: "£329 / £239", term: "12 / 9 months upfront", extra: "No joining fee" },
           { tier: "Day pass", price: "£11.99", term: "1 day (3 days £19.99)", extra: "" }
@@ -685,43 +675,43 @@ window.SiteContent = {
         classTypes: ["HYROX", "Hybrid 45", "Strength (barbell, dumbbell)", "Weights for Women", "Body Conditioning", "Circuits", "Pilates", "Legs Bums & Tums"],
         facilities: ["14 treadmills, rowers, bikes, cross trainers", "8 Olympic rigs and squat racks", "Dumbbells 2 to 50kg", "HIIT zone with sleds and ski ergs", "Free parking"],
         pros: ["Only 24/7 gym in town", "Cheapest by far", "No contract on monthly plans", "Good free-weights and rig area"],
-        cons: ["Its rules ban outside PTs, so I can't train you here", "Busy at peak", "No staffed phone line", "Popular classes book out in the app"],
+        cons: ["Outside PTs not allowed", "Busy at peak", "No staffed phone line", "Popular classes book out in the app"],
         sources: ["https://www.thegymgroup.com/find-a-gym/welwyn-garden-city-gyms/welwyn-garden-city/", "https://www.thegymgroup.com/legal/the-gym-group-membership-rules"]
       },
       {
         id: "gosling", name: "Gosling Sports Park (Better)", status: "",
         address: "Stanborough Road, Welwyn Garden City AL8 6XE",
-        from: "Ask (only in the join portal)", is247: "No", classes: "Yes", minty: "No, Better's own PTs only",
+        from: "Ask (only in the join portal)", is247: "No", classes: "Yes",
         website: "https://www.better.org.uk/leisure-centre/welwyn/gosling-sports-park",
         join: { text: "Better join portal", href: "https://memberships.better.org.uk/centre/gosling-sports-park" },
         timetable: "https://www.better.org.uk/leisure-centre/welwyn/gosling-sports-park/timetable",
         contact: "Gosling.enquiries@gll.org",
         hours: ["Mon to Fri 6am to 10pm", "Sat and Sun 8am to 6pm"],
         prices: [
-          { tier: "Monthly gym (single or multi-centre)", price: "Ask", term: "Rolling monthly or annual", extra: "Gym, swim and classes" },
+          { tier: "Monthly gym (single or multi-centre)", price: "Ask", term: "Rolling monthly or annual", extra: "Gym, swim and classes", glance: { price: "Ask", includes: "Gym, swim and classes" } },
           { tier: "Off-peak", price: "Ask", term: "Rolling monthly or annual", extra: "" },
-          { tier: "Flex", price: "£10 a month", term: "Rolling, cancel any time", extra: "£12.50 setup; discounted pay-as-you-go" },
+          { tier: "Flex", price: "£10 a month", term: "Rolling, cancel any time", extra: "£12.50 setup; discounted pay-as-you-go", glance: { price: "£10", includes: "Cheaper pay-as-you-go visits (£9 instead of £11.95)" } },
           { tier: "Casual gym visit", price: "£11.95", term: "Per visit", extra: "£9 with Flex or pay-as-you-go" }
         ],
         priceNote: "Better only shows monthly prices inside its join portal, and doesn't publish its off-peak hours. Flex is a cheap monthly fee that discounts pay-as-you-go visits rather than giving free entry. Concessions for students, over-66s and others.",
         classTypes: ["HIIT", "Group cycle", "Boxfit", "Yoga", "Pilates", "Body conditioning", "Circuits", "Women-only lifting"],
         facilities: ["About 100 Technogym stations, 2 squat racks, sled track", "2 studios", "Spa pool and health suite", "Tennis, squash, ski slope, velodrome on site", "Free parking for direct-debit members"],
         pros: ["Huge site with lots beyond the gym", "Rolling monthly, no contract", "Induction included", "Free parking for members"],
-        cons: ["Private PTs are banned, so I can't train you here", "Changing room cleanliness is a common complaint", "Closes 6pm at weekends", "Non-member parking is charged"],
+        cons: ["Outside PTs not allowed, Better's own PTs only", "Changing room cleanliness is a common complaint", "Closes 6pm at weekends", "Non-member parking is charged"],
         sources: ["https://www.better.org.uk/leisure-centre/welwyn/gosling-sports-park", "https://better.org.uk/faqs/articles/can-i-train-with-other-people-in-the-gym"]
       },
       {
         id: "ttz", name: "TTZ CrossFit (The Training Zone)", status: "",
         address: "Unit 3, Swallow End, Welwyn Garden City AL7 1JA",
-        from: "£120 beginner month", is247: "No", classes: "Class-based", minty: "Ask the gym",
+        from: "£120 beginner month", is247: "No", classes: "Class-based",
         website: "https://www.thetrainingzoneuk.com/ttzcrossfit",
         join: { text: "Memberships on TeamUp", href: "https://goteamup.com/p/10483247-the-training-zone/memberships/" },
         timetable: "https://www.thetrainingzoneuk.com/class-schedule",
         contact: "01707 953972 (also WhatsApp)",
         hours: ["Classes Mon to Fri 6am to about 8:30pm", "Short Saturday and Sunday sessions"],
         prices: [
-          { tier: "Beginner's Package", price: "£120", term: "30 days", extra: "2 PT sessions, up to 5 classes a week" },
-          { tier: "Core / Platinum", price: "Ask", term: "Rolling monthly", extra: "Platinum adds open gym; book a free consultation for prices" },
+          { tier: "Beginner's Package", price: "£120", term: "30 days", extra: "2 PT sessions, up to 5 classes a week", glance: { price: "£120 (first 30 days)", includes: "2 PT sessions, up to 5 classes a week" } },
+          { tier: "Core / Platinum", price: "Ask", term: "Rolling monthly", extra: "Platinum adds open gym; book a free consultation for prices", glance: { price: "Ask", includes: "CrossFit classes; Platinum adds open gym" } },
           { tier: "6-class drop-in pack", price: "£90", term: "Valid 2 months", extra: "£15 a class" }
         ],
         priceNote: "No joining fee, no long contract. 20% off your first full month after the beginner course. 2 weeks' notice to cancel.",
@@ -734,14 +724,14 @@ window.SiteContent = {
       {
         id: "maverick", name: "Maverick Gym", status: "",
         address: "17b Southfield, Welwyn Garden City AL7 4ST",
-        from: "Ask", is247: "No", classes: "Small-group PT", minty: "Ask the gym",
+        from: "Ask", is247: "No", classes: "Small-group PT",
         website: "https://www.maverickgym.co.uk",
         join: { text: "Timetable and booking", href: "https://legitfit.com/p/timetable/maverick" },
         timetable: "https://legitfit.com/p/timetable/maverick",
         contact: "07780 939291 · maverickgymwgc@gmail.com",
         hours: ["Mon to Fri 6am to 10pm", "Sat 9am to 3pm", "Sun 9am to 2pm"],
         prices: [
-          { tier: "SGPT 2 a week", price: "Ask", term: "No contract", extra: "Includes open gym" },
+          { tier: "SGPT 2 a week", price: "Ask", term: "No contract", extra: "Includes open gym", glance: { price: "Ask", includes: "Small-group PT plus open gym (3 a week and unlimited too)" } },
           { tier: "SGPT 3 a week", price: "Ask", term: "No contract", extra: "Includes open gym" },
           { tier: "SGPT unlimited", price: "Ask", term: "No contract", extra: "Includes open gym" }
         ],
@@ -753,18 +743,28 @@ window.SiteContent = {
         sources: ["https://www.maverickgym.co.uk"]
       },
       {
-        id: "w10", name: "W10 PT Gym", status: "Likely closed",
-        address: "The Wheat Quarter, Welwyn Garden City AL7 3BU",
-        from: "n/a", is247: "No", classes: "n/a", minty: "n/a",
-        website: "",
-        join: null,
-        timetable: "",
-        contact: "01707 954273 (directory listing, unconfirmed)",
-        hours: ["Unconfirmed"],
-        prices: [],
-        priceNote: "W10's website now redirects to Foundry, which lists no Welwyn site. Treat it as closed unless they say otherwise.",
-        classTypes: [], facilities: [], pros: [], cons: [],
-        sources: ["https://foundryfit.com/"]
+        id: "farmfitness", name: "Farm Fitness Tewinbury (the barn gym)", status: "",
+        address: "Tewinbury Farm, Hertford Road, Welwyn AL6 0JB (outside WGC, a short drive)",
+        from: "£85", is247: "No", classes: "Yes, on Classes memberships",
+        website: "https://farmfitnesstewinbury.co.uk/",
+        join: { text: "Memberships", href: "https://farmfitnesstewinbury.co.uk/#memberships" },
+        timetable: "https://farmfitnesstewinbury.co.uk/timetable/",
+        contact: "Contact form on the website",
+        hours: ["Mon to Fri 6am to 8:30pm", "Sat 7am to 2pm", "Sun 8am to 12pm"],
+        prices: [
+          { tier: "Open Gym + Recovery Yard", price: "£85", term: "Rolling monthly", extra: "Open gym, sauna and ice baths", glance: { price: "£85", includes: "Open gym, sauna, ice baths" } },
+          { tier: "Classes + Recovery Yard", price: "£110", term: "Rolling monthly", extra: "Unlimited classes, sauna and ice baths", glance: { price: "£110", includes: "Unlimited classes, sauna, ice baths" } },
+          { tier: "Classes + Open Gym + Recovery Yard", price: "£120", term: "Rolling monthly", extra: "Everything", glance: { price: "£120", includes: "Classes, open gym, sauna, ice baths" } },
+          { tier: "Class pack", price: "£18 / £80", term: "1 class (30 days) / 5 classes (60 days)", extra: "No membership needed" },
+          { tier: "Open gym day pass", price: "£15", term: "One day", extra: "No membership needed" },
+          { tier: "Recovery Yard session", price: "£15", term: "60 minutes", extra: "Sauna, ice baths, outdoor showers" }
+        ],
+        priceNote: "No minimum term and no joining fee listed; 1 month's notice to cancel.",
+        classTypes: ["FARMFIT functional training", "Group and small-group sessions"],
+        facilities: ["Indoor and outdoor training areas on 700 acres of farmland", "Recovery Yard: sauna, ice baths, outdoor showers", "On-site restaurant (Tewinbury)"],
+        pros: ["Sauna and ice baths in every membership", "No contract", "Fresh-air outdoor training, not a crowded gym"],
+        cons: ["Not walkable from WGC", "Short weekend hours", "Classes take priority over open gym space"],
+        sources: ["https://farmfitnesstewinbury.co.uk/", "https://farmfitnesstewinbury.co.uk/drop-in-open-gym-classes/"]
       }
     ]
   }

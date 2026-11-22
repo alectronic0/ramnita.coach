@@ -2306,25 +2306,16 @@ function gymList(items, cls) {
   return `<ul class="${cls}">${items.map((i) => `<li>${gymEsc(i)}</li>`).join('')}</ul>`;
 }
 
-function renderGymMinty(m) {
-  const sessions = m.sessions.map((s) => `<tr><td>${gymEsc(s.pack)}</td><td>${gymEsc(s.price)}</td><td>${gymEsc(s.per)}</td></tr>`).join('');
-  const deal = m.riseDeal.map((r) => `<tr><td>${gymEsc(r.tier)}</td><td>${gymEsc(r.list)}</td><td><strong>${gymEsc(r.client)}</strong></td></tr>`).join('');
+function renderGymOffer(o) {
+  if (!o) return '';
+  const rows = o.rows.map((r) => `<tr><td>${gymEsc(r.tier)}</td><td>${gymEsc(r.list)}</td><td><strong>${gymEsc(r.client)}</strong></td></tr>`).join('');
   return `
-    <section class="card gym-card" id="minty">
-      <h2>${gymEsc(m.title)}</h2>
-      <p>${gymEsc(m.gymNote)}</p>
+      <h3>Anytime Fitness switch offer</h3>
       <div class="gym-table-wrap"><table class="gym-table">
-        <thead><tr><th scope="col">PT pack</th><th scope="col">Price</th><th scope="col">Per session</th></tr></thead>
-        <tbody>${sessions}</tbody>
+        <thead><tr><th scope="col">Tier</th><th scope="col">Usual price (12 months)</th><th scope="col">Anytime offer</th></tr></thead>
+        <tbody>${rows}</tbody>
       </table></div>
-      <p class="gym-note">${gymEsc(m.sessionsNote)}</p>
-      <div class="gym-table-wrap"><table class="gym-table">
-        <thead><tr><th scope="col">Rise tier</th><th scope="col">List (12 months)</th><th scope="col">Anytime switch offer</th></tr></thead>
-        <tbody>${deal}</tbody>
-      </table></div>
-      <p class="gym-note">${gymEsc(m.riseDealNote)}</p>
-      ${m.nortonDeal ? `<p class="gym-note">${gymEsc(m.nortonDeal)}</p>` : ''}
-    </section>`;
+      <p class="gym-note">${gymEsc(o.note)}</p>`;
 }
 
 function renderGymCard(g) {
@@ -2362,16 +2353,21 @@ function renderGymCard(g) {
       <h3>Opening hours</h3>${gymList(g.hours, 'gym-plain')}
       ${prices}
       <p class="gym-note">${gymEsc(g.priceNote)}</p>
+      ${renderGymOffer(g.offer)}
       ${classes}${schedule}${facilities}${proCon}
       <p class="gym-source">Sources: ${sources}</p>
     </section>`;
 }
 
 function renderGymGuide(d) {
-  const toc = [`<li><a href="#minty">My rates and switch offers</a></li>`]
-    .concat(d.gyms.map((g) => `<li><a href="#${gymEsc(g.id)}">${gymEsc(g.name)}</a></li>`)).join('');
+  const toc = d.gyms.map((g) => `<li><a href="#${gymEsc(g.id)}">${gymEsc(g.name)}</a></li>`).join('');
   const head = d.columns.map((c) => `<th scope="col">${gymEsc(c)}</th>`).join('');
-  const rows = d.gyms.map((g) => `<tr><td><a href="#${gymEsc(g.id)}">${gymEsc(g.name)}</a></td><td>${gymEsc(g.from)}</td><td>${gymEsc(g.is247)}</td><td>${gymEsc(g.classes)}</td><td>${gymEsc(g.minty)}</td></tr>`).join('');
+  const rows = d.gyms.map((g) => {
+    const tiers = g.prices.filter((p) => p.glance);
+    const name = `<a href="#${gymEsc(g.id)}">${gymEsc(g.name)}</a>`;
+    if (!tiers.length) return `<tr><td>${name}</td><td>${gymEsc(g.status || '')}</td><td>${gymEsc(g.from)}</td><td></td></tr>`;
+    return tiers.map((p, i) => `<tr>${i ? '' : `<td rowspan="${tiers.length}">${name}</td>`}<td>${gymEsc(p.tier)}</td><td>${gymEsc(p.glance.price)}</td><td>${gymEsc(p.glance.includes)}</td></tr>`).join('');
+  }).join('');
   return `
     <header class="gym-head">
       <p class="eyebrow">${gymEsc(d.eyebrow)}</p>
@@ -2382,9 +2378,8 @@ function renderGymGuide(d) {
     <section class="card gym-card" id="compare">
       <h2>At a glance</h2>
       <div class="gym-table-wrap"><table class="gym-table"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>
-      <p class="gym-note">Checked ${gymEsc(d.asOf)}. Prices change; confirm with the gym before joining.</p>
+      <p class="gym-note">Checked ${gymEsc(d.asOf)}. Rise prices are the 12-month rate; shorter terms cost more (see Rise below). Prices change; confirm with the gym before joining.</p>
     </section>
-    ${renderGymMinty(d.minty)}
     ${d.gyms.map(renderGymCard).join('')}`;
 }
 
