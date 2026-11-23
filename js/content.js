@@ -562,11 +562,21 @@ window.SiteContent = {
     eyebrow: "Client guide · unlisted",
     title: "Where to train in Welwyn Garden City",
     intro: "Anytime Fitness WGC closes on 30 November 2026. This page compares the local gyms so you can pick what suits you. Prices were checked on 21 and 22 November 2026 from each gym's own site; anything marked \"ask\" isn't published, so ring or email them before you sign up.",
-    asOf: "22 November 2026",
-    columns: ["Gym", "Membership", "Per month", "Includes"],
+    asOf: "23 November 2026",
+    coaching: {
+      title: "Prefer a plan to follow?",
+      text: "Wherever you train next, gym or home, I coach online: a programme built for your setup, nutrition focused on losing fat not muscle, weekly check-ins and messaging, a 12-week plan and the Hubfit app. Founding rate for members of this gym: £79 a month for your first 3 months (12 weeks), usually £99 a month. Limited spaces available (8 people).",
+      links: [
+        { text: "About online coaching", href: "https://raminta.coach/#online-coaching" },
+        { text: "WhatsApp me", href: "https://wa.me/447507524751" },
+        { text: "Free weight loss calculator", href: "https://raminta.coach/calculator.html" }
+      ]
+    },
+    columns: ["Gym, walk from WGC station, hours", "Membership", "Per month", "Includes"],
     gyms: [
       {
         id: "rise", name: "Rise Gym", status: "",
+        walk: "3 min walk",
         address: "Unit B, Fretherne Road, Welwyn Garden City AL8 6PZ (3 min walk from the station)",
         from: "£70 (£59 Anytime switch offer)", is247: "No", classes: "Yes, about 19 types",
         website: "https://risegym.co.uk/clubs/rise-gym-welwyn-garden-city/",
@@ -618,6 +628,7 @@ window.SiteContent = {
       },
       {
         id: "norton", name: "Norton Gym", status: "",
+        walk: "5 min walk",
         address: "26–28 Hyde Way, Welwyn Garden City AL7 3UQ (5 min walk from the station)",
         from: "£55 (Anytime switch offer)", is247: "No", classes: "Yes, 10 types free",
         website: "https://nortongymwgc.co.uk/",
@@ -639,6 +650,7 @@ window.SiteContent = {
       },
       {
         id: "gymgroup", name: "The Gym Group", status: "",
+        walk: "1 min walk (above the station)",
         address: "Unit 29, The Howard Centre, Welwyn Garden City AL8 6HA (1 min walk from the station)",
         from: "£22.99 (off-peak)", is247: "Yes (off-peak: not 4pm to 8pm weekdays)", classes: "Yes, free",
         website: "https://www.thegymgroup.com/find-a-gym/welwyn-garden-city-gyms/welwyn-garden-city/",
@@ -680,6 +692,7 @@ window.SiteContent = {
       },
       {
         id: "gosling", name: "Gosling Sports Park (Better)", status: "",
+        walk: "About 20 min walk",
         address: "Stanborough Road, Welwyn Garden City AL8 6XE",
         from: "Ask (only in the join portal)", is247: "No", classes: "Yes",
         website: "https://www.better.org.uk/leisure-centre/welwyn/gosling-sports-park",
@@ -702,6 +715,7 @@ window.SiteContent = {
       },
       {
         id: "ttz", name: "TTZ CrossFit (The Training Zone)", status: "",
+        walk: "About 15 min walk",
         address: "Unit 3, Swallow End, Welwyn Garden City AL7 1JA",
         from: "£120 beginner month", is247: "No", classes: "Class-based",
         website: "https://www.thetrainingzoneuk.com/ttzcrossfit",
@@ -723,6 +737,7 @@ window.SiteContent = {
       },
       {
         id: "maverick", name: "Maverick Gym", status: "",
+        walk: "About 25 min walk",
         address: "17b Southfield, Welwyn Garden City AL7 4ST",
         from: "Ask", is247: "No", classes: "Small-group PT",
         website: "https://www.maverickgym.co.uk",
@@ -744,6 +759,7 @@ window.SiteContent = {
       },
       {
         id: "farmfitness", name: "Farm Fitness Tewinbury (the barn gym)", status: "",
+        walk: "About 50 min walk, 10 min drive",
         address: "Tewinbury Farm, Hertford Road, Welwyn AL6 0JB (outside WGC, a short drive)",
         from: "£85", is247: "No", classes: "Yes, on Classes memberships",
         website: "https://farmfitnesstewinbury.co.uk/",

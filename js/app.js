@@ -2359,12 +2359,24 @@ function renderGymCard(g) {
     </section>`;
 }
 
+function renderGymCoaching(c) {
+  if (!c) return '';
+  const links = c.links.map((l) => gymLink(l.href, l.text)).join(' · ');
+  return `
+    <section class="card gym-card" id="coaching">
+      <h2>${gymEsc(c.title)}</h2>
+      <p class="gym-note">${gymEsc(c.text)}</p>
+      <p class="gym-links">${links}</p>
+    </section>`;
+}
+
 function renderGymGuide(d) {
   const toc = d.gyms.map((g) => `<li><a href="#${gymEsc(g.id)}">${gymEsc(g.name)}</a></li>`).join('');
   const head = d.columns.map((c) => `<th scope="col">${gymEsc(c)}</th>`).join('');
   const rows = d.gyms.map((g) => {
     const tiers = g.prices.filter((p) => p.glance);
-    const name = `<a href="#${gymEsc(g.id)}">${gymEsc(g.name)}</a>`;
+    const classesLink = g.timetable ? `<br>${gymLink(g.timetable, 'Class timetable')}` : '';
+    const name = `<a href="#${gymEsc(g.id)}"><strong>${gymEsc(g.name)}</strong></a><br><span class="gym-meta">${gymEsc(g.walk || '')}<br>${g.hours.map(gymEsc).join('<br>')}</span>${classesLink}`;
     if (!tiers.length) return `<tr><td>${name}</td><td>${gymEsc(g.status || '')}</td><td>${gymEsc(g.from)}</td><td></td></tr>`;
     return tiers.map((p, i) => `<tr>${i ? '' : `<td rowspan="${tiers.length}">${name}</td>`}<td>${gymEsc(p.tier)}</td><td>${gymEsc(p.glance.price)}</td><td>${gymEsc(p.glance.includes)}</td></tr>`).join('');
   }).join('');
@@ -2378,9 +2390,10 @@ function renderGymGuide(d) {
     <section class="card gym-card" id="compare">
       <h2>At a glance</h2>
       <div class="gym-table-wrap"><table class="gym-table"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>
-      <p class="gym-note">Checked ${gymEsc(d.asOf)}. Rise prices are the 12-month rate; shorter terms cost more (see Rise below). Prices change; confirm with the gym before joining.</p>
+      <p class="gym-note">Checked ${gymEsc(d.asOf)}. Walk times are from Welwyn Garden City station: Rise, Norton and The Gym Group timed by Minty, the rest estimated from OpenStreetMap routes. Rise prices are the 12-month rate; shorter terms cost more (see Rise below). Prices change; confirm with the gym before joining.</p>
     </section>
-    ${d.gyms.map(renderGymCard).join('')}`;
+    ${d.gyms.map(renderGymCard).join('')}
+    ${renderGymCoaching(d.coaching)}`;
 }
 
 (function () {
