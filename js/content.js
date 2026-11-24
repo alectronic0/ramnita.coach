@@ -622,8 +622,8 @@ window.SiteContent = {
         scheduleNote: "Snapshot of the live timetable for 21 Nov to 4 Dec 2026, averaged per week. Book up to 3 days ahead in the Rise app. Calisthenics also runs but wasn't on this fortnight's timetable.",
         classTypes: ["Reformer Pilates", "Hot Pilates", "Yoga (hot, warm, power)", "HYROX", "Spin (Rise:Ride)", "Boxing (Rise:Box)", "Rise:Build", "Rise:Burn", "Calisthenics"],
         facilities: ["Strength, HYROX and combat zones", "Calisthenics rig", "Spin, HIIT, yoga and pilates studios", "Revive Spa (Elite Plus)", "Fuel bar and co-working space"],
-        pros: ["Biggest class range in town", "Early 5:30am weekday opening", "Boutique changing rooms and spa"],
-        cons: ["Most expensive gym on this list", "Popular classes fill up, book ahead", "Cancelling needs a full calendar month's written notice", "No free on-site parking, only Howard Centre or Long Stay hours"],
+        pros: ["Free parking: 2h in the Howard Centre, or 3h in the Long Stay car park opposite with Elite and Elite Plus", "Biggest class range in town", "Early 5:30am weekday opening", "Boutique changing rooms and spa"],
+        cons: ["Most expensive gym on this list", "Popular classes fill up, book ahead", "Cancelling needs a full calendar month's written notice"],
         sources: ["https://risegym.co.uk/become-a-member/", "https://risegym.co.uk/clubs/rise-gym-welwyn-garden-city/"]
       },
       {
@@ -644,7 +644,7 @@ window.SiteContent = {
         priceNote: "Norton doesn't publish its standard prices; they show inside the join form. The switch offer came from Norton via Minty.",
         classTypes: ["Barbell", "Spin", "Step", "Boxfit", "BodyBlitz", "Circuits", "Burn'N'Build", "Pilates", "Yoga", "Perform45"],
         facilities: ["Huge free-weights area, dumbbells to 95kg", "Rare kit: Nautilus, Hammer Strength, Gym80, Cybex", "Spin bikes, WattBike, Jacob's ladder", "Martial arts area with heavy bags", "Protein bar"],
-        pros: ["Huge equipment range, little waiting", "Free classes and free induction", "£0 sign-up and free parking", "Earliest opening in town, 5am weekdays", "Friendly, well-rated staff"],
+        pros: ["Huge equipment range, little waiting", "Free classes and free induction", "£0 sign-up and free on-site parking, no time limit stated", "Earliest opening in town, 5am weekdays", "Friendly, well-rated staff"],
         cons: ["Prices not published", "Tight layout, busy at peak", "Parking fills up when busy", "Stairs between floors"],
         sources: ["https://nortongymwgc.co.uk/pages/memberships", "https://nortongymwgc.co.uk/pages/classes"]
       },
@@ -683,7 +683,7 @@ window.SiteContent = {
         ],
         scheduleNote: "Snapshot of the live timetable for 21 to 27 Nov 2026. Book up to 7 days ahead in The Gym Group app. Classes run 6:30am to 8pm and popular ones fill up.",
         classTypes: ["HYROX", "Hybrid 45", "Strength (barbell, dumbbell)", "Weights for Women", "Body Conditioning", "Circuits", "Pilates", "Legs Bums & Tums"],
-        facilities: ["14 treadmills, rowers, bikes, cross trainers", "8 Olympic rigs and squat racks", "Dumbbells 2 to 50kg", "HIIT zone with sleds and ski ergs", "Free parking"],
+        facilities: ["14 treadmills, rowers, bikes, cross trainers", "8 Olympic rigs and squat racks", "Dumbbells 2 to 50kg", "HIIT zone with sleds and ski ergs", "Free parking in the Howard Centre car park (time limit not published, check the signs)"],
         pros: ["Only 24/7 gym in town", "Cheapest by far", "No contract on monthly plans", "Good free-weights and rig area"],
         cons: ["Outside PTs not allowed", "Busy at peak", "No staffed phone line", "Popular classes book out in the app"],
         sources: ["https://www.thegymgroup.com/find-a-gym/welwyn-garden-city-gyms/welwyn-garden-city/", "https://www.thegymgroup.com/legal/the-gym-group-membership-rules"]
