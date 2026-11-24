@@ -694,24 +694,27 @@ window.SiteContent = {
         id: "gosling", name: "Gosling Sports Park (Better)", status: "",
         walk: "About 20 min walk",
         address: "Stanborough Road, Welwyn Garden City AL8 6XE",
-        from: "Ask (only in the join portal)", is247: "No", classes: "Yes",
+        from: "£13 Flex, £44.50 off-peak, £61.65 full", is247: "No", classes: "Yes",
         website: "https://www.better.org.uk/leisure-centre/welwyn/gosling-sports-park",
         join: { text: "Better join portal", href: "https://memberships.better.org.uk/centre/gosling-sports-park" },
         timetable: "https://www.better.org.uk/leisure-centre/welwyn/gosling-sports-park/timetable",
         contact: "Gosling.enquiries@gll.org",
         hours: ["Mon to Fri 6am to 10pm", "Sat and Sun 8am to 6pm"],
         prices: [
-          { tier: "Monthly gym (single or multi-centre)", price: "Ask", term: "Rolling monthly or annual", extra: "Gym, swim and classes", glance: { price: "Ask", includes: "Gym, swim and classes" } },
-          { tier: "Off-peak", price: "Ask", term: "Rolling monthly or annual", extra: "" },
-          { tier: "Flex", price: "£10 a month", term: "Rolling, cancel any time", extra: "£12.50 setup; discounted pay-as-you-go", glance: { price: "£10", includes: "Cheaper pay-as-you-go visits (£9 instead of £11.95)" } },
-          { tier: "Casual gym visit", price: "£11.95", term: "Per visit", extra: "£9 with Flex or pay-as-you-go" }
+          { tier: "Multi-Centre", price: "£61.65 a month or £616 a year", term: "Rolling monthly, or annual (no refunds)", extra: "Gym, swim, classes and health suite at Gosling plus Hatfield Leisure and Hatfield Swim; £15 setup on monthly", glance: { price: "£61.65 (£51.33 if paid yearly)", includes: "Gym, swim, classes, health suite at 3 local centres" } },
+          { tier: "Multi-Centre Off Peak", price: "£44.50 a month or £444 a year", term: "Rolling monthly, or annual", extra: "Mon to Fri 9am to 4pm, weekends after 1pm; £15 setup on monthly", glance: { price: "£44.50 (£37 if paid yearly)", includes: "Same, off-peak hours only" } },
+          { tier: "UK-Wide", price: "£75 a month or £825 a year", term: "Rolling monthly, or annual", extra: "Every Better centre in the UK plus 1 racquet court a week; £15 setup on monthly" },
+          { tier: "UK-Wide + Tennis", price: "£105 a month or £1,050 a year", term: "Rolling monthly, or annual", extra: "UK-Wide plus 1 outdoor or clay tennis court a day at Gosling" },
+          { tier: "UK-Wide Flex", price: "£13 a month", term: "Rolling, cancel any time", extra: "£15 setup; 1 free gym, swim or class a month, then up to 30% off", glance: { price: "£13", includes: "1 free visit a month, then up to 30% off" } },
+          { tier: "Day / 7-day / 30-day pass", price: "£21 / £30 / £77.50", term: "One-off", extra: "Gym, swim and classes, Gosling only" },
+          { tier: "Pay as you go", price: "£46 a year", term: "Annual fee", extra: "Up to 30% off bookings; gym visit £9 instead of £11.95" }
         ],
-        priceNote: "Better only shows monthly prices inside its join portal, and doesn't publish its off-peak hours. Flex is a cheap monthly fee that discounts pay-as-you-go visits rather than giving free entry. Concessions for students, over-66s and others.",
+        priceNote: "Monthly plans have no contract and take the direct debit on the 1st. Joining mid-month means paying the part-month plus £15 setup up front, so joining on the 1st costs just £15 on the day (e.g. Multi-Centre from 24 Nov is £91.97 up front, then £61.65 from 1 Jan). No adult single-centre option at Gosling. Concessions: student UK-Wide £44, concession Flex £6.50, over-66 UK-Wide £63.50, disability UK-Wide £32 (proof needed). Prices from Better's join portal, 24 Nov 2026.",
         classTypes: ["HIIT", "Group cycle", "Boxfit", "Yoga", "Pilates", "Body conditioning", "Circuits", "Women-only lifting"],
         facilities: ["About 100 Technogym stations, 2 squat racks, sled track", "2 studios", "Spa pool and health suite", "Tennis, squash, ski slope, velodrome on site", "Free parking for direct-debit members"],
         pros: ["Huge site with lots beyond the gym", "Rolling monthly, no contract", "Induction included", "Free parking for members"],
         cons: ["Outside PTs not allowed, Better's own PTs only", "Changing room cleanliness is a common complaint", "Closes 6pm at weekends", "Non-member parking is charged"],
-        sources: ["https://www.better.org.uk/leisure-centre/welwyn/gosling-sports-park", "https://better.org.uk/faqs/articles/can-i-train-with-other-people-in-the-gym"]
+        sources: ["https://www.better.org.uk/leisure-centre/welwyn/gosling-sports-park", "https://memberships.better.org.uk/centre/gosling-sports-park", "https://better.org.uk/faqs/articles/can-i-train-with-other-people-in-the-gym"]
       },
       {
         id: "ttz", name: "TTZ CrossFit (The Training Zone)", status: "",
