@@ -630,22 +630,21 @@ window.SiteContent = {
         id: "norton", name: "Norton Gym", status: "",
         walk: "5 min walk",
         address: "26–28 Hyde Way, Welwyn Garden City AL7 3UQ (5 min walk from the station)",
-        from: "£55 (Anytime switch offer)", is247: "No", classes: "Yes, 10 types free",
+        from: "£55 (12 months), £60 rolling", is247: "No", classes: "Yes, 10 types free",
         website: "https://nortongymwgc.co.uk/",
         join: { text: "Join online", href: "https://secure.ashbournemanagement.co.uk/signupUK/index.aspx?fn=GRAF1" },
         timetable: "https://nortongymwgc.co.uk/pages/classes",
         contact: "01707 376199 · info@nortongymwgc.co.uk",
         hours: ["Mon to Fri 5am to 10pm", "Sat 7am to 7pm", "Sun 8am to 6pm"],
         prices: [
-          { tier: "Rolling monthly", price: "Ask", term: "Monthly", extra: "£0 sign-up" },
-          { tier: "Anytime Fitness switch offer", price: "£55", term: "From January", extra: "No joining fee, £40 for December", glance: { price: "£55 (£40 in Dec)", includes: "Gym and 10 class types, no joining fee" } },
-          { tier: "12-month contract", price: "Ask", term: "12 months", extra: "£0 sign-up" }
+          { tier: "Rolling monthly", price: "£60 a month", term: "Rolling monthly", extra: "Gym and all classes. £0 sign-up", glance: { price: "£60", includes: "Gym and 10 class types, no joining fee" } },
+          { tier: "12-month contract", price: "£55 a month", term: "12 months", extra: "Gym and all classes. £0 sign-up. Saves £60 over the year", glance: { price: "£55 (12 months)", includes: "Same, on a year's contract" } }
         ],
-        priceNote: "Norton doesn't publish its standard prices; they show inside the join form. The switch offer came from Norton via Minty.",
+        priceNote: "Switching over now: December is just £40, then your plan price from January. Prices from Norton via Minty, Nov 2026.",
         classTypes: ["Barbell", "Spin", "Step", "Boxfit", "BodyBlitz", "Circuits", "Burn'N'Build", "Pilates", "Yoga", "Perform45"],
         facilities: ["Huge free-weights area, dumbbells to 95kg", "Rare kit: Nautilus, Hammer Strength, Gym80, Cybex", "Spin bikes, WattBike, Jacob's ladder", "Martial arts area with heavy bags", "Protein bar"],
         pros: ["Huge equipment range, little waiting", "Free classes and free induction", "£0 sign-up and free on-site parking, no time limit stated", "Earliest opening in town, 5am weekdays", "Friendly, well-rated staff"],
-        cons: ["Prices not published", "Tight layout, busy at peak", "Parking fills up when busy", "Stairs between floors"],
+        cons: ["Tight layout, busy at peak", "Parking fills up when busy", "Stairs between floors"],
         sources: ["https://nortongymwgc.co.uk/pages/memberships", "https://nortongymwgc.co.uk/pages/classes"]
       },
       {
