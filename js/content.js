@@ -683,7 +683,7 @@ window.SiteContent = {
         ],
         scheduleNote: "Snapshot of the live timetable for 21 to 27 Nov 2026. Book up to 7 days ahead in The Gym Group app. Classes run 6:30am to 8pm and popular ones fill up.",
         classTypes: ["HYROX", "Hybrid 45", "Strength (barbell, dumbbell)", "Weights for Women", "Body Conditioning", "Circuits", "Pilates", "Legs Bums & Tums"],
-        facilities: ["14 treadmills, rowers, bikes, cross trainers", "8 Olympic rigs and squat racks", "Dumbbells 2 to 50kg", "HIIT zone with sleds and ski ergs", "Free parking in the Howard Centre car park (time limit not published, check the signs)"],
+        facilities: ["14 treadmills, rowers, bikes, cross trainers", "8 Olympic rigs and squat racks", "Dumbbells 2 to 50kg", "HIIT zone with sleds and ski ergs", "Free parking: 2h in the Howard Centre car park, same as Rise"],
         pros: ["Only 24/7 gym in town", "Cheapest by far", "No contract on monthly plans", "Good free-weights and rig area"],
         cons: ["Outside PTs not allowed", "Busy at peak", "No staffed phone line", "Popular classes book out in the app"],
         sources: ["https://www.thegymgroup.com/find-a-gym/welwyn-garden-city-gyms/welwyn-garden-city/", "https://www.thegymgroup.com/legal/the-gym-group-membership-rules"]
