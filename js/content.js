@@ -585,9 +585,9 @@ window.SiteContent = {
         contact: "01707 892028 · wgcity@risegym.co.uk",
         hours: ["Mon to Fri 5:30am to 10pm", "Sat 7am to 6pm", "Sun 8am to 6pm"],
         prices: [
-          { tier: "Platinum (WGC only)", price: "£70 / £85 / £100", term: "12 / 6 / 1 month", extra: "All standard classes, Reformer £12 a class, 2h free Howard Centre parking", glance: { price: "£70 (£59 switch offer)", includes: "WGC gym, all standard classes, Reformer £12 a class" } },
-          { tier: "Elite (WGC + Stevenage)", price: "£90 / £105 / £120", term: "12 / 6 / 1 month", extra: "Adds Stevenage, 5 Reformer a month, 2 guest passes a month, towels, 3h free Long Stay parking", glance: { price: "£90 (£76 switch offer)", includes: "Platinum plus Stevenage, 5 Reformer a month, guest passes, towels" } },
-          { tier: "Elite Plus (WGC + Stevenage)", price: "£115 / £130 / £145", term: "12 / 6 / 1 month", extra: "Adds Revive Spa: saunas, ice baths", glance: { price: "£115 (£97 switch offer)", includes: "Elite plus Revive Spa: saunas, ice baths" } }
+          { tier: "Platinum (WGC only)", price: "£100 / £85 / £70", term: "1 / 6 / 12 months", extra: "All standard classes, Reformer £12 a class, 2h free Howard Centre parking", glance: { price: "£70 (£59 switch offer)", includes: "WGC gym, all standard classes, Reformer £12 a class" } },
+          { tier: "Elite (WGC + Stevenage)", price: "£120 / £105 / £90", term: "1 / 6 / 12 months", extra: "Adds Stevenage, 5 Reformer a month, 2 guest passes a month, towels, 3h free Long Stay parking", glance: { price: "£90 (£76 switch offer)", includes: "Platinum plus Stevenage, 5 Reformer a month, guest passes, towels" } },
+          { tier: "Elite Plus (WGC + Stevenage)", price: "£145 / £130 / £115", term: "1 / 6 / 12 months", extra: "Adds Revive Spa: saunas, ice baths", glance: { price: "£115 (£97 switch offer)", includes: "Elite plus Revive Spa: saunas, ice baths" } }
         ],
         offer: {
           rows: [
@@ -637,9 +637,9 @@ window.SiteContent = {
         contact: "01707 376199 · info@nortongymwgc.co.uk",
         hours: ["Mon to Fri 5am to 10pm", "Sat 7am to 7pm", "Sun 8am to 6pm"],
         prices: [
+          { tier: "Rolling monthly", price: "Ask", term: "Monthly", extra: "£0 sign-up" },
           { tier: "Anytime Fitness switch offer", price: "£55", term: "From January", extra: "No joining fee, £40 for December", glance: { price: "£55 (£40 in Dec)", includes: "Gym and 10 class types, no joining fee" } },
-          { tier: "12-month contract", price: "Ask", term: "12 months", extra: "£0 sign-up" },
-          { tier: "Rolling monthly", price: "Ask", term: "Monthly", extra: "£0 sign-up" }
+          { tier: "12-month contract", price: "Ask", term: "12 months", extra: "£0 sign-up" }
         ],
         priceNote: "Norton doesn't publish its standard prices; they show inside the join form. The switch offer came from Norton via Minty.",
         classTypes: ["Barbell", "Spin", "Step", "Boxfit", "BodyBlitz", "Circuits", "Burn'N'Build", "Pilates", "Yoga", "Perform45"],
@@ -659,12 +659,10 @@ window.SiteContent = {
         contact: "No phone or email at the gym; support via support.thegymgroup.com",
         hours: ["Open 24/7", "Off-peak members: any time except Mon to Fri 4pm to 8pm"],
         prices: [
+          { tier: "Day pass", price: "£11.99", term: "1 day (3 days £19.99)", extra: "" },
           { tier: "Off-peak", price: "£22.99", term: "Rolling monthly", extra: "This gym only. Any time except Mon to Fri 4pm to 8pm (weekends are all day). £10 joining fee", glance: { price: "£22.99", includes: "This gym and classes, not weekdays 4pm to 8pm" } },
-          { tier: "Standard", price: "£28.99", term: "Rolling monthly", extra: "This gym only, 24/7. £10 joining fee", glance: { price: "£28.99", includes: "This gym 24/7 and classes" } },
-          { tier: "Ultimate", price: "£34.99", term: "Rolling monthly", extra: "24/7 plus every Gym Group gym, guest passes, 1 free freeze, Fiit workouts, body tracking. First month £28.99, £10 joining fee", glance: { price: "£34.99", includes: "Every Gym Group gym 24/7, guest passes, Fiit workouts" } },
-          { tier: "Ultimate saver", price: "£379 / £299", term: "12 / 9 months upfront", extra: "No joining fee" },
-          { tier: "Standard saver", price: "£329 / £239", term: "12 / 9 months upfront", extra: "No joining fee" },
-          { tier: "Day pass", price: "£11.99", term: "1 day (3 days £19.99)", extra: "" }
+          { tier: "Standard", price: "£28.99 a month, £239 for 9 months, or £329 for 12 months upfront", term: "Rolling monthly, or paid upfront", extra: "This gym only, 24/7. £10 joining fee on monthly only. Upfront saves £31.91 over 9 months (£26.56 a month) or £28.88 over 12 months (£27.42 a month)", glance: { price: "£28.99", includes: "This gym 24/7 and classes" } },
+          { tier: "Ultimate", price: "£34.99 a month, £299 for 9 months, or £379 for 12 months upfront", term: "Rolling monthly, or paid upfront", extra: "24/7 plus every Gym Group gym, guest passes, 1 free freeze, Fiit workouts, body tracking. Monthly: first month £28.99 plus £10 joining fee. Upfront saves £19.91 over 9 months (£33.22 a month) or £44.88 over 12 months (£31.58 a month)", glance: { price: "£34.99", includes: "Every Gym Group gym 24/7, guest passes, Fiit workouts" } }
         ],
         priceNote: "The tiers differ only in hours and extras, not in the kit you can use. Off-peak saves £6 a month but locks you out 4pm to 8pm on weekdays, the after-work rush. Standard is the same gym at any hour. Ultimate is Standard plus every Gym Group gym and the perks. No minimum term on monthly plans; cancel the direct debit 4 working days before billing.",
         schedule: [
@@ -701,15 +699,20 @@ window.SiteContent = {
         contact: "Gosling.enquiries@gll.org",
         hours: ["Mon to Fri 6am to 10pm", "Sat and Sun 8am to 6pm"],
         prices: [
-          { tier: "Multi-Centre", price: "£61.65 a month or £616 a year", term: "Rolling monthly, or annual (no refunds)", extra: "Gym, swim, classes and health suite at Gosling plus Hatfield Leisure and Hatfield Swim; £15 setup on monthly", glance: { price: "£61.65 (£51.33 if paid yearly)", includes: "Gym, swim, classes, health suite at 3 local centres" } },
-          { tier: "Multi-Centre Off Peak", price: "£44.50 a month or £444 a year", term: "Rolling monthly, or annual", extra: "Mon to Fri 9am to 4pm, weekends after 1pm; £15 setup on monthly", glance: { price: "£44.50 (£37 if paid yearly)", includes: "Same, off-peak hours only" } },
-          { tier: "UK-Wide", price: "£75 a month or £825 a year", term: "Rolling monthly, or annual", extra: "Every Better centre in the UK plus 1 racquet court a week; £15 setup on monthly" },
-          { tier: "UK-Wide + Tennis", price: "£105 a month or £1,050 a year", term: "Rolling monthly, or annual", extra: "UK-Wide plus 1 outdoor or clay tennis court a day at Gosling" },
-          { tier: "UK-Wide Flex", price: "£13 a month", term: "Rolling, cancel any time", extra: "£15 setup; 1 free gym, swim or class a month, then up to 30% off", glance: { price: "£13", includes: "1 free visit a month, then up to 30% off" } },
           { tier: "Day / 7-day / 30-day pass", price: "£21 / £30 / £77.50", term: "One-off", extra: "Gym, swim and classes, Gosling only" },
-          { tier: "Pay as you go", price: "£46 a year", term: "Annual fee", extra: "Up to 30% off bookings; gym visit £9 instead of £11.95" }
+          { tier: "Pay as you go", price: "£46 a year", term: "Annual fee", extra: "Up to 30% off bookings; gym visit £9 instead of £11.95. Concession £34 a year" },
+          { tier: "UK-Wide Flex", price: "£13 a month", term: "Rolling, cancel any time", extra: "£15 setup; 1 free gym, swim or class a month, then up to 30% off", glance: { price: "£13", includes: "1 free visit a month, then up to 30% off" } },
+          { tier: "Multi-Centre Off Peak", price: "£44.50 a month or £444 a year", term: "Rolling monthly, or annual", extra: "Allowed Mon to Fri 9am to 4pm and Sat/Sun 1pm to 6pm. Not allowed Mon to Fri 6 to 9am or 4 to 10pm, or Sat/Sun 8am to 1pm, so pick full Multi-Centre for before or after work. £15 setup on monthly only. Paying yearly saves £105 (£37 a month)", glance: { price: "£44.50 (£37 if paid yearly)", includes: "Same, weekdays 9am to 4pm and weekends after 1pm only" } },
+          { tier: "Multi-Centre", price: "£61.65 a month or £616 a year", term: "Rolling monthly, or annual (no refunds)", extra: "Gym, swim, classes and health suite at Gosling plus Hatfield Leisure and Hatfield Swim. £15 setup on monthly only. Paying yearly saves £138.80 (£51.33 a month)", glance: { price: "£61.65 (£51.33 if paid yearly)", includes: "Gym, swim, classes, health suite at 3 local centres" } },
+          { tier: "UK-Wide", price: "£75 a month or £825 a year", term: "Rolling monthly, or annual", extra: "Every Better centre in the UK plus 1 racquet court a week. £15 setup on monthly only. Paying yearly saves £90 (£68.75 a month)" },
+          { tier: "UK-Wide + Tennis", price: "£105 a month or £1,050 a year", term: "Rolling monthly, or annual", extra: "UK-Wide plus 1 outdoor or clay tennis court a day at Gosling. £15 setup on monthly only. Paying yearly saves £225 (£87.50 a month)" },
+          { tier: "Concession: Flex", price: "£6.50 a month", term: "Rolling, cancel any time", extra: "Concession proof needed. £15 setup" },
+          { tier: "Concession: Disability (UK-Wide Inclusive)", price: "£32 a month or £352 a year", term: "Rolling monthly, or annual", extra: "£15 setup on monthly only" },
+          { tier: "Concession: Student UK-Wide", price: "£44 a month or £484 a year", term: "Rolling monthly, or annual", extra: "Proof of course with the academic year. £15 setup on monthly only. Yearly saves £59" },
+          { tier: "Concession: Off Peak UK-Wide", price: "£45 a month or £495 a year", term: "Rolling monthly, or annual", extra: "Concession proof needed. £15 setup on monthly only. Yearly saves £60" },
+          { tier: "Concession: Over 66", price: "Single Centre £54.50 a month or £543 a year; UK-Wide £63.50 a month or £698.50 a year", term: "Rolling monthly, or annual", extra: "Gosling only on Single Centre. £15 setup on monthly only" }
         ],
-        priceNote: "Monthly plans have no contract and take the direct debit on the 1st. Joining mid-month means paying the part-month plus £15 setup up front, so joining on the 1st costs just £15 on the day (e.g. Multi-Centre from 24 Nov is £91.97 up front, then £61.65 from 1 Jan). No adult single-centre option at Gosling. Concessions: student UK-Wide £44, concession Flex £6.50, over-66 UK-Wide £63.50, disability UK-Wide £32 (proof needed). Prices from Better's join portal, 24 Nov 2026.",
+        priceNote: "Monthly plans have no contract and take the direct debit on the 1st. Joining mid-month means paying the part-month plus £15 setup up front, so joining on the 1st costs just £15 on the day (e.g. Multi-Centre from 24 Nov is £91.97 up front, then £61.65 from 1 Jan). No adult single-centre option at Gosling. Yearly savings compare 12 monthly payments plus the £15 setup. Prices from Better's join portal, 24 Nov 2026.",
         classTypes: ["HIIT", "Group cycle", "Boxfit", "Yoga", "Pilates", "Body conditioning", "Circuits", "Women-only lifting"],
         facilities: ["About 100 Technogym stations, 2 squat racks, sled track", "2 studios", "Spa pool and health suite", "Tennis, squash, ski slope, velodrome on site", "Free parking for direct-debit members"],
         pros: ["Huge site with lots beyond the gym", "Rolling monthly, no contract", "Induction included", "Free parking for members"],
@@ -727,9 +730,9 @@ window.SiteContent = {
         contact: "01707 953972 (also WhatsApp)",
         hours: ["Classes Mon to Fri 6am to about 8:30pm", "Short Saturday and Sunday sessions"],
         prices: [
+          { tier: "6-class drop-in pack", price: "£90", term: "Valid 2 months", extra: "£15 a class" },
           { tier: "Beginner's Package", price: "£120", term: "30 days", extra: "2 PT sessions, up to 5 classes a week", glance: { price: "£120 (first 30 days)", includes: "2 PT sessions, up to 5 classes a week" } },
-          { tier: "Core / Platinum", price: "Ask", term: "Rolling monthly", extra: "Platinum adds open gym; book a free consultation for prices", glance: { price: "Ask", includes: "CrossFit classes; Platinum adds open gym" } },
-          { tier: "6-class drop-in pack", price: "£90", term: "Valid 2 months", extra: "£15 a class" }
+          { tier: "Core / Platinum", price: "Ask", term: "Rolling monthly", extra: "Platinum adds open gym; book a free consultation for prices", glance: { price: "Ask", includes: "CrossFit classes; Platinum adds open gym" } }
         ],
         priceNote: "No joining fee, no long contract. 20% off your first full month after the beginner course. 2 weeks' notice to cancel.",
         classTypes: ["CrossFit", "HYROX", "Olympic lifting", "Freedom (50+)", "Performance", "Yoga", "Open gym"],
@@ -771,12 +774,12 @@ window.SiteContent = {
         contact: "Contact form on the website",
         hours: ["Mon to Fri 6am to 8:30pm", "Sat 7am to 2pm", "Sun 8am to 12pm"],
         prices: [
+          { tier: "Open gym day pass", price: "£15", term: "One day", extra: "No membership needed" },
+          { tier: "Recovery Yard session", price: "£15", term: "60 minutes", extra: "Sauna, ice baths, outdoor showers" },
+          { tier: "Class pack", price: "£18 / £80", term: "1 class (30 days) / 5 classes (60 days)", extra: "No membership needed" },
           { tier: "Open Gym + Recovery Yard", price: "£85", term: "Rolling monthly", extra: "Open gym, sauna and ice baths", glance: { price: "£85", includes: "Open gym, sauna, ice baths" } },
           { tier: "Classes + Recovery Yard", price: "£110", term: "Rolling monthly", extra: "Unlimited classes, sauna and ice baths", glance: { price: "£110", includes: "Unlimited classes, sauna, ice baths" } },
-          { tier: "Classes + Open Gym + Recovery Yard", price: "£120", term: "Rolling monthly", extra: "Everything", glance: { price: "£120", includes: "Classes, open gym, sauna, ice baths" } },
-          { tier: "Class pack", price: "£18 / £80", term: "1 class (30 days) / 5 classes (60 days)", extra: "No membership needed" },
-          { tier: "Open gym day pass", price: "£15", term: "One day", extra: "No membership needed" },
-          { tier: "Recovery Yard session", price: "£15", term: "60 minutes", extra: "Sauna, ice baths, outdoor showers" }
+          { tier: "Classes + Open Gym + Recovery Yard", price: "£120", term: "Rolling monthly", extra: "Everything", glance: { price: "£120", includes: "Classes, open gym, sauna, ice baths" } }
         ],
         priceNote: "No minimum term and no joining fee listed; 1 month's notice to cancel.",
         classTypes: ["FARMFIT functional training", "Group and small-group sessions"],
