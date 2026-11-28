@@ -2370,6 +2370,12 @@ function renderGymCoaching(c) {
     </section>`;
 }
 
+function renderGymRefund(r) {
+  if (!r) return '';
+  const href = `mailto:${r.to}?subject=${encodeURIComponent(r.subject)}&body=${encodeURIComponent(r.body)}`;
+  return `<p class="gym-refund"><a class="btn btn-primary" href="${gymEsc(href)}" target="_blank" rel="noopener">${gymEsc(r.label)}</a><br><span class="gym-meta">${gymEsc(r.note)}</span></p>`;
+}
+
 function renderGymGuide(d) {
   const toc = d.gyms.map((g) => `<li><a href="#${gymEsc(g.id)}">${gymEsc(g.name)}</a></li>`).join('');
   const head = d.columns.map((c) => `<th scope="col">${gymEsc(c)}</th>`).join('');
@@ -2385,6 +2391,7 @@ function renderGymGuide(d) {
       <p class="eyebrow">${gymEsc(d.eyebrow)}</p>
       <h1>${gymEsc(d.title)}</h1>
       <p>${gymEsc(d.intro)}</p>
+      ${renderGymRefund(d.refundEmail)}
     </header>
     <nav class="card gym-card" aria-label="Contents"><h2>Contents</h2><ol class="gym-toc">${toc}</ol></nav>
     <section class="card gym-card" id="compare">

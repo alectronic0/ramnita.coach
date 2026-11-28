@@ -3179,6 +3179,8 @@ section p + p {
    ========================================== */
 .gym-guide { padding: 3rem 0 4rem; display: grid; gap: 1.5rem; }
 .gym-head h1 { margin: 0.3rem 0 0.8rem; }
+.gym-refund { margin-top: 1.2rem; }
+.gym-refund .gym-meta { display: inline-block; margin-top: 0.4rem; }
 .gym-card h2 { margin-top: 0; }
 .gym-card h3 { margin: 1.2rem 0 0.4rem; font-size: 1.05rem; }
 .gym-table-wrap { overflow-x: auto; margin: 0.8rem 0; }

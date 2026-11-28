@@ -563,6 +563,13 @@ window.SiteContent = {
     title: "Where to train in Welwyn Garden City",
     intro: "Anytime Fitness WGC closes on 30 November 2026. This page compares the local gyms so you can pick what suits you. Prices were checked on 21 and 22 November 2026 from each gym's own site; anything marked \"ask\" isn't published, so ring or email them before you sign up.",
     asOf: "23 November 2026",
+    refundEmail: {
+      label: "Email Anytime for a refund",
+      note: "Opens a ready-made email to Anytime's head office. Fill in the blanks and send.",
+      to: "anytimefitnessqueries@scoffs-group.co.uk",
+      subject: "Refund request, Anytime Fitness Welwyn Garden City closure",
+      body: "Hi,\n\nAnytime Fitness Welwyn Garden City closes on 30 November 2026, so I'd like a refund for the unused part of my membership.\n\nFull name: \nMembership number: \nEmail on my account: \nHow I pay (monthly, or upfront for the year): \nAmount and date of my last payment: \nRefund I'm asking for: \n\nPlease refund it to the card I paid with. Can you also confirm by email that my membership is cancelled, that no more payments will be taken, and when the refund has been processed?\n\nThanks,\n"
+    },
     coaching: {
       title: "Prefer a plan to follow?",
       text: "Wherever you train next, gym or home, I coach online: a programme built for your setup, nutrition focused on losing fat not muscle, weekly check-ins and messaging, a 12-week plan and the Hubfit app. Founding rate for members of this gym: £79 a month for your first 3 months (12 weeks), usually £99 a month. Limited spaces available (8 people).",
